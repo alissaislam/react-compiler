@@ -28,13 +28,13 @@ options{tokenVocab=ReactLexer;}
     comments : SINGLE_LINE_COMMENT |MULTI_LINE_COMMENT;
     while : While  OpenParen conditions CloseParen ( block | statment ) ;
     do_while : Do ( block | statment )  While OpenParen conditions CloseParen;
-    callfunction :(IDENTIFIER|Id) (  (Dot|DotModeCall) ((IDENTIFIER|Id) (OpenParen|OpenParenModeCall) (callIdentifier|arrowFunction)? (CloseParen|CloseParenModeCall)))* | (simpleCallfunction|(IDENTIFIER|Id) (OpenParen|OpenParenModeCall) (callIdentifier|arrowFunction)? (CloseParen|CloseParenModeCall)) ;
+    callfunction :id (  (Dot|DotModeCall) (id openParen (callIdentifier|arrowFunction)? closeParen))* | (simpleCallfunction|simpleCallfunctionModeCall) ;
     switch: Switch OpenParen expression CloseParen OpenBrace  ( Case expression Colon ( block | (statment)*))* ( Default Colon (block | (statment )*))?  CloseBrace ;
 
     tryCatch: Try block (Catch OpenParen IDENTIFIER CloseParen block)* (Finally block)?;
     importt: Import ((OpenBrace IDENTIFIER (Comma IDENTIFIER)* CloseBrace| IDENTIFIER ))? From? String ;
 
-    ifShort: callIdentifier (operation expression)? (QuestionMark|QuestionMarkModeCall) ((OpenParen|OpenParenModeCall) statment (CloseParen|CloseParenModeCall)|(OpenParen|OpenParenModeCall) jsxElement (CloseParen|CloseParenModeCall) | statment | jsxElement ) (Colon|ColonModeCall) ((OpenParen|OpenParenModeCall) statment (CloseParen|CloseParenModeCall)|(OpenParen|OpenParenModeCall) jsxElement (CloseParen|CloseParenModeCall) | statment | jsxElement );
+    ifShort: callIdentifier (operation expression)? (QuestionMark|QuestionMarkModeCall) (openParen statment closeParen|openParen jsxElement closeParen | statment | jsxElement ) (Colon|ColonModeCall) (openParen statment closeParen|openParen jsxElement closeParen | statment | jsxElement );
 
     jsxElement:jsxElementNonSelfClosing|jsxElementSelfClosing;
     jsxElementNonSelfClosing: (JSX_TAG|JSX_TAGModeCall) (IDENTIFIERIn ( AssignIn (blockIn|StringIn))?)* MoreThanIn ( OpenBraceInIn ifShort CloseBraceCall |LETTERR| jsxElementIn |blockOfarguments)*? CLOSE_TAGIn  (MoreThan|MoreThanModeCall) ;
@@ -58,7 +58,7 @@ options{tokenVocab=ReactLexer;}
                    | IDENTIFIERIn
                    ;
     jsxCallIdentifier: IDENTIFIERIn (DotIn IDENTIFIERIn)*;
-    jsxBlock:(((OpenParen|OpenParenModeCall) (jsxElement) (CloseParen|CloseParenModeCall))|jsxElement) (SemiColon|SemiColonModeCall)* (IgSemiColon|IgSemiColonModeCall) *;
+    jsxBlock:((openParen (jsxElement) closeParen)|jsxElement) (SemiColon|SemiColonModeCall)* (IgSemiColon|IgSemiColonModeCall) *;
 
 
 
@@ -80,27 +80,27 @@ options{tokenVocab=ReactLexer;}
     variableDeclaration : kind? (IDENTIFIER|array) (( Assign (expression | callfunction | callIdentifier | arrowFunction) )? )  ;
     variableDeclarationList : variableDeclaration ( Comma variableDeclaration )* ;
 
-    arrowFunction:((OpenParen|OpenParenModeCall) arguments? (CloseParen|CloseParenModeCall) | (IDENTIFIER|Id) ) (ARROW|ARROWModeCall) (expression? | (OpenBrace|OpenBraceModeCall) statment* ((Return|ReturnModeCall) jsxBlock)? (CloseBrace|CloseBraceModeCall)|jsxElement | (Return|ReturnModeCall) jsxBlock );
+    arrowFunction:(openParen arguments? closeParen | id ) (ARROW|ARROWModeCall) (expression? | openBrace statment* ((Return|ReturnModeCall) jsxBlock)? closeBrace|jsxElement | (Return|ReturnModeCall) jsxBlock );
     returnstatment : Return expression? ;
-    simpleCallfunction : (IDENTIFIER|Id) (OpenParen|OpenParenModeCall) arguments? (CloseParen|CloseParenModeCall) ;
-    simpleCallfunctionModeCall : (IDENTIFIER|Id) (OpenParen|OpenParenModeCall) (callIdentifier|arrowFunction)? (CloseParen|CloseParenModeCall) ;
+    simpleCallfunction : id openParen arguments? closeParen ;
+    simpleCallfunctionModeCall : id openParen (callIdentifier|arrowFunction)? closeParen ;
 
-    argument : (callIdentifier ((Assign|AssignModeCall) (expression|arrowFunction))?);
+    argument : (callIdentifier (assign (expression|arrowFunction))?);
     parameters :
-                 arrowFunction
-               | callfunction
-               | argument
-               | callIdentifier
-               | expression
-               | NullLiteral
-               | NullLiteralModeCall
-               | blockOfarguments
+                 arrowFunction  #vArrowFunction
+               | callfunction #vCallfunction
+               | argument #vArgument
+               | callIdentifier  #vCallIdentifier
+               | expression #vExpression
+               | NullLiteral #vNullLiteral
+               | NullLiteralModeCall #vNullLiteral
+               | blockOfarguments  #vBlockOfarguments
                ;
 
 
-    callIdentifier: (IDENTIFIER|Id) ((Dot|DotModeCall) (IDENTIFIER|Id))*;
-    expression:  (OpenParen|OpenParenModeCall) expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression (CloseParen|CloseParenModeCall) #multiplyexpression
-               | (OpenParen|OpenParenModeCall) expression( (Plus|PlusModeCall) | (Minus|MinusModeCall)) expression (CloseParen|CloseParenModeCall) #divideexpression
+    callIdentifier: id ((Dot|DotModeCall) id)*;
+    expression:  openParen expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression closeParen #multiplyexpression
+               | openParen expression( (Plus|PlusModeCall) | (Minus|MinusModeCall)) expression closeParen #divideexpression
                | expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression #multiplyexpression
                | expression( (Plus|PlusModeCall) | (Minus|MinusModeCall)) expression #divideexpression
                | callIdentifier (PlusPlus|MinusMinus) #h
@@ -112,7 +112,7 @@ options{tokenVocab=ReactLexer;}
           array #vArray
         | (NUMBER|NUMBERModeCall) #vNumber
         | (String|StringModeCall) #vString
-        | (IDENTIFIER|Id) # vId
+        | id # vId
         | map #vMap
         |(BooleanLiteral|BooleanLiteralModeCall) #vBool
         ;
@@ -143,4 +143,12 @@ options{tokenVocab=ReactLexer;}
                    | IdentityNotEquals
                    | IdentityNotEqualsModeCall
                    ;
+                   
+                   id:IDENTIFIER|Id;
+                   openParen:OpenParen|OpenParenModeCall;
+                   closeParen:CloseParen|CloseParenModeCall;
+                   assign:Assign|AssignModeCall;
+                   closeBrace:CloseBrace|CloseBraceModeCall;
+                   openBrace:OpenBrace|OpenBraceModeCall;
+                   
     break:Break;
