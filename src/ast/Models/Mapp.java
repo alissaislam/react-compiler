@@ -11,6 +11,8 @@ public class Mapp implements type{
     public Mapp( ){
         this.map = new HashMap<> ();
     }
+
+
     public void add(type key,type value){
         map.put (key,value);
     }

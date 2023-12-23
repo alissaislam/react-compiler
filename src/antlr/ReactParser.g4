@@ -19,6 +19,8 @@ options{tokenVocab=ReactLexer;}
                                         | ifShort
                                         | suquence
                                         | export
+                                        | jsxElement
+                                        | expression
                                         ;
     if : If OpenParen  conditions CloseParen  ( block | statment ) else_if* else? ;
     forElement :  For OpenParen forLoopParts CloseParen ( block | statment );
@@ -66,16 +68,16 @@ options{tokenVocab=ReactLexer;}
 
     else_if : Else If OpenParen conditions CloseParen  ( block | statment ) ;
     else :  Else ( block | statment) ;
-    forLoopParts : type? variableDeclaration SemiColon conditions SemiColon  variableDeclaration ;
+    forLoopParts : (kind? variableDeclaration SemiColon conditions SemiColon  variableDeclaration | IDENTIFIER IDENTIFIER Colon callIdentifier ) ;
     conditions : data operation  data
                    | BooleanLiteral
                    | Not* IDENTIFIER
                    | jsxElementNonSelfClosing
                    ;
-    arguments : argumentOrArrowOrCallfunction((Comma|CommaModeCall) argumentOrArrowOrCallfunction)*;
+    arguments : parameters((Comma|CommaModeCall) parameters)*;
 
     blockOfarguments :OpenBrace arguments CloseBrace;
-    variableDeclaration : type? (IDENTIFIER|array) (( Assign (expression | callfunction | callIdentifier | arrowFunction) )?|PlusPlus|MinusMinus )  ;
+    variableDeclaration : kind? (IDENTIFIER|array) (( Assign (expression | callfunction | callIdentifier | arrowFunction) )? )  ;
     variableDeclarationList : variableDeclaration ( Comma variableDeclaration )* ;
 
     arrowFunction:((OpenParen|OpenParenModeCall) arguments? (CloseParen|CloseParenModeCall) | (IDENTIFIER|Id) ) (ARROW|ARROWModeCall) (expression? | (OpenBrace|OpenBraceModeCall) statment* ((Return|ReturnModeCall) jsxBlock)? (CloseBrace|CloseBraceModeCall)|jsxElement | (Return|ReturnModeCall) jsxBlock );
@@ -84,32 +86,44 @@ options{tokenVocab=ReactLexer;}
     simpleCallfunctionModeCall : (IDENTIFIER|Id) (OpenParen|OpenParenModeCall) (callIdentifier|arrowFunction)? (CloseParen|CloseParenModeCall) ;
 
     argument : (callIdentifier ((Assign|AssignModeCall) (expression|arrowFunction))?);
-    argumentOrArrowOrCallfunction :  arrowFunction | callfunction | argument | callIdentifier | expression |NullLiteral|NullLiteralModeCall |blockOfarguments;
+    parameters :
+                 arrowFunction
+               | callfunction
+               | argument
+               | callIdentifier
+               | expression
+               | NullLiteral
+               | NullLiteralModeCall
+               | blockOfarguments
+               ;
+
+
     callIdentifier: (IDENTIFIER|Id) ((Dot|DotModeCall) (IDENTIFIER|Id))*;
     expression:  (OpenParen|OpenParenModeCall) expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression (CloseParen|CloseParenModeCall) #multiplyexpression
                | (OpenParen|OpenParenModeCall) expression( (Plus|PlusModeCall) | (Minus|MinusModeCall)) expression (CloseParen|CloseParenModeCall) #divideexpression
                | expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression #multiplyexpression
                | expression( (Plus|PlusModeCall) | (Minus|MinusModeCall)) expression #divideexpression
+               | callIdentifier (PlusPlus|MinusMinus) #h
                | data #dataExpression
                ;
                export:Export Default callIdentifier SemiColon* IgSemiColon *;
 
     data :
-          array
-        | (NUMBER|NUMBERModeCall)
-        | (String|StringModeCall)
-        | (IDENTIFIER|Id)
-        | map
-        |(BooleanLiteral|BooleanLiteralModeCall)
+          array #vArray
+        | (NUMBER|NUMBERModeCall) #vNumber
+        | (String|StringModeCall) #vString
+        | (IDENTIFIER|Id) # vId
+        | map #vMap
+        |(BooleanLiteral|BooleanLiteralModeCall) #vBool
         ;
-    map :OpenBrace (mapElementList)* CloseBrace;
+    map :OpenBrace (mapElementList)* CloseBrace ;
     mapElementList: mapElement (Comma mapElement)*;
     mapElement:IDENTIFIER Colon ( callfunction | callIdentifier | expression );
 
 
     array : OpenBracket suquence? CloseBracket;
     suquence : data(Comma data )* ;
-    type:    Const
+    kind:    Const
            | Let
            | Var;
     operation :

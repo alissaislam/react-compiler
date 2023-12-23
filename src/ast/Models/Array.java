@@ -20,6 +20,7 @@ public class Array implements type {
         for (type element : this.array){
             sb.append (element.toString ());
         }
+
         return sb.toString ();
     }
 }
