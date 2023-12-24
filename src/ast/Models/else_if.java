@@ -1,4 +1,4 @@
 package ast.Models;
 
-public class else_if extends Node{
+public class Else_if extends Node{
 }

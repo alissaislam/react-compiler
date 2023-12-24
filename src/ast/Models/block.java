@@ -1,4 +1,4 @@
 package ast.Models;
 
-public class block extends Node{
+public class Block extends Node{
 }

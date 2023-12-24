@@ -1,5 +1,5 @@
 package ast.Models;
 
-public class jsxArrowFunction extends Node{
+public class JsxArrowFunction extends Node{
 
 }

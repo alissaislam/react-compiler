@@ -1,4 +1,4 @@
 package ast.Models;
 
-public class jsxBlock extends Node{
+public class JsxBlock extends Node{
 }
