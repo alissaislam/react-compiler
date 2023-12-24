@@ -28,6 +28,16 @@ public interface ReactParserListener extends ParseTreeListener {
 	 */
 	void exitStatment(ReactParser.StatmentContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterStatmentElement(ReactParser.StatmentElementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitStatmentElement(ReactParser.StatmentElementContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link ReactParser#if}.
 	 * @param ctx the parse tree
 	 */
@@ -198,15 +208,15 @@ public interface ReactParserListener extends ParseTreeListener {
 	 */
 	void exitJsxArguments(ReactParser.JsxArgumentsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ReactParser#jsxArgumentOrArrowOrCallfunction}.
+	 * Enter a parse tree produced by {@link ReactParser#jsxParameters}.
 	 * @param ctx the parse tree
 	 */
-	void enterJsxArgumentOrArrowOrCallfunction(ReactParser.JsxArgumentOrArrowOrCallfunctionContext ctx);
+	void enterJsxParameters(ReactParser.JsxParametersContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ReactParser#jsxArgumentOrArrowOrCallfunction}.
+	 * Exit a parse tree produced by {@link ReactParser#jsxParameters}.
 	 * @param ctx the parse tree
 	 */
-	void exitJsxArgumentOrArrowOrCallfunction(ReactParser.JsxArgumentOrArrowOrCallfunctionContext ctx);
+	void exitJsxParameters(ReactParser.JsxParametersContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ReactParser#jsxArrowFunction}.
 	 * @param ctx the parse tree
@@ -318,15 +328,41 @@ public interface ReactParserListener extends ParseTreeListener {
 	 */
 	void exitForLoopParts(ReactParser.ForLoopPartsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ReactParser#conditions}.
+	 * Enter a parse tree produced by the {@code comparison}
+	 * labeled alternative in {@link ReactParser#conditions}.
 	 * @param ctx the parse tree
 	 */
-	void enterConditions(ReactParser.ConditionsContext ctx);
+	void enterComparison(ReactParser.ComparisonContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ReactParser#conditions}.
+	 * Exit a parse tree produced by the {@code comparison}
+	 * labeled alternative in {@link ReactParser#conditions}.
 	 * @param ctx the parse tree
 	 */
-	void exitConditions(ReactParser.ConditionsContext ctx);
+	void exitComparison(ReactParser.ComparisonContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code boolean}
+	 * labeled alternative in {@link ReactParser#conditions}.
+	 * @param ctx the parse tree
+	 */
+	void enterBoolean(ReactParser.BooleanContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code boolean}
+	 * labeled alternative in {@link ReactParser#conditions}.
+	 * @param ctx the parse tree
+	 */
+	void exitBoolean(ReactParser.BooleanContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code conditionsWithId}
+	 * labeled alternative in {@link ReactParser#conditions}.
+	 * @param ctx the parse tree
+	 */
+	void enterConditionsWithId(ReactParser.ConditionsWithIdContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code conditionsWithId}
+	 * labeled alternative in {@link ReactParser#conditions}.
+	 * @param ctx the parse tree
+	 */
+	void exitConditionsWithId(ReactParser.ConditionsWithIdContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ReactParser#arguments}.
 	 * @param ctx the parse tree
@@ -398,16 +434,6 @@ public interface ReactParserListener extends ParseTreeListener {
 	 */
 	void exitSimpleCallfunction(ReactParser.SimpleCallfunctionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ReactParser#simpleCallfunctionModeCall}.
-	 * @param ctx the parse tree
-	 */
-	void enterSimpleCallfunctionModeCall(ReactParser.SimpleCallfunctionModeCallContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ReactParser#simpleCallfunctionModeCall}.
-	 * @param ctx the parse tree
-	 */
-	void exitSimpleCallfunctionModeCall(ReactParser.SimpleCallfunctionModeCallContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link ReactParser#argument}.
 	 * @param ctx the parse tree
 	 */
@@ -418,15 +444,89 @@ public interface ReactParserListener extends ParseTreeListener {
 	 */
 	void exitArgument(ReactParser.ArgumentContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ReactParser#argumentOrArrowOrCallfunction}.
+	 * Enter a parse tree produced by the {@code vArrowFunction}
+	 * labeled alternative in {@link ReactParser#parameters}.
 	 * @param ctx the parse tree
 	 */
-	void enterArgumentOrArrowOrCallfunction(ReactParser.ArgumentOrArrowOrCallfunctionContext ctx);
+	void enterVArrowFunction(ReactParser.VArrowFunctionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ReactParser#argumentOrArrowOrCallfunction}.
+	 * Exit a parse tree produced by the {@code vArrowFunction}
+	 * labeled alternative in {@link ReactParser#parameters}.
 	 * @param ctx the parse tree
 	 */
-	void exitArgumentOrArrowOrCallfunction(ReactParser.ArgumentOrArrowOrCallfunctionContext ctx);
+	void exitVArrowFunction(ReactParser.VArrowFunctionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code vCallIdentifier}
+	 * labeled alternative in {@link ReactParser#parameters}.
+	 * @param ctx the parse tree
+	 */
+	void enterVCallIdentifier(ReactParser.VCallIdentifierContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code vCallIdentifier}
+	 * labeled alternative in {@link ReactParser#parameters}.
+	 * @param ctx the parse tree
+	 */
+	void exitVCallIdentifier(ReactParser.VCallIdentifierContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code vArgument}
+	 * labeled alternative in {@link ReactParser#parameters}.
+	 * @param ctx the parse tree
+	 */
+	void enterVArgument(ReactParser.VArgumentContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code vArgument}
+	 * labeled alternative in {@link ReactParser#parameters}.
+	 * @param ctx the parse tree
+	 */
+	void exitVArgument(ReactParser.VArgumentContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code vCallfunction}
+	 * labeled alternative in {@link ReactParser#parameters}.
+	 * @param ctx the parse tree
+	 */
+	void enterVCallfunction(ReactParser.VCallfunctionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code vCallfunction}
+	 * labeled alternative in {@link ReactParser#parameters}.
+	 * @param ctx the parse tree
+	 */
+	void exitVCallfunction(ReactParser.VCallfunctionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code vExpression}
+	 * labeled alternative in {@link ReactParser#parameters}.
+	 * @param ctx the parse tree
+	 */
+	void enterVExpression(ReactParser.VExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code vExpression}
+	 * labeled alternative in {@link ReactParser#parameters}.
+	 * @param ctx the parse tree
+	 */
+	void exitVExpression(ReactParser.VExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code vNullLiteral}
+	 * labeled alternative in {@link ReactParser#parameters}.
+	 * @param ctx the parse tree
+	 */
+	void enterVNullLiteral(ReactParser.VNullLiteralContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code vNullLiteral}
+	 * labeled alternative in {@link ReactParser#parameters}.
+	 * @param ctx the parse tree
+	 */
+	void exitVNullLiteral(ReactParser.VNullLiteralContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code vBlockOfarguments}
+	 * labeled alternative in {@link ReactParser#parameters}.
+	 * @param ctx the parse tree
+	 */
+	void enterVBlockOfarguments(ReactParser.VBlockOfargumentsContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code vBlockOfarguments}
+	 * labeled alternative in {@link ReactParser#parameters}.
+	 * @param ctx the parse tree
+	 */
+	void exitVBlockOfarguments(ReactParser.VBlockOfargumentsContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ReactParser#callIdentifier}.
 	 * @param ctx the parse tree
@@ -438,15 +538,41 @@ public interface ReactParserListener extends ParseTreeListener {
 	 */
 	void exitCallIdentifier(ReactParser.CallIdentifierContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ReactParser#expression}.
+	 * Enter a parse tree produced by the {@code shortExpression}
+	 * labeled alternative in {@link ReactParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpression(ReactParser.ExpressionContext ctx);
+	void enterShortExpression(ReactParser.ShortExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ReactParser#expression}.
+	 * Exit a parse tree produced by the {@code shortExpression}
+	 * labeled alternative in {@link ReactParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpression(ReactParser.ExpressionContext ctx);
+	void exitShortExpression(ReactParser.ShortExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code normalExpression}
+	 * labeled alternative in {@link ReactParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterNormalExpression(ReactParser.NormalExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code normalExpression}
+	 * labeled alternative in {@link ReactParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitNormalExpression(ReactParser.NormalExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code dataExpression}
+	 * labeled alternative in {@link ReactParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterDataExpression(ReactParser.DataExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code dataExpression}
+	 * labeled alternative in {@link ReactParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitDataExpression(ReactParser.DataExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ReactParser#export}.
 	 * @param ctx the parse tree
@@ -458,15 +584,87 @@ public interface ReactParserListener extends ParseTreeListener {
 	 */
 	void exitExport(ReactParser.ExportContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ReactParser#data}.
+	 * Enter a parse tree produced by the {@code vArray}
+	 * labeled alternative in {@link ReactParser#data}.
 	 * @param ctx the parse tree
 	 */
-	void enterData(ReactParser.DataContext ctx);
+	void enterVArray(ReactParser.VArrayContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ReactParser#data}.
+	 * Exit a parse tree produced by the {@code vArray}
+	 * labeled alternative in {@link ReactParser#data}.
 	 * @param ctx the parse tree
 	 */
-	void exitData(ReactParser.DataContext ctx);
+	void exitVArray(ReactParser.VArrayContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code vNumber}
+	 * labeled alternative in {@link ReactParser#data}.
+	 * @param ctx the parse tree
+	 */
+	void enterVNumber(ReactParser.VNumberContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code vNumber}
+	 * labeled alternative in {@link ReactParser#data}.
+	 * @param ctx the parse tree
+	 */
+	void exitVNumber(ReactParser.VNumberContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code vString}
+	 * labeled alternative in {@link ReactParser#data}.
+	 * @param ctx the parse tree
+	 */
+	void enterVString(ReactParser.VStringContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code vString}
+	 * labeled alternative in {@link ReactParser#data}.
+	 * @param ctx the parse tree
+	 */
+	void exitVString(ReactParser.VStringContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code vId}
+	 * labeled alternative in {@link ReactParser#data}.
+	 * @param ctx the parse tree
+	 */
+	void enterVId(ReactParser.VIdContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code vId}
+	 * labeled alternative in {@link ReactParser#data}.
+	 * @param ctx the parse tree
+	 */
+	void exitVId(ReactParser.VIdContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code vMap}
+	 * labeled alternative in {@link ReactParser#data}.
+	 * @param ctx the parse tree
+	 */
+	void enterVMap(ReactParser.VMapContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code vMap}
+	 * labeled alternative in {@link ReactParser#data}.
+	 * @param ctx the parse tree
+	 */
+	void exitVMap(ReactParser.VMapContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code vBool}
+	 * labeled alternative in {@link ReactParser#data}.
+	 * @param ctx the parse tree
+	 */
+	void enterVBool(ReactParser.VBoolContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code vBool}
+	 * labeled alternative in {@link ReactParser#data}.
+	 * @param ctx the parse tree
+	 */
+	void exitVBool(ReactParser.VBoolContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ReactParser#array}.
+	 * @param ctx the parse tree
+	 */
+	void enterArray(ReactParser.ArrayContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ReactParser#array}.
+	 * @param ctx the parse tree
+	 */
+	void exitArray(ReactParser.ArrayContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ReactParser#map}.
 	 * @param ctx the parse tree
@@ -498,16 +696,6 @@ public interface ReactParserListener extends ParseTreeListener {
 	 */
 	void exitMapElement(ReactParser.MapElementContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ReactParser#array}.
-	 * @param ctx the parse tree
-	 */
-	void enterArray(ReactParser.ArrayContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ReactParser#array}.
-	 * @param ctx the parse tree
-	 */
-	void exitArray(ReactParser.ArrayContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link ReactParser#suquence}.
 	 * @param ctx the parse tree
 	 */
@@ -518,15 +706,15 @@ public interface ReactParserListener extends ParseTreeListener {
 	 */
 	void exitSuquence(ReactParser.SuquenceContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ReactParser#type}.
+	 * Enter a parse tree produced by {@link ReactParser#kind}.
 	 * @param ctx the parse tree
 	 */
-	void enterType(ReactParser.TypeContext ctx);
+	void enterKind(ReactParser.KindContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ReactParser#type}.
+	 * Exit a parse tree produced by {@link ReactParser#kind}.
 	 * @param ctx the parse tree
 	 */
-	void exitType(ReactParser.TypeContext ctx);
+	void exitKind(ReactParser.KindContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ReactParser#operation}.
 	 * @param ctx the parse tree
@@ -537,6 +725,76 @@ public interface ReactParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitOperation(ReactParser.OperationContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ReactParser#id}.
+	 * @param ctx the parse tree
+	 */
+	void enterId(ReactParser.IdContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ReactParser#id}.
+	 * @param ctx the parse tree
+	 */
+	void exitId(ReactParser.IdContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ReactParser#openParen}.
+	 * @param ctx the parse tree
+	 */
+	void enterOpenParen(ReactParser.OpenParenContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ReactParser#openParen}.
+	 * @param ctx the parse tree
+	 */
+	void exitOpenParen(ReactParser.OpenParenContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ReactParser#closeParen}.
+	 * @param ctx the parse tree
+	 */
+	void enterCloseParen(ReactParser.CloseParenContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ReactParser#closeParen}.
+	 * @param ctx the parse tree
+	 */
+	void exitCloseParen(ReactParser.CloseParenContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ReactParser#assign}.
+	 * @param ctx the parse tree
+	 */
+	void enterAssign(ReactParser.AssignContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ReactParser#assign}.
+	 * @param ctx the parse tree
+	 */
+	void exitAssign(ReactParser.AssignContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ReactParser#closeBrace}.
+	 * @param ctx the parse tree
+	 */
+	void enterCloseBrace(ReactParser.CloseBraceContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ReactParser#closeBrace}.
+	 * @param ctx the parse tree
+	 */
+	void exitCloseBrace(ReactParser.CloseBraceContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ReactParser#openBrace}.
+	 * @param ctx the parse tree
+	 */
+	void enterOpenBrace(ReactParser.OpenBraceContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ReactParser#openBrace}.
+	 * @param ctx the parse tree
+	 */
+	void exitOpenBrace(ReactParser.OpenBraceContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ReactParser#jsx_tag}.
+	 * @param ctx the parse tree
+	 */
+	void enterJsx_tag(ReactParser.Jsx_tagContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ReactParser#jsx_tag}.
+	 * @param ctx the parse tree
+	 */
+	void exitJsx_tag(ReactParser.Jsx_tagContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ReactParser#break}.
 	 * @param ctx the parse tree
