@@ -2,38 +2,10 @@ package ast.Models;
 
 
 public abstract class Node {
-    Node parent;
-    Node right;
-    Node left_child;
     String node_name;
     String line_num;
     String node_type;
     int count_child;
-
-
-    public Node getParent() {
-        return parent;
-    }
-
-    public void setParent(Node parent) {
-        this.parent = parent;
-    }
-
-    public Node getRight() {
-        return right;
-    }
-
-    public void setRight(Node right) {
-        this.right = right;
-    }
-
-    public Node getLeft_child() {
-        return left_child;
-    }
-
-    public void setLeft_child(Node left_child) {
-        this.left_child = left_child;
-    }
 
     public String getNode_name() {
         return node_name;
@@ -67,38 +39,14 @@ public abstract class Node {
         this.count_child = count_child;
     }
 
-    public String parent() {
-        if (this.parent == null) {
-            return null;
-        } else
-            return "{\n parent_type =" + parent.getNode_type() + "\n" +
-                    " parent_name =" + parent.getNode_name() + "\n" +
-                    " parent_line_num =" + parent.getLine_num() + "\n" +
-                    " parent_child_num =" + parent.getCount_child() + "\n}";
-    }
-
     @Override
     public String toString() {
         return "\n Node { \n" +
-
-                ", node_name= " + node_name + "\n"  +
-                ", line_num= " + line_num +  "\n" +
-                ", node_type= " + node_type +  "\n" +
-                ", count_child= " + count_child + "\n"+
-                ", parent=" + parent() + "\n"+
-                ", left_child= " + left_child + "\n" +
-                ", right= " + right +
-//                '}'+
-
                 ", node_name= " + node_name + "\n" +
                 ", line_num= " + line_num + "\n" +
                 ", node_type= " + node_type + "\n" +
                 ", count_child= " + count_child + "\n" +
-//                ", parent=" + parent() + "\n"+
-//                ", left_child= " + left_child + "\n" +
-//                ", right= " + right +
                 '}' +
-
                 "\n";
     }
 }

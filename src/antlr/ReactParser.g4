@@ -1,6 +1,7 @@
 parser grammar ReactParser;
 
 options{tokenVocab=ReactLexer;}
+///////////////////// ahmad part
     start: statment*  EOF;
     statment :      statmentElement SemiColon* IgSemiColon *;
     statmentElement:  variableDeclarationList
@@ -53,6 +54,7 @@ options{tokenVocab=ReactLexer;}
     blockIn:OpenBraceIn (jsxArguments )* CloseBraceIn;
     jsxArguments:jsxParameters(CommaIn jsxParameters)*;
     jsxParameters:jsxArrowFunction | jsxCallfunction | jsxArgument | jsxCallIdentifier | jsxExpression ;
+    ////// islam part
     jsxArrowFunction:(OpenParenIn jsxArguments? CloseParenIn | jsxArgument ) ARROWIn (jsxExpression? | OpenBraceIn jsxExpression* CloseBraceIn );
     jsxCallfunction :(IDENTIFIERIn ( DotIn IDENTIFIERIn | DotIn jsxSimpleCallfunction)+ | jsxSimpleCallfunction) ;
     jsxSimpleCallfunction : IDENTIFIERIn OpenParenIn jsxArguments? CloseParenIn ;
@@ -102,6 +104,7 @@ options{tokenVocab=ReactLexer;}
     //simpleCallfunctionModeCall : id openParen (callIdentifier|arrowFunction)? closeParen ;
 
     argument : (callIdentifier (assign (expression|arrowFunction))?);
+    ////////////////rana part
     parameters :
                  arrowFunction  #vArrowFunction
                | callIdentifier  #vCallIdentifier
