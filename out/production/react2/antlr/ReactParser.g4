@@ -2,7 +2,7 @@ parser grammar ReactParser;
 
 options{tokenVocab=ReactLexer;}
 
-statment :  variableDeclarationList
+statment :        variableDeclarationList
                 | if
                 | forElement
                 | function
@@ -31,8 +31,8 @@ data :
     | String
     | IDENTIFIER
     ;
-    array : OPEN_B suquence? CLOSE_B;
-    suquence : data(SemiColon data )* ;
+    array: OPEN_B suquence? CLOSE_B;
+    suquence :   data(SemiColon data )* ;
     conditions : data operation  data
                | BooleanLiteral
                | IDENTIFIER
@@ -55,6 +55,7 @@ data :
         type:   Const
                | Let
                | Var;
+
         operation : LessThan
                        | MoreThan
                        | Equals_
