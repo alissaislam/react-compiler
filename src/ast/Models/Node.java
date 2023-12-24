@@ -1,11 +1,13 @@
 package ast.Models;
 
+import org.antlr.v4.runtime.ParserRuleContext;
 
 public abstract class Node {
     String node_name;
     String line_num;
     String node_type;
     int count_child;
+
 
     public String getNode_name() {
         return node_name;
@@ -39,6 +41,7 @@ public abstract class Node {
         this.count_child = count_child;
     }
 
+
     @Override
     public String toString() {
         return "\n Node { \n" +
@@ -47,6 +50,7 @@ public abstract class Node {
                 ", node_type= " + node_type + "\n" +
                 ", count_child= " + count_child + "\n" +
                 '}' +
+
                 "\n";
     }
 }
