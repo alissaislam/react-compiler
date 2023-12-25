@@ -106,14 +106,14 @@ options{tokenVocab=ReactLexer;}
     argument : (callIdentifier (assign (expression|arrowFunction))?);
     ////////////////rana part
     parameters :
-                 arrowFunction  #vArrowFunction
-               | callIdentifier  #vCallIdentifier
-               | argument #vArgument
-               | callfunction #vCallfunction
-               | expression #vExpression
-               | NullLiteral #vNullLiteral
-               | NullLiteralModeCall #vNullLiteral
-               | blockOfarguments  #vBlockOfarguments
+                 arrowFunction  #label_ArrowFunction
+               | callIdentifier  #label_CallIdentifier
+               | argument #lable_Argument
+               | callfunction #label_Callfunction
+               | expression #label_Expression
+               | NullLiteral #label_NullLiteral
+               | NullLiteralModeCall #label_NullLiteral
+               | blockOfarguments  #label_BlockOfarguments
                ;
 
 

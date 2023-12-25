@@ -1,4 +1,4 @@
 package ast.Models;
 
-class BlockOfarguments extends Node{
+class BlockOfarguments extends Node implements Parameters{
 }
