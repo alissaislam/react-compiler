@@ -1,7 +1,7 @@
 package ast.Models;
 
 public class IfShort extends Node{
-    CallIdentifier callIdentifier;
+    List<CallIdentifier> callIdentifier;
     Operation operation;
     Expression expression;
     Statement statement;
