@@ -7,7 +7,7 @@ public class If extends Node{
     Condition condition;
     Block block;
     Statement statement;
-    List<Else_If> elseIfList = new ArrayList<>();
+    List<Else_if> elseIfList = new ArrayList<>();
     Else elseElement;
 
     public Condition getCondition() {
@@ -34,11 +34,11 @@ public class If extends Node{
         this.statement = statement;
     }
 
-    public List<Else_If> getElseIfList() {
+    public List<Else_if> getElseIfList() {
         return elseIfList;
     }
 
-    public void setElseIfList(List<Else_If> elseIfList) {
+    public void setElseIfList(List<Else_if> elseIfList) {
         this.elseIfList = elseIfList;
     }
 

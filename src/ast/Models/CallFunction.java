@@ -1,10 +1,28 @@
 package ast.Models;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class CallFunction extends Node{
-    List<SimpleCallfunction> simpleCallfunctions= new ArrayList<>();
-    List<CallIdentifier> callIdentifiers = new ArrayList<>();
+public class CallFunction extends Node implements  Parameters{
+
+    List<Id> idList=new ArrayList<> ();
+    List<JsxSimpleCallfunction> jsxSimpleCallfunctionList =new ArrayList<> ();
+
+    public List<Id> getIdList() {
+        return idList;
+    }
+
+    public void setIdList(List<Id> idList) {
+        this.idList = idList;
+    }
+
+    public List<JsxSimpleCallfunction> getJsxSimpleCallfunctionList() {
+        return jsxSimpleCallfunctionList;
+    }
+
+    public void setJsxSimpleCallfunctionList(List<JsxSimpleCallfunction> jsxSimpleCallfunctionList) {
+        this.jsxSimpleCallfunctionList = jsxSimpleCallfunctionList;
+    }
 
 }

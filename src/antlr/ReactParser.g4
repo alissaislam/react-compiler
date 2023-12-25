@@ -22,6 +22,7 @@ options{tokenVocab=ReactLexer;}
                                         | export
                                         | jsxElement
                                         | expression
+                                        | arrowFunction
                                         ;
     if : If OpenParen  conditions CloseParen  ( block | statment ) else_if* else? ;
     forElement :  For OpenParen forLoopParts CloseParen ( block | statment );
@@ -66,17 +67,21 @@ options{tokenVocab=ReactLexer;}
     jsxCallfunction :(IDENTIFIERIn ( DotIn IDENTIFIERIn | DotIn jsxSimpleCallfunction)+ | jsxSimpleCallfunction) ;
     jsxSimpleCallfunction : IDENTIFIERIn OpenParenIn jsxArguments? CloseParenIn ;
     jsxArgument : (IDENTIFIERIn (AssignIn (jsxExpression|jsxArrowFunction))?);
-    jsxExpression:   OpenParenIn jsxExpression (MultiplyIn | DivideIn) jsxExpression CloseParenIn
-                   | OpenParenIn jsxExpression( PlusIn | MinusIn) jsxExpression CloseParenIn
-                   | jsxExpression (MultiplyIn | DivideIn) jsxExpression
-                   | jsxExpression( PlusIn | MinusIn) jsxExpression
-                   | NUMBERIn
-                   | StringIn
-                   | BooleanLiteralIn
-                   | IDENTIFIERIn
+    jsxExpression:   OpenParenIn jsxExpression (MultiplyIn | DivideIn) jsxExpression CloseParenIn #jsxNormalExpression
+                   | OpenParenIn jsxExpression( PlusIn | MinusIn) jsxExpression CloseParenIn #jsxNormalExpression
+                   | jsxExpression (MultiplyIn | DivideIn) jsxExpression #jsxShortNormalExpression
+                   | jsxExpression( PlusIn | MinusIn) jsxExpression #jsxShortNormalExpression
+                   | NUMBERIn #jsxNumber
+                   | StringIn #jsxString
+                   | BooleanLiteralIn #jsxBool
+                   | IDENTIFIERIn #jsxId
                    ;
     jsxCallIdentifier: IDENTIFIERIn (DotIn IDENTIFIERIn)*;
-    jsxBlock:((openParen (jsxElement) closeParen)|jsxElement) (SemiColon|SemiColonModeCall)* (IgSemiColon|IgSemiColonModeCall) *;
+    jsxBlock:
+    (
+    (openParen (jsxElement) closeParen)
+    |jsxElement
+    ) (SemiColon|SemiColonModeCall)* (IgSemiColon|IgSemiColonModeCall) *;
 
 
 
@@ -87,9 +92,9 @@ options{tokenVocab=ReactLexer;}
     else_if : Else If OpenParen conditions CloseParen  ( block | statment ) ;
     else :  Else ( block | statment) ;
     forLoopParts : (kind? variableDeclaration SemiColon conditions SemiColon  variableDeclaration | IDENTIFIER IDENTIFIER Colon callIdentifier ) ;
-    conditions : data operation  data #comparison
-                   | BooleanLiteral #boolean
-                   | Not* IDENTIFIER #conditionsWithId
+    conditions : data operation  data
+                   | BooleanLiteral
+                   | Not* IDENTIFIER
                  //  | jsxElementNonSelfClosing
                    ;
     arguments : parameters((Comma|CommaModeCall) parameters)*;
@@ -98,9 +103,9 @@ options{tokenVocab=ReactLexer;}
     variableDeclaration : kind? (IDENTIFIER|array) (( Assign (expression | callfunction | callIdentifier | arrowFunction) )? )  ;
     variableDeclarationList : variableDeclaration ( Comma variableDeclaration )* ;
 
-    arrowFunction:(openParen arguments? closeParen | id )(ARROW|ARROWModeCall)
+    arrowFunction: Async?(openParen arguments? closeParen | id )(ARROW|ARROWModeCall)
                   (
-                  expression?
+                    expression?
                   | openBrace statment* returnstatment? closeBrace
                   | jsxElement
                   | returnstatment
@@ -113,18 +118,18 @@ options{tokenVocab=ReactLexer;}
     argument : (callIdentifier (assign (expression|arrowFunction))?);
     ////////////////rana part
     parameters :
-                 arrowFunction  #vArrowFunction
-               | callIdentifier  #vCallIdentifier
-               | argument #vArgument
-               | callfunction #vCallfunction
-               | expression #vExpression
-               | NullLiteral #vNullLiteral
-               | NullLiteralModeCall #vNullLiteral
-               | blockOfarguments  #vBlockOfarguments
+                 arrowFunction  #label_ArrowFunction
+               | callIdentifier  #label_CallIdentifier
+               | argument #lable_Argument
+               | callfunction #label_Callfunction
+               | expression #label_Expression
+               | NullLiteral #label_NullLiteral
+               | NullLiteralModeCall #label_NullLiteral
+               | blockOfarguments  #label_BlockOfarguments
                ;
 
 
-    callIdentifier: id ((Dot|DotModeCall) id)*;
+    callIdentifier: id ((Dot|DotModeCall)  )*;
     expression:  openParen expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression closeParen #normalExpression
                | openParen expression( (Plus|PlusModeCall) | (Minus|MinusModeCall)) expression closeParen #normalExpression
                | expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression #normalExpression
