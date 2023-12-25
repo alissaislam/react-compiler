@@ -7,7 +7,7 @@ public class If extends Node{
     Condition condition;
     Block block;
     Statement statement;
-    List<Else_If> elseIfList;
+    List<Else_If> elseIfList = new ArrayList<>();
     Else elseElement;
 
     public Condition getCondition() {

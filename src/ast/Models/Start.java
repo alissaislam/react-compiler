@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Start extends Node{
-List<Statement> statement_list;
+List<Statement> statement_list = new ArrayList<>();
 
     public List<Statement> getStatement_list() {
         return statement_list;

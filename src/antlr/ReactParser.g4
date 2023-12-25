@@ -50,10 +50,17 @@ options{tokenVocab=ReactLexer;}
     jsxElementNonSelfClosing: (JSX_TAG|JSX_TAGModeCall) (IDENTIFIERIn ( AssignIn (blockIn|StringIn))?)* MoreThanIn ( OpenBraceInIn ifShort CloseBraceCall |LETTERR| jsxElementIn |blockOfarguments)*? CLOSE_TAGIn  (MoreThan|MoreThanModeCall) ;
     jsxElementSelfClosing:jsx_tag (IDENTIFIERIn ( AssignIn (blockIn|StringIn))?)* Self_CLOSE_TAG;
 
-    jsxElementIn:  ((JSX_TAGIn|JSX_TAGInIn) (IDENTIFIERIn ( AssignIn (blockIn|StringIn))?)* MoreThanIn (  OpenBraceInIn Id((Dot|DotModeCall) Id)*? CloseBraceCall  |jsxElementIn | LETTERR |blockOfarguments )*?  CLOSE_TAGIn  MoreThanInIn |jsxElementSelfClosing );
+    jsxElementIn:  (
+    (JSX_TAGIn|JSX_TAGInIn) (IDENTIFIERIn ( AssignIn (blockIn|StringIn))?)* MoreThanIn (  OpenBraceInIn Id((Dot|DotModeCall) Id)*? CloseBraceCall  |jsxElementIn | LETTERR |blockOfarguments )*?  CLOSE_TAGIn  MoreThanInIn |jsxElementSelfClosing
+    );
     blockIn:OpenBraceIn (jsxArguments )* CloseBraceIn;
     jsxArguments:jsxParameters(CommaIn jsxParameters)*;
-    jsxParameters:jsxArrowFunction | jsxCallfunction | jsxArgument | jsxCallIdentifier | jsxExpression ;
+    jsxParameters:
+      jsxArrowFunction
+    | jsxCallfunction
+    | jsxArgument
+    | jsxCallIdentifier
+    | jsxExpression ;
     ////// islam part
     jsxArrowFunction:(OpenParenIn jsxArguments? CloseParenIn | jsxArgument ) ARROWIn (jsxExpression? | OpenBraceIn jsxExpression* CloseBraceIn );
     jsxCallfunction :(IDENTIFIERIn ( DotIn IDENTIFIERIn | DotIn jsxSimpleCallfunction)+ | jsxSimpleCallfunction) ;
