@@ -67,10 +67,11 @@ options{tokenVocab=ReactLexer;}
     jsxCallfunction :(IDENTIFIERIn ( DotIn IDENTIFIERIn | DotIn jsxSimpleCallfunction)+ | jsxSimpleCallfunction) ;
     jsxSimpleCallfunction : IDENTIFIERIn OpenParenIn jsxArguments? CloseParenIn ;
     jsxArgument : (IDENTIFIERIn (AssignIn (jsxExpression|jsxArrowFunction))?);
-    jsxExpression:   OpenParenIn jsxExpression (MultiplyIn | DivideIn) jsxExpression CloseParenIn #jsxNormalExpression
+    jsxExpression:
+                     OpenParenIn jsxExpression (MultiplyIn | DivideIn) jsxExpression CloseParenIn #jsxNormalExpression
                    | OpenParenIn jsxExpression( PlusIn | MinusIn) jsxExpression CloseParenIn #jsxNormalExpression
-                   | jsxExpression (MultiplyIn | DivideIn) jsxExpression #jsxShortNormalExpression
-                   | jsxExpression( PlusIn | MinusIn) jsxExpression #jsxShortNormalExpression
+                   | jsxExpression (MultiplyIn | DivideIn) jsxExpression #jsxNormalExpression
+                   | jsxExpression( PlusIn | MinusIn) jsxExpression #jsxNormalExpression
                    | NUMBERIn #jsxNumber
                    | StringIn #jsxString
                    | BooleanLiteralIn #jsxBool
