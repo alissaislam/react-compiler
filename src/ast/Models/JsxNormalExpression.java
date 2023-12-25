@@ -7,7 +7,7 @@ public class JsxNormalExpression extends Node implements JsxExpression{
     List<JsxExpression> jsxExpressionList = new ArrayList<> ();
     String operation;
 
-    
+
 
     public List<JsxExpression> getJsxExpressionList() {
         return jsxExpressionList;
