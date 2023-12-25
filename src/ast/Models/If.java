@@ -1,12 +1,13 @@
 package ast.Models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class If extends Node{
     Condition condition;
     Block block;
     Statement statement;
-    List<ElseIf> elseIfList;
+    List<Else_If> elseIfList;
     Else elseElement;
 
     public Condition getCondition() {
@@ -33,11 +34,11 @@ public class If extends Node{
         this.statement = statement;
     }
 
-    public List<ElseIf> getElseIfList() {
+    public List<Else_If> getElseIfList() {
         return elseIfList;
     }
 
-    public void setElseIfList(List<ElseIf> elseIfList) {
+    public void setElseIfList(List<Else_If> elseIfList) {
         this.elseIfList = elseIfList;
     }
 

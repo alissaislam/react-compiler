@@ -1,4 +1,4 @@
 package ast.Models;
 
-public class returnstatment extends Node{
+public class Returnstatment extends Node{
 }

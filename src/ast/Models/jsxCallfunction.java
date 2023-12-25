@@ -1,4 +1,4 @@
 package ast.Models;
 
-public class jsxCallfunction extends Node{
+public class JsxCallfunction extends Node{
 }

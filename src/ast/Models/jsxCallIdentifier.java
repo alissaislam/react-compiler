@@ -1,4 +1,4 @@
 package ast.Models;
 
-public class jsxCallIdentifier extends  Node{
+public class JsxCallIdentifier extends  Node{
 }

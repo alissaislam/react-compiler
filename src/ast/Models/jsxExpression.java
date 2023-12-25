@@ -1,4 +1,4 @@
 package ast.Models;
 
-public class jsxExpression extends Node{
+public class JsxExpression extends Node{
 }

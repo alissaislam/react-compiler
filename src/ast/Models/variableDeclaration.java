@@ -1,4 +1,4 @@
 package ast.Models;
 
-public class variableDeclaration extends Node{
+public class VariableDeclaration extends Node{
 }

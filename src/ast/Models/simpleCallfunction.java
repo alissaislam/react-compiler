@@ -1,4 +1,4 @@
 package ast.Models;
 
-public class simpleCallfunction extends Node{
+public class SimpleCallfunction extends Node{
 }

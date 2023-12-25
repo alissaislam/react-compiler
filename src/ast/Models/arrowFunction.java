@@ -1,4 +1,4 @@
 package ast.Models;
 
-public class arrowFunction extends Node{
+public class ArrowFunction extends Node{
 }
