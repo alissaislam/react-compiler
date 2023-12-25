@@ -1,4 +1,4 @@
 package ast.Models;
 
- interface Expression  extends Parameters{
+ abstract class Expression  extends Node implements Parameters{
 }

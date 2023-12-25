@@ -130,14 +130,14 @@ options{tokenVocab=ReactLexer;}
 
 
     callIdentifier: id ((Dot|DotModeCall)  )*;
-    expression:  openParen expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression closeParen #normalExpression
-               | openParen expression( (Plus|PlusModeCall) | (Minus|MinusModeCall)) expression closeParen #normalExpression
-               | expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression #normalExpression
-               | expression( (Plus|PlusModeCall) | (Minus|MinusModeCall)) expression #normalExpression
+    expression:  openParen expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression closeParen #label_normalExpression
+               | openParen expression( (Plus|PlusModeCall) | (Minus|MinusModeCall)) expression closeParen #label_normalExpression
+               | expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression #label_normalExpression
+               | expression( (Plus|PlusModeCall) | (Minus|MinusModeCall)) expression #label_normalExpression
                | callIdentifier (PlusPlus|MinusMinus) #shortExpression
-               | data #dataExpression
+               | data #label_dataExpression
                ;
-               export:Export Default callIdentifier SemiColon* IgSemiColon *;
+    export:Export Default callIdentifier SemiColon* IgSemiColon *;
 
     data :
           array #vArray
