@@ -1,4 +1,4 @@
 package ast.Models;
 
-public class Data {
+interface Data {
 }
