@@ -141,12 +141,12 @@ options{tokenVocab=ReactLexer;}
     export:Export Default callIdentifier SemiColon* IgSemiColon *;
 
     data :
-          array #vArray
-        | (NUMBER|NUMBERModeCall) #vNumber
-        | (String|StringModeCall) #vString
-        | id # vId
-        | map #vMap
-        |(BooleanLiteral|BooleanLiteralModeCall) #vBool
+          array #label_Array
+        | (NUMBER|NUMBERModeCall) #label_Number
+        | (String|StringModeCall) #label_String
+        | id # label_Id
+        | map #label_Map
+        |(BooleanLiteral|BooleanLiteralModeCall) #label_Bool
         ;
 
          array : OpenBracket suquence? CloseBracket  ;
@@ -178,12 +178,12 @@ options{tokenVocab=ReactLexer;}
                    | IdentityNotEqualsModeCall
                    ;
                    
-                   id:IDENTIFIER|Id;
-                   openParen:OpenParen|OpenParenModeCall;
-                   closeParen:CloseParen|CloseParenModeCall;
-                   assign:Assign|AssignModeCall;
-                   closeBrace:CloseBrace|CloseBraceModeCall;
-                   openBrace:OpenBrace|OpenBraceModeCall;
-                   jsx_tag:JSX_TAGIn|JSX_TAGInIn|JSX_TAG;
+    id:IDENTIFIER|Id;
+    openParen:OpenParen|OpenParenModeCall;
+    closeParen:CloseParen|CloseParenModeCall;
+    assign:Assign|AssignModeCall;
+    closeBrace:CloseBrace|CloseBraceModeCall;
+    openBrace:OpenBrace|OpenBraceModeCall;
+    jsx_tag:JSX_TAGIn|JSX_TAGInIn|JSX_TAG;
                    
     break:Break;
