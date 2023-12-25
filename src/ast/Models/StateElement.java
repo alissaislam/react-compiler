@@ -1,23 +1,23 @@
 package ast.Models;
 
 public class StateElement extends Node{
-    If ifElement = new If();
-    For forelement = new For();
-    Function functionElement = new Function();
-    Comment comment = new Comment();
-    While whileElement = new While();
-    DoWhile doWhileElement = new DoWhile();
-    CallFunction callFunction = new CallFunction();
-    Switch switchElement = new Switch();
-    Block block = new Block();
-    Break breakElement = new Break();
-    TryCatch tryCatch = new TryCatch();
-    Import importElement = new Import();
-    IfShort ifShort = new IfShort();
-    Sequence sequence = new Sequence();
-    Export exportElement = new Export();
-    JsxElement jsxElement = new JsxElement();
-//    Expression expression = new Expression();
+    If ifElement ;
+    For forElement;
+    Function functionElement;
+    Comment comment;
+    While whileElement ;
+    DoWhile doWhileElement ;
+    CallFunction callFunction;
+    Switch switchElement;
+    Block block;
+    Break breakElement;
+    TryCatch tryCatch;
+    Import importElement;
+    IfShort ifShort ;
+    Sequence sequence ;
+    Export exportElement ;
+    JsxElement jsxElement;
+//    Expression expression;
 
     public If getIfElement() {
         return ifElement;
@@ -28,11 +28,11 @@ public class StateElement extends Node{
     }
 
     public For getForelement() {
-        return forelement;
+        return forElement;
     }
 
-    public void setForelement(For forelement) {
-        this.forelement = forelement;
+    public void setForelement(For forElement) {
+        this.forElement = forElement;
     }
 
     public Function getFunctionElement() {

@@ -1,7 +1,7 @@
 package ast.Models;
 
 public class Statement {
-    StatementElement statementElement = new StatementElement();
+    StatementElement statementElement;
 
     public StatementElement getStatementElement() {
         return statementElement;
