@@ -3,7 +3,7 @@ package ast.Models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArrowFunction extends Node{
+public class ArrowFunction extends Node implements Parameters{
 
     String async;
     Arguments arguments;

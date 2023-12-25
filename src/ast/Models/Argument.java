@@ -1,6 +1,6 @@
 package ast.Models;
 
-public class Argument extends Node{
+public class Argument extends Node implements  Parameters{
 
     CallIdentifier callIdentifier;
     Expression experssion;
