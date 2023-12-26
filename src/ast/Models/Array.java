@@ -1,6 +1,6 @@
 package ast.Models;
 
-public class Array extends Node implements Data{
+public class Array extends  Data{
     Sequence sequence;
 
     public Sequence getSequence() {

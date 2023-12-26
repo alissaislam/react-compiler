@@ -1,4 +1,4 @@
 package ast.Models;
 
-interface Data {
+abstract class Data extends Node {
 }

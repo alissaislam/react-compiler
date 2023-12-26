@@ -3,7 +3,7 @@ package ast.Models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CallIdentifier extends Node implements  Parameters {
+public class CallIdentifier extends  Parameters {
     Id id;
     List<Id> ids=new ArrayList<>();
 

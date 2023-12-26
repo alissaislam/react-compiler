@@ -1,6 +1,6 @@
 package ast.Models;
 
-public class Number extends Node implements Data{
+public class Number extends Data{
     int value;
 
     public int getValue() {

@@ -3,7 +3,7 @@ package ast.Models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JsxNormalExpression extends Node implements JsxExpression{
+public class JsxNormalExpression  extends JsxExpression{
     List<JsxExpression> jsxExpressionList = new ArrayList<> ();
     String operation;
 

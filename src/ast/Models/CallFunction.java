@@ -4,7 +4,7 @@ package ast.Models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CallFunction extends Node implements  Parameters{
+public class CallFunction extends  Parameters{
 
     List<Id> idList=new ArrayList<> ();
     List<JsxSimpleCallfunction> jsxSimpleCallfunctionList =new ArrayList<> ();

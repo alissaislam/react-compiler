@@ -1,6 +1,6 @@
 package ast.Models;
 
-public class Bool extends Node implements Data{
+public class Bool extends  Data{
 boolean bool;
 
     public boolean isBool() {

@@ -3,6 +3,11 @@ package visitors;
 import antlr.ReactParser;
 import antlr.ReactParserBaseVisitor;
 import antlr.ReactParserVisitor;
+import ast.Models.*;
+import org.antlr.v4.runtime.tree.ErrorNode;
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.RuleNode;
+import org.antlr.v4.runtime.tree.TerminalNode;
 
 public class BaseVisitor implements ReactParserVisitor {
 
@@ -114,11 +119,28 @@ public class BaseVisitor implements ReactParserVisitor {
 
     @Override
     public Object visitJsxArrowFunction(ReactParser.JsxArrowFunctionContext ctx) {
-        return null;
+        JsxArrowFunction jsxArrowFunction =new JsxArrowFunction ();
+        jsxArrowFunction.setNode_type ("JsxArrowFunction");
+
+        if(ctx.jsxArguments () != null){
+            jsxArrowFunction.setJsxArguments ((JsxArguments) visitJsxArguments (ctx.jsxArguments ()));
+        }
+
+        if (ctx.jsxArgument () != null){
+            jsxArrowFunction.setJsxArgument ((JsxArgument) visitJsxArgument (ctx.jsxArgument ()));
+        }
+
+        for ( int i =0 ;i<ctx.jsxExpression ().size ();i++){
+            jsxArrowFunction.getJsxExpressionList ().add ((JsxExpression) visitJsxExpression (ctx.jsxExpression ().get (i)));
+        }
+
+        return jsxArrowFunction;
     }
 
     @Override
     public Object visitJsxCallfunction(ReactParser.JsxCallfunctionContext ctx) {
+        JsxCallfunction jsxCallfunction = new JsxCallfunction ();
+        jsxCallfunction.setNode_type ();
         return null;
     }
 
@@ -384,6 +406,26 @@ public class BaseVisitor implements ReactParserVisitor {
 
     @Override
     public Object visitBreak(ReactParser.BreakContext ctx) {
+        return null;
+    }
+
+    @Override
+    public Object visit(ParseTree parseTree) {
+        return null;
+    }
+
+    @Override
+    public Object visitChildren(RuleNode ruleNode) {
+        return null;
+    }
+
+    @Override
+    public Object visitTerminal(TerminalNode terminalNode) {
+        return null;
+    }
+
+    @Override
+    public Object visitErrorNode(ErrorNode errorNode) {
         return null;
     }
 }

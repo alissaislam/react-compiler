@@ -1,5 +1,5 @@
 package ast.Models;
 
-public interface JsxExpression {
+public abstract class JsxExpression extends Data {
 
 }

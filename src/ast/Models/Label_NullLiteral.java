@@ -1,6 +1,6 @@
 package ast.Models;
 
-public class Label_NullLiteral extends  Node implements Parameters{
+public class Label_NullLiteral extends Parameters{
     String N;
 
     public String getN() {
