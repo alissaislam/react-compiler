@@ -3,6 +3,7 @@ package visitors;
 import antlr.ReactParser;
 import antlr.ReactParserBaseVisitor;
 import antlr.ReactParserVisitor;
+import ast.Models.Statement;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.RuleNode;
@@ -13,6 +14,10 @@ public class BaseVisitor implements ReactParserVisitor {
 
     @Override
     public Object visitStart(ReactParser.StartContext ctx) {
+//        Statement statement = new Statement();
+//        if(ctx.statment() != null){
+//
+//        }
         return null;
     }
 
@@ -108,6 +113,31 @@ public class BaseVisitor implements ReactParserVisitor {
 
     @Override
     public Object visitJsxArguments(ReactParser.JsxArgumentsContext ctx) {
+        return null;
+    }
+
+    @Override
+    public Object visitJsxArrFunction(ReactParser.JsxArrFunctionContext ctx) {
+        return null;
+    }
+
+    @Override
+    public Object visitJsxCallFunction(ReactParser.JsxCallFunctionContext ctx) {
+        return null;
+    }
+
+    @Override
+    public Object visitJsxArg(ReactParser.JsxArgContext ctx) {
+        return null;
+    }
+
+    @Override
+    public Object visitJsxCallId(ReactParser.JsxCallIdContext ctx) {
+        return null;
+    }
+
+    @Override
+    public Object visitJsxExp(ReactParser.JsxExpContext ctx) {
         return null;
     }
 
@@ -420,4 +450,7 @@ public class BaseVisitor implements ReactParserVisitor {
     public Object visitErrorNode(ErrorNode errorNode) {
         return null;
     }
+
+    //Ahmad's visitors
+
 }

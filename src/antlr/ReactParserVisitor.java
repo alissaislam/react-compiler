@@ -131,11 +131,40 @@ public interface ReactParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitJsxArguments(ReactParser.JsxArgumentsContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link ReactParser#jsxParameters}.
+	 * Visit a parse tree produced by the {@code jsxArrFunction}
+	 * labeled alternative in {@link ReactParser#jsxParameters}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitJsxParameters(ReactParser.JsxParametersContext ctx);
+	T visitJsxArrFunction(ReactParser.JsxArrFunctionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jsxCallFunction}
+	 * labeled alternative in {@link ReactParser#jsxParameters}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJsxCallFunction(ReactParser.JsxCallFunctionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jsxArg}
+	 * labeled alternative in {@link ReactParser#jsxParameters}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJsxArg(ReactParser.JsxArgContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jsxCallId}
+	 * labeled alternative in {@link ReactParser#jsxParameters}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJsxCallId(ReactParser.JsxCallIdContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jsxExp}
+	 * labeled alternative in {@link ReactParser#jsxParameters}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJsxExp(ReactParser.JsxExpContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ReactParser#jsxArrowFunction}.
 	 * @param ctx the parse tree

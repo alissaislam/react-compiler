@@ -208,15 +208,65 @@ public interface ReactParserListener extends ParseTreeListener {
 	 */
 	void exitJsxArguments(ReactParser.JsxArgumentsContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ReactParser#jsxParameters}.
+	 * Enter a parse tree produced by the {@code jsxArrFunction}
+	 * labeled alternative in {@link ReactParser#jsxParameters}.
 	 * @param ctx the parse tree
 	 */
-	void enterJsxParameters(ReactParser.JsxParametersContext ctx);
+	void enterJsxArrFunction(ReactParser.JsxArrFunctionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ReactParser#jsxParameters}.
+	 * Exit a parse tree produced by the {@code jsxArrFunction}
+	 * labeled alternative in {@link ReactParser#jsxParameters}.
 	 * @param ctx the parse tree
 	 */
-	void exitJsxParameters(ReactParser.JsxParametersContext ctx);
+	void exitJsxArrFunction(ReactParser.JsxArrFunctionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jsxCallFunction}
+	 * labeled alternative in {@link ReactParser#jsxParameters}.
+	 * @param ctx the parse tree
+	 */
+	void enterJsxCallFunction(ReactParser.JsxCallFunctionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jsxCallFunction}
+	 * labeled alternative in {@link ReactParser#jsxParameters}.
+	 * @param ctx the parse tree
+	 */
+	void exitJsxCallFunction(ReactParser.JsxCallFunctionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jsxArg}
+	 * labeled alternative in {@link ReactParser#jsxParameters}.
+	 * @param ctx the parse tree
+	 */
+	void enterJsxArg(ReactParser.JsxArgContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jsxArg}
+	 * labeled alternative in {@link ReactParser#jsxParameters}.
+	 * @param ctx the parse tree
+	 */
+	void exitJsxArg(ReactParser.JsxArgContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jsxCallId}
+	 * labeled alternative in {@link ReactParser#jsxParameters}.
+	 * @param ctx the parse tree
+	 */
+	void enterJsxCallId(ReactParser.JsxCallIdContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jsxCallId}
+	 * labeled alternative in {@link ReactParser#jsxParameters}.
+	 * @param ctx the parse tree
+	 */
+	void exitJsxCallId(ReactParser.JsxCallIdContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code jsxExp}
+	 * labeled alternative in {@link ReactParser#jsxParameters}.
+	 * @param ctx the parse tree
+	 */
+	void enterJsxExp(ReactParser.JsxExpContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code jsxExp}
+	 * labeled alternative in {@link ReactParser#jsxParameters}.
+	 * @param ctx the parse tree
+	 */
+	void exitJsxExp(ReactParser.JsxExpContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ReactParser#jsxArrowFunction}.
 	 * @param ctx the parse tree

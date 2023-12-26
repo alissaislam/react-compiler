@@ -2598,36 +2598,113 @@ public class ReactParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class JsxParametersContext extends ParserRuleContext {
-		public JsxArrowFunctionContext jsxArrowFunction() {
-			return getRuleContext(JsxArrowFunctionContext.class,0);
-		}
-		public JsxCallfunctionContext jsxCallfunction() {
-			return getRuleContext(JsxCallfunctionContext.class,0);
-		}
-		public JsxArgumentContext jsxArgument() {
-			return getRuleContext(JsxArgumentContext.class,0);
-		}
-		public JsxCallIdentifierContext jsxCallIdentifier() {
-			return getRuleContext(JsxCallIdentifierContext.class,0);
-		}
-		public JsxExpressionContext jsxExpression() {
-			return getRuleContext(JsxExpressionContext.class,0);
-		}
 		public JsxParametersContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_jsxParameters; }
+	 
+		public JsxParametersContext() { }
+		public void copyFrom(JsxParametersContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class JsxExpContext extends JsxParametersContext {
+		public JsxExpressionContext jsxExpression() {
+			return getRuleContext(JsxExpressionContext.class,0);
+		}
+		public JsxExpContext(JsxParametersContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterJsxParameters(this);
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterJsxExp(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitJsxParameters(this);
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitJsxExp(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitJsxParameters(this);
+			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitJsxExp(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class JsxCallFunctionContext extends JsxParametersContext {
+		public JsxCallfunctionContext jsxCallfunction() {
+			return getRuleContext(JsxCallfunctionContext.class,0);
+		}
+		public JsxCallFunctionContext(JsxParametersContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterJsxCallFunction(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitJsxCallFunction(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitJsxCallFunction(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class JsxArrFunctionContext extends JsxParametersContext {
+		public JsxArrowFunctionContext jsxArrowFunction() {
+			return getRuleContext(JsxArrowFunctionContext.class,0);
+		}
+		public JsxArrFunctionContext(JsxParametersContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterJsxArrFunction(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitJsxArrFunction(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitJsxArrFunction(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class JsxArgContext extends JsxParametersContext {
+		public JsxArgumentContext jsxArgument() {
+			return getRuleContext(JsxArgumentContext.class,0);
+		}
+		public JsxArgContext(JsxParametersContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterJsxArg(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitJsxArg(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitJsxArg(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class JsxCallIdContext extends JsxParametersContext {
+		public JsxCallIdentifierContext jsxCallIdentifier() {
+			return getRuleContext(JsxCallIdentifierContext.class,0);
+		}
+		public JsxCallIdContext(JsxParametersContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterJsxCallId(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitJsxCallId(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitJsxCallId(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -2640,6 +2717,7 @@ public class ReactParser extends Parser {
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,51,_ctx) ) {
 			case 1:
+				_localctx = new JsxArrFunctionContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(456);
@@ -2647,6 +2725,7 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 2:
+				_localctx = new JsxCallFunctionContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(457);
@@ -2654,6 +2733,7 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 3:
+				_localctx = new JsxArgContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(458);
@@ -2661,6 +2741,7 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 4:
+				_localctx = new JsxCallIdContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(459);
@@ -2668,6 +2749,7 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 5:
+				_localctx = new JsxExpContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(460);
