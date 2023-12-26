@@ -6,23 +6,22 @@ import java.util.List;
 
 public class CallFunction extends  Parameters{
 
-    List<Id> idList=new ArrayList<> ();
-    List<JsxSimpleCallfunction> jsxSimpleCallfunctionList =new ArrayList<> ();
+    List<SimpleCallfunction> simpleCallfunctions=new ArrayList<> ();
+    List<CallIdentifier> callIdentifiers =new ArrayList<> ();
 
-    public List<Id> getIdList() {
-        return idList;
+    public List<SimpleCallfunction> getSimpleCallfunctions() {
+        return simpleCallfunctions;
     }
 
-    public void setIdList(List<Id> idList) {
-        this.idList = idList;
+    public void setSimpleCallfunctions(List<SimpleCallfunction> simpleCallfunctions) {
+        this.simpleCallfunctions = simpleCallfunctions;
     }
 
-    public List<JsxSimpleCallfunction> getJsxSimpleCallfunctionList() {
-        return jsxSimpleCallfunctionList;
+    public List<CallIdentifier> getCallIdentifiers() {
+        return callIdentifiers;
     }
 
-    public void setJsxSimpleCallfunctionList(List<JsxSimpleCallfunction> jsxSimpleCallfunctionList) {
-        this.jsxSimpleCallfunctionList = jsxSimpleCallfunctionList;
+    public void setCallIdentifiers(List<CallIdentifier> callIdentifiers) {
+        this.callIdentifiers = callIdentifiers;
     }
-
 }

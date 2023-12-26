@@ -1,4 +1,4 @@
 package ast.Models;
 
- abstract class Expression  extends Parameters{
+public abstract class Expression  extends Parameters{
 }

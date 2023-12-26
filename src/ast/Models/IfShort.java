@@ -3,34 +3,34 @@ package ast.Models;
 import java.util.List;
 
 public class IfShort extends Node{
-    List<CallIdentifier> callIdentifiers;
-    List<Operation> operations;
-    List<Expression> expressions;
+    CallIdentifier callIdentifier;
+    Operation operation;
+    Expression expression;
     List<Statement> statements;
     List<JsxElement> jsxElements;
 
-    public List<CallIdentifier> getCallIdentifiers() {
-        return callIdentifiers;
+    public CallIdentifier getCallIdentifier() {
+        return callIdentifier;
     }
 
-    public void setCallIdentifiers(List<CallIdentifier> callIdentifiers) {
-        this.callIdentifiers = callIdentifiers;
+    public void setCallIdentifier(CallIdentifier callIdentifier) {
+        this.callIdentifier = callIdentifier;
     }
 
-    public List<Operation> getOperations() {
-        return operations;
+    public Operation getOperation() {
+        return operation;
     }
 
-    public void setOperations(List<Operation> operations) {
-        this.operations = operations;
+    public void setOperation(Operation operation) {
+        this.operation = operation;
     }
 
-    public List<Expression> getExpressions() {
-        return expressions;
+    public Expression getExpression() {
+        return expression;
     }
 
-    public void setExpressions(List<Expression> expressions) {
-        this.expressions = expressions;
+    public void setExpression(Expression expression) {
+        this.expression = expression;
     }
 
     public List<Statement> getStatements() {

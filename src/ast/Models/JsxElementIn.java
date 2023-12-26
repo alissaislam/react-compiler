@@ -6,7 +6,7 @@ import java.util.List;
 public class JsxElementIn extends Node{
     String jsxTag;
     List<Id> ids = new ArrayList<>();
-    List<String> strings = new ArrayList<>();
+    List<String> stringsIns = new ArrayList<>();
     List<BlockIn> blocks = new ArrayList<>();
     List<JsxElementIn> jsxElementIns= new ArrayList<>();
     List<String> letterrs = new ArrayList<>();
@@ -29,12 +29,12 @@ public class JsxElementIn extends Node{
         this.ids = ids;
     }
 
-    public List<String> getStrings() {
-        return strings;
+    public List<String> getStringsIns() {
+        return stringsIns;
     }
 
-    public void setStrings(List<String> strings) {
-        this.strings = strings;
+    public void setStringsIns(List<String> stringsIns) {
+        this.stringsIns = stringsIns;
     }
 
     public List<BlockIn> getBlocks() {

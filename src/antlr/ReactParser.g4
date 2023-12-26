@@ -4,7 +4,8 @@ options{tokenVocab=ReactLexer;}
 ///////////////////// ahmad part
     start: statment*  EOF;
     statment :      statmentElement SemiColon* IgSemiColon *;
-    statmentElement:  variableDeclarationList                       #labelvarDecList
+    statmentElement:
+                    variableDeclarationList                         #labelvarDecList
                     | if                                            #labelif
                     | forElement                                    #labelforElement
                     | function                                      #labelFunction
@@ -26,7 +27,7 @@ options{tokenVocab=ReactLexer;}
                     ;
     if : If OpenParen  conditions CloseParen  ( block | statment ) else_if* else? ;
     forElement :  For OpenParen forLoopParts CloseParen ( block | statment );
-    function :Function_? IDENTIFIER OpenParen arguments? CloseParen OpenBrace   (statment|returnstatment )*  CloseBrace;
+    function :Function_? id OpenParen arguments? CloseParen OpenBrace   (statment|returnstatment )*  CloseBrace;
     comments : SINGLE_LINE_COMMENT |MULTI_LINE_COMMENT;
     while : While  OpenParen conditions CloseParen ( block | statment ) ;
     do_while : Do ( block | statment )  While OpenParen conditions CloseParen;
@@ -42,17 +43,17 @@ options{tokenVocab=ReactLexer;}
                ) simpleCallfunction?;
     switch: Switch OpenParen expression CloseParen OpenBrace  ( Case expression Colon ( block | (statment)*))* ( Default Colon (block | (statment )*))?  CloseBrace ;
 
-    tryCatch: Try block (Catch OpenParen IDENTIFIER CloseParen block)* (Finally block)?;
-    importt: Import ((OpenBrace IDENTIFIER (Comma IDENTIFIER)* CloseBrace| IDENTIFIER ))? From? String ;
+    tryCatch: Try block (Catch OpenParen id CloseParen block)* (Finally block)?;
+    importt: Import ((OpenBrace id (Comma id)* CloseBrace| id ))? From? String ;
 
     ifShort: callIdentifier (operation expression)? (QuestionMark|QuestionMarkModeCall) (openParen statment closeParen|openParen jsxElement closeParen | statment | jsxElement ) (Colon|ColonModeCall) (openParen statment closeParen|openParen jsxElement closeParen | statment | jsxElement );
 
     jsxElement:jsxElementNonSelfClosing|jsxElementSelfClosing;
-    jsxElementNonSelfClosing: (JSX_TAG|JSX_TAGModeCall) (IDENTIFIERIn ( AssignIn (blockIn|StringIn))?)* MoreThanIn ( OpenBraceInIn ifShort CloseBraceCall |LETTERR| jsxElementIn |blockOfarguments)*? CLOSE_TAGIn  (MoreThan|MoreThanModeCall) ;
-    jsxElementSelfClosing:jsx_tag (IDENTIFIERIn ( AssignIn (blockIn|StringIn))?)* Self_CLOSE_TAG;
+    jsxElementNonSelfClosing: (JSX_TAG|JSX_TAGModeCall) (id ( AssignIn (blockIn|StringIn))?)* MoreThanIn ( OpenBraceInIn ifShort CloseBraceCall |LETTERR| jsxElementIn |blockOfarguments)*? CLOSE_TAGIn  (MoreThan|MoreThanModeCall) ;
+    jsxElementSelfClosing:jsx_tag (id ( AssignIn (blockIn|StringIn))?)* Self_CLOSE_TAG;
 
     jsxElementIn:  (
-    (JSX_TAGIn|JSX_TAGInIn) (IDENTIFIERIn ( AssignIn (blockIn|StringIn))?)* MoreThanIn (  OpenBraceInIn Id((Dot|DotModeCall) Id)*? CloseBraceCall  |jsxElementIn | LETTERR |blockOfarguments )*?  CLOSE_TAGIn  MoreThanInIn |jsxElementSelfClosing
+    (JSX_TAGIn|JSX_TAGInIn) (id ( AssignIn (blockIn|StringIn))?)* MoreThanIn (  OpenBraceInIn Id((Dot|DotModeCall) Id)*? CloseBraceCall  |jsxElementIn | LETTERR |blockOfarguments )*?  CLOSE_TAGIn  MoreThanInIn |jsxElementSelfClosing
     );
     blockIn:OpenBraceIn (jsxArguments )* CloseBraceIn;
     jsxArguments:jsxParameters(CommaIn jsxParameters)*;
