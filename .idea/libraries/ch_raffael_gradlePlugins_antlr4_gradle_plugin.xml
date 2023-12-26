@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="ch.raffael.gradlePlugins.antlr4.gradle.plugin" type="repository">
+    <properties maven-id="ch.raffael.gradlePlugins.antlr4:gradle-antlr4-plugin:1.0" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/ch/raffael/gradlePlugins/antlr4/gradle-antlr4-plugin/1.0/gradle-antlr4-plugin-1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
