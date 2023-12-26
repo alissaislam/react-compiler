@@ -1,6 +1,6 @@
 package ast.Models;
 
-public class Stringg extends Node implements Data{
+public class Stringg extends  Data{
     String string;
 
     public String getString() {

@@ -1,6 +1,6 @@
 package ast.Models;
 
-interface Parameters  {
+abstract class Parameters extends Node  {
 
 
 }

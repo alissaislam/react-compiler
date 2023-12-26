@@ -1,6 +1,6 @@
 package ast.Models;
 
-public class Id extends Node implements Data {
+public class Id extends  Data {
     String id;
 
     public String getId() {

@@ -3,7 +3,7 @@ package visitors;
 import antlr.ReactParser;
 import antlr.ReactParserBaseVisitor;
 import antlr.ReactParserVisitor;
-import ast.Models.Statement;
+import ast.Models.*;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.RuleNode;
@@ -14,10 +14,6 @@ public class BaseVisitor implements ReactParserVisitor {
 
     @Override
     public Object visitStart(ReactParser.StartContext ctx) {
-//        Statement statement = new Statement();
-//        if(ctx.statment() != null){
-//
-//        }
         return null;
     }
 
@@ -117,42 +113,34 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitJsxArrFunction(ReactParser.JsxArrFunctionContext ctx) {
-        return null;
-    }
-
-    @Override
-    public Object visitJsxCallFunction(ReactParser.JsxCallFunctionContext ctx) {
-        return null;
-    }
-
-    @Override
-    public Object visitJsxArg(ReactParser.JsxArgContext ctx) {
-        return null;
-    }
-
-    @Override
-    public Object visitJsxCallId(ReactParser.JsxCallIdContext ctx) {
-        return null;
-    }
-
-    @Override
-    public Object visitJsxExp(ReactParser.JsxExpContext ctx) {
-        return null;
-    }
-
-    @Override
     public Object visitJsxParameters(ReactParser.JsxParametersContext ctx) {
         return null;
     }
 
     @Override
     public Object visitJsxArrowFunction(ReactParser.JsxArrowFunctionContext ctx) {
-        return null;
+        JsxArrowFunction jsxArrowFunction =new JsxArrowFunction ();
+        jsxArrowFunction.setNode_type ("JsxArrowFunction");
+
+        if(ctx.jsxArguments () != null){
+            jsxArrowFunction.setJsxArguments ((JsxArguments) visitJsxArguments (ctx.jsxArguments ()));
+        }
+
+        if (ctx.jsxArgument () != null){
+            jsxArrowFunction.setJsxArgument ((JsxArgument) visitJsxArgument (ctx.jsxArgument ()));
+        }
+
+        for ( int i =0 ;i<ctx.jsxExpression ().size ();i++){
+            jsxArrowFunction.getJsxExpressionList ().add ((JsxExpression) visitJsxExpression (ctx.jsxExpression ().get (i)));
+        }
+
+        return jsxArrowFunction;
     }
 
     @Override
     public Object visitJsxCallfunction(ReactParser.JsxCallfunctionContext ctx) {
+        JsxCallfunction jsxCallfunction = new JsxCallfunction ();
+        jsxCallfunction.setNode_type ();
         return null;
     }
 
@@ -167,27 +155,7 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitJsxNormalExpression(ReactParser.JsxNormalExpressionContext ctx) {
-        return null;
-    }
-
-    @Override
-    public Object visitJsxId(ReactParser.JsxIdContext ctx) {
-        return null;
-    }
-
-    @Override
-    public Object visitJsxString(ReactParser.JsxStringContext ctx) {
-        return null;
-    }
-
-    @Override
-    public Object visitJsxBool(ReactParser.JsxBoolContext ctx) {
-        return null;
-    }
-
-    @Override
-    public Object visitJsxNumber(ReactParser.JsxNumberContext ctx) {
+    public Object visitJsxExpression(ReactParser.JsxExpressionContext ctx) {
         return null;
     }
 
@@ -222,7 +190,17 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitConditions(ReactParser.ConditionsContext ctx) {
+    public Object visitComparison(ReactParser.ComparisonContext ctx) {
+        return null;
+    }
+
+    @Override
+    public Object visitBoolean(ReactParser.BooleanContext ctx) {
+        return null;
+    }
+
+    @Override
+    public Object visitConditionsWithId(ReactParser.ConditionsWithIdContext ctx) {
         return null;
     }
 
@@ -267,37 +245,37 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitLabel_ArrowFunction(ReactParser.Label_ArrowFunctionContext ctx) {
+    public Object visitVArrowFunction(ReactParser.VArrowFunctionContext ctx) {
         return null;
     }
 
     @Override
-    public Object visitLabel_CallIdentifier(ReactParser.Label_CallIdentifierContext ctx) {
+    public Object visitVCallIdentifier(ReactParser.VCallIdentifierContext ctx) {
         return null;
     }
 
     @Override
-    public Object visitLable_Argument(ReactParser.Lable_ArgumentContext ctx) {
+    public Object visitVArgument(ReactParser.VArgumentContext ctx) {
         return null;
     }
 
     @Override
-    public Object visitLabel_Callfunction(ReactParser.Label_CallfunctionContext ctx) {
+    public Object visitVCallfunction(ReactParser.VCallfunctionContext ctx) {
         return null;
     }
 
     @Override
-    public Object visitLabel_Expression(ReactParser.Label_ExpressionContext ctx) {
+    public Object visitVExpression(ReactParser.VExpressionContext ctx) {
         return null;
     }
 
     @Override
-    public Object visitLabel_NullLiteral(ReactParser.Label_NullLiteralContext ctx) {
+    public Object visitVNullLiteral(ReactParser.VNullLiteralContext ctx) {
         return null;
     }
 
     @Override
-    public Object visitLabel_BlockOfarguments(ReactParser.Label_BlockOfargumentsContext ctx) {
+    public Object visitVBlockOfarguments(ReactParser.VBlockOfargumentsContext ctx) {
         return null;
     }
 
@@ -312,12 +290,12 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitLabel_dataExpression(ReactParser.Label_dataExpressionContext ctx) {
+    public Object visitNormalExpression(ReactParser.NormalExpressionContext ctx) {
         return null;
     }
 
     @Override
-    public Object visitLabel_normalExpression(ReactParser.Label_normalExpressionContext ctx) {
+    public Object visitDataExpression(ReactParser.DataExpressionContext ctx) {
         return null;
     }
 
@@ -327,32 +305,32 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitLabel_Array(ReactParser.Label_ArrayContext ctx) {
+    public Object visitVArray(ReactParser.VArrayContext ctx) {
         return null;
     }
 
     @Override
-    public Object visitLabel_Number(ReactParser.Label_NumberContext ctx) {
+    public Object visitVNumber(ReactParser.VNumberContext ctx) {
         return null;
     }
 
     @Override
-    public Object visitLabel_String(ReactParser.Label_StringContext ctx) {
+    public Object visitVString(ReactParser.VStringContext ctx) {
         return null;
     }
 
     @Override
-    public Object visitLabel_Id(ReactParser.Label_IdContext ctx) {
+    public Object visitVId(ReactParser.VIdContext ctx) {
         return null;
     }
 
     @Override
-    public Object visitLabel_Map(ReactParser.Label_MapContext ctx) {
+    public Object visitVMap(ReactParser.VMapContext ctx) {
         return null;
     }
 
     @Override
-    public Object visitLabel_Bool(ReactParser.Label_BoolContext ctx) {
+    public Object visitVBool(ReactParser.VBoolContext ctx) {
         return null;
     }
 
@@ -450,7 +428,4 @@ public class BaseVisitor implements ReactParserVisitor {
     public Object visitErrorNode(ErrorNode errorNode) {
         return null;
     }
-
-    //Ahmad's visitors
-
 }
