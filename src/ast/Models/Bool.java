@@ -1,7 +1,7 @@
 package ast.Models;
 
-public class Bool extends  Data{
-boolean bool;
+public class Bool extends Data{
+    boolean bool;
 
     public boolean isBool() {
         return bool;
