@@ -252,17 +252,6 @@ public class ReactParserBaseListener implements ReactParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitJsxArguments(ReactParser.JsxArgumentsContext ctx) { }
-
-	@Override
-	public void enterJsxParameters(ReactParser.JsxParametersContext ctx) {
-
-	}
-
-	@Override
-	public void exitJsxParameters(ReactParser.JsxParametersContext ctx) {
-
-	}
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -371,17 +360,6 @@ public class ReactParserBaseListener implements ReactParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitJsxArgument(ReactParser.JsxArgumentContext ctx) { }
-
-	@Override
-	public void enterJsxExpression(ReactParser.JsxExpressionContext ctx) {
-
-	}
-
-	@Override
-	public void exitJsxExpression(ReactParser.JsxExpressionContext ctx) {
-
-	}
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -514,37 +492,6 @@ public class ReactParserBaseListener implements ReactParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitForLoopParts(ReactParser.ForLoopPartsContext ctx) { }
-
-	@Override
-	public void enterComparison(ReactParser.ComparisonContext ctx) {
-
-	}
-
-	@Override
-	public void exitComparison(ReactParser.ComparisonContext ctx) {
-
-	}
-
-	@Override
-	public void enterBoolean(ReactParser.BooleanContext ctx) {
-
-	}
-
-	@Override
-	public void exitBoolean(ReactParser.BooleanContext ctx) {
-
-	}
-
-	@Override
-	public void enterConditionsWithId(ReactParser.ConditionsWithIdContext ctx) {
-
-	}
-
-	@Override
-	public void exitConditionsWithId(ReactParser.ConditionsWithIdContext ctx) {
-
-	}
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -653,77 +600,6 @@ public class ReactParserBaseListener implements ReactParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitArgument(ReactParser.ArgumentContext ctx) { }
-
-	@Override
-	public void enterVArrowFunction(ReactParser.VArrowFunctionContext ctx) {
-
-	}
-
-	@Override
-	public void exitVArrowFunction(ReactParser.VArrowFunctionContext ctx) {
-
-	}
-
-	@Override
-	public void enterVCallIdentifier(ReactParser.VCallIdentifierContext ctx) {
-
-	}
-
-	@Override
-	public void exitVCallIdentifier(ReactParser.VCallIdentifierContext ctx) {
-
-	}
-
-	@Override
-	public void enterVArgument(ReactParser.VArgumentContext ctx) {
-
-	}
-
-	@Override
-	public void exitVArgument(ReactParser.VArgumentContext ctx) {
-
-	}
-
-	@Override
-	public void enterVCallfunction(ReactParser.VCallfunctionContext ctx) {
-
-	}
-
-	@Override
-	public void exitVCallfunction(ReactParser.VCallfunctionContext ctx) {
-
-	}
-
-	@Override
-	public void enterVExpression(ReactParser.VExpressionContext ctx) {
-
-	}
-
-	@Override
-	public void exitVExpression(ReactParser.VExpressionContext ctx) {
-
-	}
-
-	@Override
-	public void enterVNullLiteral(ReactParser.VNullLiteralContext ctx) {
-
-	}
-
-	@Override
-	public void exitVNullLiteral(ReactParser.VNullLiteralContext ctx) {
-
-	}
-
-	@Override
-	public void enterVBlockOfarguments(ReactParser.VBlockOfargumentsContext ctx) {
-
-	}
-
-	@Override
-	public void exitVBlockOfarguments(ReactParser.VBlockOfargumentsContext ctx) {
-
-	}
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -832,27 +708,6 @@ public class ReactParserBaseListener implements ReactParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitShortExpression(ReactParser.ShortExpressionContext ctx) { }
-
-	@Override
-	public void enterNormalExpression(ReactParser.NormalExpressionContext ctx) {
-
-	}
-
-	@Override
-	public void exitNormalExpression(ReactParser.NormalExpressionContext ctx) {
-
-	}
-
-	@Override
-	public void enterDataExpression(ReactParser.DataExpressionContext ctx) {
-
-	}
-
-	@Override
-	public void exitDataExpression(ReactParser.DataExpressionContext ctx) {
-
-	}
-
 	/**
 	 * {@inheritDoc}
 	 *
@@ -889,67 +744,6 @@ public class ReactParserBaseListener implements ReactParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitExport(ReactParser.ExportContext ctx) { }
-
-	@Override
-	public void enterVArray(ReactParser.VArrayContext ctx) {
-
-	}
-
-	@Override
-	public void exitVArray(ReactParser.VArrayContext ctx) {
-
-	}
-
-	@Override
-	public void enterVNumber(ReactParser.VNumberContext ctx) {
-
-	}
-
-	@Override
-	public void exitVNumber(ReactParser.VNumberContext ctx) {
-
-	}
-
-	@Override
-	public void enterVString(ReactParser.VStringContext ctx) {
-
-	}
-
-	@Override
-	public void exitVString(ReactParser.VStringContext ctx) {
-
-	}
-
-	@Override
-	public void enterVId(ReactParser.VIdContext ctx) {
-
-	}
-
-	@Override
-	public void exitVId(ReactParser.VIdContext ctx) {
-
-	}
-
-	@Override
-	public void enterVMap(ReactParser.VMapContext ctx) {
-
-	}
-
-	@Override
-	public void exitVMap(ReactParser.VMapContext ctx) {
-
-	}
-
-	@Override
-	public void enterVBool(ReactParser.VBoolContext ctx) {
-
-	}
-
-	@Override
-	public void exitVBool(ReactParser.VBoolContext ctx) {
-
-	}
-
 	/**
 	 * {@inheritDoc}
 	 *
