@@ -1,4 +1,4 @@
-// Generated from C:/Users/Islam/Downloads/react2/src/antlr/ReactParser.g4 by ANTLR 4.13.1
+// Generated from D:/ReactCompiler/react-compiler/src/antlr/ReactParser.g4 by ANTLR 4.13.1
 package antlr;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -317,13 +317,61 @@ public class ReactParserBaseListener implements ReactParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterJsxExpression(ReactParser.JsxExpressionContext ctx) { }
+	@Override public void enterJsxNormalExpression(ReactParser.JsxNormalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitJsxExpression(ReactParser.JsxExpressionContext ctx) { }
+	@Override public void exitJsxNormalExpression(ReactParser.JsxNormalExpressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJsxId(ReactParser.JsxIdContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJsxId(ReactParser.JsxIdContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJsxString(ReactParser.JsxStringContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJsxString(ReactParser.JsxStringContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJsxBool(ReactParser.JsxBoolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJsxBool(ReactParser.JsxBoolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterJsxNumber(ReactParser.JsxNumberContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitJsxNumber(ReactParser.JsxNumberContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -401,37 +449,13 @@ public class ReactParserBaseListener implements ReactParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterComparison(ReactParser.ComparisonContext ctx) { }
+	@Override public void enterConditions(ReactParser.ConditionsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitComparison(ReactParser.ComparisonContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterBoolean(ReactParser.BooleanContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitBoolean(ReactParser.BooleanContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterConditionsWithId(ReactParser.ConditionsWithIdContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitConditionsWithId(ReactParser.ConditionsWithIdContext ctx) { }
+	@Override public void exitConditions(ReactParser.ConditionsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -533,85 +557,85 @@ public class ReactParserBaseListener implements ReactParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVArrowFunction(ReactParser.VArrowFunctionContext ctx) { }
+	@Override public void enterLabel_ArrowFunction(ReactParser.Label_ArrowFunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVArrowFunction(ReactParser.VArrowFunctionContext ctx) { }
+	@Override public void exitLabel_ArrowFunction(ReactParser.Label_ArrowFunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVCallIdentifier(ReactParser.VCallIdentifierContext ctx) { }
+	@Override public void enterLabel_CallIdentifier(ReactParser.Label_CallIdentifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVCallIdentifier(ReactParser.VCallIdentifierContext ctx) { }
+	@Override public void exitLabel_CallIdentifier(ReactParser.Label_CallIdentifierContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVArgument(ReactParser.VArgumentContext ctx) { }
+	@Override public void enterLable_Argument(ReactParser.Lable_ArgumentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVArgument(ReactParser.VArgumentContext ctx) { }
+	@Override public void exitLable_Argument(ReactParser.Lable_ArgumentContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVCallfunction(ReactParser.VCallfunctionContext ctx) { }
+	@Override public void enterLabel_Callfunction(ReactParser.Label_CallfunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVCallfunction(ReactParser.VCallfunctionContext ctx) { }
+	@Override public void exitLabel_Callfunction(ReactParser.Label_CallfunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVExpression(ReactParser.VExpressionContext ctx) { }
+	@Override public void enterLabel_Expression(ReactParser.Label_ExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVExpression(ReactParser.VExpressionContext ctx) { }
+	@Override public void exitLabel_Expression(ReactParser.Label_ExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVNullLiteral(ReactParser.VNullLiteralContext ctx) { }
+	@Override public void enterLabel_NullLiteral(ReactParser.Label_NullLiteralContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVNullLiteral(ReactParser.VNullLiteralContext ctx) { }
+	@Override public void exitLabel_NullLiteral(ReactParser.Label_NullLiteralContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVBlockOfarguments(ReactParser.VBlockOfargumentsContext ctx) { }
+	@Override public void enterLabel_BlockOfarguments(ReactParser.Label_BlockOfargumentsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVBlockOfarguments(ReactParser.VBlockOfargumentsContext ctx) { }
+	@Override public void exitLabel_BlockOfarguments(ReactParser.Label_BlockOfargumentsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -641,25 +665,25 @@ public class ReactParserBaseListener implements ReactParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNormalExpression(ReactParser.NormalExpressionContext ctx) { }
+	@Override public void enterLabel_dataExpression(ReactParser.Label_dataExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNormalExpression(ReactParser.NormalExpressionContext ctx) { }
+	@Override public void exitLabel_dataExpression(ReactParser.Label_dataExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDataExpression(ReactParser.DataExpressionContext ctx) { }
+	@Override public void enterLabel_normalExpression(ReactParser.Label_normalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDataExpression(ReactParser.DataExpressionContext ctx) { }
+	@Override public void exitLabel_normalExpression(ReactParser.Label_normalExpressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -677,73 +701,73 @@ public class ReactParserBaseListener implements ReactParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVArray(ReactParser.VArrayContext ctx) { }
+	@Override public void enterLabel_Array(ReactParser.Label_ArrayContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVArray(ReactParser.VArrayContext ctx) { }
+	@Override public void exitLabel_Array(ReactParser.Label_ArrayContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVNumber(ReactParser.VNumberContext ctx) { }
+	@Override public void enterLabel_Number(ReactParser.Label_NumberContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVNumber(ReactParser.VNumberContext ctx) { }
+	@Override public void exitLabel_Number(ReactParser.Label_NumberContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVString(ReactParser.VStringContext ctx) { }
+	@Override public void enterLabel_String(ReactParser.Label_StringContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVString(ReactParser.VStringContext ctx) { }
+	@Override public void exitLabel_String(ReactParser.Label_StringContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVId(ReactParser.VIdContext ctx) { }
+	@Override public void enterLabel_Id(ReactParser.Label_IdContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVId(ReactParser.VIdContext ctx) { }
+	@Override public void exitLabel_Id(ReactParser.Label_IdContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVMap(ReactParser.VMapContext ctx) { }
+	@Override public void enterLabel_Map(ReactParser.Label_MapContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVMap(ReactParser.VMapContext ctx) { }
+	@Override public void exitLabel_Map(ReactParser.Label_MapContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVBool(ReactParser.VBoolContext ctx) { }
+	@Override public void enterLabel_Bool(ReactParser.Label_BoolContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVBool(ReactParser.VBoolContext ctx) { }
+	@Override public void exitLabel_Bool(ReactParser.Label_BoolContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

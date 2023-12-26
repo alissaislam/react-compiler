@@ -3,7 +3,7 @@ package ast.Models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JsxArrowFunction extends Node{
+public class JsxArrowFunction extends JsxParameters{
  JsxArguments jsxArguments;
  JsxArgument jsxArgument;
  List<JsxExpression> jsxExpressionList= new ArrayList<> ();

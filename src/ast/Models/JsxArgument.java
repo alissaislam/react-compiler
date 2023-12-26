@@ -1,6 +1,6 @@
 package ast.Models;
 
-public class JsxArgument extends Node{
+public class JsxArgument extends  JsxParameters{
     Id id ;
     JsxExpression jsxExpression;
     JsxArrowFunction jsxArrowFunction;

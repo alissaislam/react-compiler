@@ -1,4 +1,4 @@
-// Generated from C:/Users/Islam/Downloads/react2/src/antlr/ReactParser.g4 by ANTLR 4.13.1
+// Generated from D:/ReactCompiler/react-compiler/src/antlr/ReactParser.g4 by ANTLR 4.13.1
 package antlr;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -161,11 +161,40 @@ public interface ReactParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitJsxArgument(ReactParser.JsxArgumentContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link ReactParser#jsxExpression}.
+	 * Visit a parse tree produced by the {@code jsxNormalExpression}
+	 * labeled alternative in {@link ReactParser#jsxExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitJsxExpression(ReactParser.JsxExpressionContext ctx);
+	T visitJsxNormalExpression(ReactParser.JsxNormalExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jsxId}
+	 * labeled alternative in {@link ReactParser#jsxExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJsxId(ReactParser.JsxIdContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jsxString}
+	 * labeled alternative in {@link ReactParser#jsxExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJsxString(ReactParser.JsxStringContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jsxBool}
+	 * labeled alternative in {@link ReactParser#jsxExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJsxBool(ReactParser.JsxBoolContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code jsxNumber}
+	 * labeled alternative in {@link ReactParser#jsxExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJsxNumber(ReactParser.JsxNumberContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ReactParser#jsxCallIdentifier}.
 	 * @param ctx the parse tree
@@ -203,26 +232,11 @@ public interface ReactParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitForLoopParts(ReactParser.ForLoopPartsContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code comparison}
-	 * labeled alternative in {@link ReactParser#conditions}.
+	 * Visit a parse tree produced by {@link ReactParser#conditions}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitComparison(ReactParser.ComparisonContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code boolean}
-	 * labeled alternative in {@link ReactParser#conditions}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitBoolean(ReactParser.BooleanContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code conditionsWithId}
-	 * labeled alternative in {@link ReactParser#conditions}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitConditionsWithId(ReactParser.ConditionsWithIdContext ctx);
+	T visitConditions(ReactParser.ConditionsContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ReactParser#arguments}.
 	 * @param ctx the parse tree
@@ -272,54 +286,54 @@ public interface ReactParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitArgument(ReactParser.ArgumentContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code vArrowFunction}
+	 * Visit a parse tree produced by the {@code label_ArrowFunction}
 	 * labeled alternative in {@link ReactParser#parameters}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVArrowFunction(ReactParser.VArrowFunctionContext ctx);
+	T visitLabel_ArrowFunction(ReactParser.Label_ArrowFunctionContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code vCallIdentifier}
+	 * Visit a parse tree produced by the {@code label_CallIdentifier}
 	 * labeled alternative in {@link ReactParser#parameters}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVCallIdentifier(ReactParser.VCallIdentifierContext ctx);
+	T visitLabel_CallIdentifier(ReactParser.Label_CallIdentifierContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code vArgument}
+	 * Visit a parse tree produced by the {@code lable_Argument}
 	 * labeled alternative in {@link ReactParser#parameters}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVArgument(ReactParser.VArgumentContext ctx);
+	T visitLable_Argument(ReactParser.Lable_ArgumentContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code vCallfunction}
+	 * Visit a parse tree produced by the {@code label_Callfunction}
 	 * labeled alternative in {@link ReactParser#parameters}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVCallfunction(ReactParser.VCallfunctionContext ctx);
+	T visitLabel_Callfunction(ReactParser.Label_CallfunctionContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code vExpression}
+	 * Visit a parse tree produced by the {@code label_Expression}
 	 * labeled alternative in {@link ReactParser#parameters}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVExpression(ReactParser.VExpressionContext ctx);
+	T visitLabel_Expression(ReactParser.Label_ExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code vNullLiteral}
+	 * Visit a parse tree produced by the {@code label_NullLiteral}
 	 * labeled alternative in {@link ReactParser#parameters}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVNullLiteral(ReactParser.VNullLiteralContext ctx);
+	T visitLabel_NullLiteral(ReactParser.Label_NullLiteralContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code vBlockOfarguments}
+	 * Visit a parse tree produced by the {@code label_BlockOfarguments}
 	 * labeled alternative in {@link ReactParser#parameters}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVBlockOfarguments(ReactParser.VBlockOfargumentsContext ctx);
+	T visitLabel_BlockOfarguments(ReactParser.Label_BlockOfargumentsContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ReactParser#callIdentifier}.
 	 * @param ctx the parse tree
@@ -334,19 +348,19 @@ public interface ReactParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitShortExpression(ReactParser.ShortExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code normalExpression}
+	 * Visit a parse tree produced by the {@code label_dataExpression}
 	 * labeled alternative in {@link ReactParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitNormalExpression(ReactParser.NormalExpressionContext ctx);
+	T visitLabel_dataExpression(ReactParser.Label_dataExpressionContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code dataExpression}
+	 * Visit a parse tree produced by the {@code label_normalExpression}
 	 * labeled alternative in {@link ReactParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDataExpression(ReactParser.DataExpressionContext ctx);
+	T visitLabel_normalExpression(ReactParser.Label_normalExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ReactParser#export}.
 	 * @param ctx the parse tree
@@ -354,47 +368,47 @@ public interface ReactParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExport(ReactParser.ExportContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code vArray}
+	 * Visit a parse tree produced by the {@code label_Array}
 	 * labeled alternative in {@link ReactParser#data}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVArray(ReactParser.VArrayContext ctx);
+	T visitLabel_Array(ReactParser.Label_ArrayContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code vNumber}
+	 * Visit a parse tree produced by the {@code label_Number}
 	 * labeled alternative in {@link ReactParser#data}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVNumber(ReactParser.VNumberContext ctx);
+	T visitLabel_Number(ReactParser.Label_NumberContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code vString}
+	 * Visit a parse tree produced by the {@code label_String}
 	 * labeled alternative in {@link ReactParser#data}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVString(ReactParser.VStringContext ctx);
+	T visitLabel_String(ReactParser.Label_StringContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code vId}
+	 * Visit a parse tree produced by the {@code label_Id}
 	 * labeled alternative in {@link ReactParser#data}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVId(ReactParser.VIdContext ctx);
+	T visitLabel_Id(ReactParser.Label_IdContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code vMap}
+	 * Visit a parse tree produced by the {@code label_Map}
 	 * labeled alternative in {@link ReactParser#data}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVMap(ReactParser.VMapContext ctx);
+	T visitLabel_Map(ReactParser.Label_MapContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code vBool}
+	 * Visit a parse tree produced by the {@code label_Bool}
 	 * labeled alternative in {@link ReactParser#data}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVBool(ReactParser.VBoolContext ctx);
+	T visitLabel_Bool(ReactParser.Label_BoolContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ReactParser#array}.
 	 * @param ctx the parse tree

@@ -57,11 +57,12 @@ options{tokenVocab=ReactLexer;}
     blockIn:OpenBraceIn (jsxArguments )* CloseBraceIn;
     jsxArguments:jsxParameters(CommaIn jsxParameters)*;
     jsxParameters:
-      jsxArrowFunction
-    | jsxCallfunction
-    | jsxArgument
-    | jsxCallIdentifier
-    | jsxExpression ;
+      jsxArrowFunction  #jsxArrFunction
+    | jsxCallfunction   #jsxCallFunction
+    | jsxArgument       #jsxArg
+    | jsxCallIdentifier #jsxCallId
+    | jsxExpression    #jsxExp
+    ;
     ////// islam part
     jsxArrowFunction:(OpenParenIn jsxArguments? CloseParenIn | jsxArgument ) ARROWIn (jsxExpression? | OpenBraceIn jsxExpression* CloseBraceIn );
     jsxCallfunction :(IDENTIFIERIn ( DotIn IDENTIFIERIn | DotIn jsxSimpleCallfunction)+ | jsxSimpleCallfunction) ;

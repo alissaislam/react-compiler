@@ -3,7 +3,7 @@ package ast.Models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JsxCallIdentifier extends  Node{
+public class JsxCallIdentifier extends JsxParameters{
     List<Id> idList =new ArrayList<> ();
 
     public List<Id> getIdList() {
