@@ -4,26 +4,26 @@ options{tokenVocab=ReactLexer;}
 ///////////////////// ahmad part
     start: statment*  EOF;
     statment :      statmentElement SemiColon* IgSemiColon *;
-    statmentElement:  variableDeclarationList
-                                        | if
-                                        | forElement
-                                        | function
-                                        | comments
-                                        | while
-                                        | do_while
-                                        | callfunction
-                                        | switch
-                                        | block
-                                        | break
-                                        | tryCatch
-                                        | importt
-                                        | ifShort
-                                        | suquence
-                                        | export
-                                        | jsxElement
-                                        | expression
-                                        | arrowFunction
-                                        ;
+    statmentElement:  variableDeclarationList                       #labelvarDecList
+                    | if                                            #labelif
+                    | forElement                                    #labelforElement
+                    | function                                      #labelFunction
+                    | comments                                      #labelComments
+                    | while                                         #labelWhile
+                    | do_while                                      #labelDoWhile
+                    | callfunction                                  #labelCallFunction
+                    | switch                                        #labelSwitch
+                    | block                                         #labelBlock
+                    | break                                         #labelBreak
+                    | tryCatch                                      #labelTryCatch
+                    | importt                                       #labelImport
+                    | ifShort                                       #labelIfShort
+                    | suquence                                      #labelSequence
+                    | export                                        #labelExport
+                    | jsxElement                                    #labelJsxElement
+                    | expression                                    #labelExpression
+                    | arrowFunction                                 #labelArrowFunction
+                    ;
     if : If OpenParen  conditions CloseParen  ( block | statment ) else_if* else? ;
     forElement :  For OpenParen forLoopParts CloseParen ( block | statment );
     function :Function_? IDENTIFIER OpenParen arguments? CloseParen OpenBrace   (statment|returnstatment )*  CloseBrace;
