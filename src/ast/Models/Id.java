@@ -1,6 +1,6 @@
 package ast.Models;
 
-public class Id extends  Data {
+public class Id extends  JsxExpression {
     String id;
 
     public String getId() {
