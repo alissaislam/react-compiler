@@ -236,6 +236,7 @@ public class BaseVisitor implements ReactParserVisitor {
         for (int i=0;i<ctx.returnstatment().size();i++)
             function.getReturnstatments().add((Returnstatment) visitReturnstatment(ctx.returnstatment(i)));
 
+
         return function;
     }
 
@@ -414,37 +415,61 @@ public class BaseVisitor implements ReactParserVisitor {
 
     @Override
     public Object visitBlockIn(ReactParser.BlockInContext ctx) {
-        return null;
+        BlockIn blockIn = new BlockIn();
+        blockIn.setNode_type("Blockin");
+        for (int i =0;i<ctx.jsxArguments().size();i++)
+            blockIn.getJsxArgumentsList().add((JsxArguments) visitJsxArguments(ctx.jsxArguments(i)));
+        return blockIn;
+
     }
 
     @Override
     public Object visitJsxArguments(ReactParser.JsxArgumentsContext ctx) {
-        return null;
+        JsxArguments jsxArguments = new JsxArguments();;
+        jsxArguments.setNode_type("Jsxarguments");
+        for (int i =0;i<ctx.jsxParameters().size();i++)
+            jsxArguments.getJsxParametersList().add((JsxParameters) visit(ctx.jsxParameters(i)));
+        return jsxArguments;
     }
 
     @Override
     public Object visitJsxArrFunction(ReactParser.JsxArrFunctionContext ctx) {
-        return null;
+        if(ctx.jsxArrowFunction()!=null)
+            return ((JsxArrowFunction) visitJsxArrowFunction(ctx.jsxArrowFunction()));
+        else
+            return null;
     }
 
     @Override
     public Object visitJsxCallFunction(ReactParser.JsxCallFunctionContext ctx) {
-        return null;
+        if(ctx.jsxCallfunction()!=null)
+            return ((JsxCallfunction) visitJsxCallfunction(ctx.jsxCallfunction()));
+        else
+            return null;
     }
 
     @Override
     public Object visitJsxArg(ReactParser.JsxArgContext ctx) {
-        return null;
+        if(ctx.jsxArgument()!=null)
+            return ((JsxArgument) visitJsxArgument(ctx.jsxArgument()));
+        else
+            return null;
     }
 
     @Override
     public Object visitJsxCallId(ReactParser.JsxCallIdContext ctx) {
-        return null;
+        if(ctx.jsxCallIdentifier()!=null)
+            return ((JsxCallIdentifier) visitJsxCallIdentifier(ctx.jsxCallIdentifier()));
+        else
+            return null;
     }
 
     @Override
     public Object visitJsxExp(ReactParser.JsxExpContext ctx) {
-        return null;
+        if(ctx.jsxExpression()!=null)
+            return ((JsxExpression) visit(ctx.jsxExpression()));
+        else
+            return null;
     }
 
     @Override
