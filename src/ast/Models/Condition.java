@@ -7,7 +7,7 @@ public class Condition extends Node{
 
     List<Data> dataList =new ArrayList<> ();
     Operation operation;
-    boolean bool;
+    String bool;
     List<String> notList=new ArrayList<> ();
     Id id;
 
@@ -27,11 +27,11 @@ public class Condition extends Node{
         this.operation = operation;
     }
 
-    public boolean isBool() {
+    public String getBool() {
         return bool;
     }
 
-    public void setBool(boolean bool) {
+    public void setBool(String bool) {
         this.bool = bool;
     }
 

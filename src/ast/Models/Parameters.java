@@ -1,6 +1,6 @@
 package ast.Models;
 
-abstract class Parameters extends Node  {
+public abstract class Parameters extends Node  {
 
 
 }

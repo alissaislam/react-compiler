@@ -1,6 +1,6 @@
 package ast.Models;
 
-public class Stringg extends  Data{
+public class Stringg extends  JsxExpression{
     String string;
 
     public String getString() {
