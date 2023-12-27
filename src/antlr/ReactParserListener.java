@@ -28,15 +28,233 @@ public interface ReactParserListener extends ParseTreeListener {
 	 */
 	void exitStatment(ReactParser.StatmentContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ReactParser#statmentElement}.
+	 * Enter a parse tree produced by the {@code labelvarDecList}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
 	 * @param ctx the parse tree
 	 */
-	void enterStatmentElement(ReactParser.StatmentElementContext ctx);
+	void enterLabelvarDecList(ReactParser.LabelvarDecListContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ReactParser#statmentElement}.
+	 * Exit a parse tree produced by the {@code labelvarDecList}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
 	 * @param ctx the parse tree
 	 */
-	void exitStatmentElement(ReactParser.StatmentElementContext ctx);
+	void exitLabelvarDecList(ReactParser.LabelvarDecListContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code labelif}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabelif(ReactParser.LabelifContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code labelif}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabelif(ReactParser.LabelifContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code labelforElement}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabelforElement(ReactParser.LabelforElementContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code labelforElement}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabelforElement(ReactParser.LabelforElementContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code labelFunction}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabelFunction(ReactParser.LabelFunctionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code labelFunction}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabelFunction(ReactParser.LabelFunctionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code labelComments}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabelComments(ReactParser.LabelCommentsContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code labelComments}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabelComments(ReactParser.LabelCommentsContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code labelWhile}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabelWhile(ReactParser.LabelWhileContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code labelWhile}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabelWhile(ReactParser.LabelWhileContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code labelDoWhile}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabelDoWhile(ReactParser.LabelDoWhileContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code labelDoWhile}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabelDoWhile(ReactParser.LabelDoWhileContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code labelCallFunction}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabelCallFunction(ReactParser.LabelCallFunctionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code labelCallFunction}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabelCallFunction(ReactParser.LabelCallFunctionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code labelSwitch}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabelSwitch(ReactParser.LabelSwitchContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code labelSwitch}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabelSwitch(ReactParser.LabelSwitchContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code labelBlock}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabelBlock(ReactParser.LabelBlockContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code labelBlock}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabelBlock(ReactParser.LabelBlockContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code labelBreak}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabelBreak(ReactParser.LabelBreakContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code labelBreak}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabelBreak(ReactParser.LabelBreakContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code labelTryCatch}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabelTryCatch(ReactParser.LabelTryCatchContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code labelTryCatch}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabelTryCatch(ReactParser.LabelTryCatchContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code labelImport}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabelImport(ReactParser.LabelImportContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code labelImport}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabelImport(ReactParser.LabelImportContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code labelIfShort}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabelIfShort(ReactParser.LabelIfShortContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code labelIfShort}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabelIfShort(ReactParser.LabelIfShortContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code labelSequence}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabelSequence(ReactParser.LabelSequenceContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code labelSequence}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabelSequence(ReactParser.LabelSequenceContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code labelExport}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabelExport(ReactParser.LabelExportContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code labelExport}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabelExport(ReactParser.LabelExportContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code labelJsxElement}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabelJsxElement(ReactParser.LabelJsxElementContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code labelJsxElement}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabelJsxElement(ReactParser.LabelJsxElementContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code labelExpression}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabelExpression(ReactParser.LabelExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code labelExpression}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabelExpression(ReactParser.LabelExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code labelArrowFunction}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void enterLabelArrowFunction(ReactParser.LabelArrowFunctionContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code labelArrowFunction}
+	 * labeled alternative in {@link ReactParser#statmentElement}.
+	 * @param ctx the parse tree
+	 */
+	void exitLabelArrowFunction(ReactParser.LabelArrowFunctionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ReactParser#if}.
 	 * @param ctx the parse tree
