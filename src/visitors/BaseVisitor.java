@@ -4,12 +4,12 @@ import antlr.ReactParser;
 import antlr.ReactParserBaseVisitor;
 import antlr.ReactParserVisitor;
 import ast.Models.*;
+import ast.Models.Number;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.RuleNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
-import java.lang.reflect.Type;
 
 public class BaseVisitor implements ReactParserVisitor {
 
@@ -473,123 +473,362 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitJsxArrowFunction(ReactParser.JsxArrowFunctionContext ctx) {
+    public JsxArrowFunction visitJsxArrowFunction(ReactParser.JsxArrowFunctionContext ctx) {
+        JsxArrowFunction jsxArrowFunction =new JsxArrowFunction ();
+        jsxArrowFunction.setNode_type ("JsxArrowFunction");
+
+        if(ctx.jsxArguments () != null){
+            jsxArrowFunction.setJsxArguments ((JsxArguments) visitJsxArguments (ctx.jsxArguments ()));
+        }
+
+        if (ctx.jsxArgument () != null){
+            jsxArrowFunction.setJsxArgument ((JsxArgument) visitJsxArgument (ctx.jsxArgument ()));
+        }
+
+        for ( int i =0 ;i<ctx.jsxExpression ().size ();i++){
+            jsxArrowFunction.getJsxExpressionList ().add ((JsxExpression) visit (ctx.jsxExpression ().get (i)));
+        }
+
+        return jsxArrowFunction;
+    }
+
+    @Override
+    public JsxCallfunction visitJsxCallfunction(ReactParser.JsxCallfunctionContext ctx) {
+        JsxCallfunction jsxCallfunction =new JsxCallfunction ();
+        jsxCallfunction.setNode_type ("JsxCallfunction");
+        //jsxCallfunction.setNode_name (ctx.jsxSimpleCallfunction (ctx.jsxSimpleCallfunction ().size ()-1).IDENTIFIERIn ().toString ());
+
+        for ( int i =0 ;i<ctx.jsxSimpleCallfunction ().size ();i++){
+            jsxCallfunction.getJsxSimpleCallfunctionList ().add ((JsxSimpleCallfunction) visitJsxSimpleCallfunction (ctx.jsxSimpleCallfunction ().get (i)));
+        }
+        for ( int i =0 ;i<ctx.id ().size ();i++){
+            jsxCallfunction.getIdList ().add ((Id) visitId (ctx.id ().get (i)));
+        }
+
+        return jsxCallfunction;
+    }
+
+
+    @Override
+    public JsxSimpleCallfunction visitJsxSimpleCallfunction(ReactParser.JsxSimpleCallfunctionContext ctx) {
+
+        JsxSimpleCallfunction jsxSimpleCallfunction = new JsxSimpleCallfunction ();
+        jsxSimpleCallfunction.setNode_type ("JsxSimpleCallfunction");
+        jsxSimpleCallfunction.setNode_name (ctx.id ().toString ());
+        if (ctx.id () !=null){
+            jsxSimpleCallfunction.setId ((Id) visitId (ctx.id ()));
+        }
+        if (ctx.jsxArguments () !=null){
+          jsxSimpleCallfunction.setJsxArguments ((JsxArguments) visitJsxArguments (ctx.jsxArguments ()));
+        }
+
+        return jsxSimpleCallfunction;
+    }
+
+    @Override
+    public JsxArgument visitJsxArgument(ReactParser.JsxArgumentContext ctx) {
+        JsxArgument jsxArgument =new JsxArgument ();
+        jsxArgument.setNode_name (ctx.id ().toString ());
+        jsxArgument.setNode_type ("JsxArgument");
+
+        if (ctx.id () !=null){
+            jsxArgument.setId ((Id) visitId (ctx.id ()));
+        }
+
+        if (ctx.jsxExpression () !=null){
+            jsxArgument.setJsxExpression ((JsxExpression) visit (ctx.jsxExpression ()));
+        }
+
+        if (ctx.jsxArrowFunction () !=null){
+            jsxArgument.setJsxArrowFunction ((JsxArrowFunction) visitJsxArrowFunction (ctx.jsxArrowFunction ()));
+        }
+
+        return jsxArgument;
+    }
+
+    @Override
+    public JsxNormalExpression visitJsxNormalExpression(ReactParser.JsxNormalExpressionContext ctx) {
+        JsxNormalExpression jsxNormalExpression =new JsxNormalExpression ();
+        jsxNormalExpression.setNode_type ("JsxNormalExpression");
+        if (ctx.MultiplyIn () !=null){
+            jsxNormalExpression.setOperation (ctx.MultiplyIn ().toString ());
+        }
+        else if (ctx.DivideIn () !=null){
+            jsxNormalExpression.setOperation (ctx.DivideIn ().toString ());
+        }
+        else if (ctx.PlusIn () !=null){
+            jsxNormalExpression.setOperation (ctx.PlusIn ().toString ());
+        }
+        else if (ctx.MinusIn () !=null){
+            jsxNormalExpression.setOperation (ctx.MinusIn ().toString ());
+        }
         return null;
     }
 
     @Override
-    public Object visitJsxCallfunction(ReactParser.JsxCallfunctionContext ctx) {
-        return null;
+    public JsxExpression visitJsxId(ReactParser.JsxIdContext ctx) {
+        return(JsxExpression) visitId (ctx.id ());
     }
 
     @Override
-    public Object visitJsxSimpleCallfunction(ReactParser.JsxSimpleCallfunctionContext ctx) {
-        return null;
+    public Stringg visitJsxString(ReactParser.JsxStringContext ctx) {
+
+        Stringg stringg =new Stringg ();
+        stringg.setNode_type ("String");
+        stringg.setString (ctx.StringIn ().toString ());
+        return stringg ;
     }
 
     @Override
-    public Object visitJsxArgument(ReactParser.JsxArgumentContext ctx) {
-        return null;
+    public Bool visitJsxBool(ReactParser.JsxBoolContext ctx) {
+        Bool bool =new Bool ();
+        bool.setNode_type ("Bool");
+        bool.setBool (ctx.BooleanLiteralIn ().toString ());
+        return bool;
     }
 
     @Override
-    public Object visitJsxNormalExpression(ReactParser.JsxNormalExpressionContext ctx) {
-        return null;
+    public Number visitJsxNumber(ReactParser.JsxNumberContext ctx) {
+        Number number = new Number ();
+        number.setNode_type ("Number");
+        number.setValue (Integer.parseInt (ctx.NUMBERIn ().toString ()));
+        return number;
     }
 
     @Override
-    public Object visitJsxId(ReactParser.JsxIdContext ctx) {
-        return null;
+    public JsxCallIdentifier visitJsxCallIdentifier(ReactParser.JsxCallIdentifierContext ctx) {
+        JsxCallIdentifier  jsxCallIdentifier = new JsxCallIdentifier ();
+        jsxCallIdentifier.setNode_type ("JsxCallIdentifier");
+        for ( int i =0 ;i<ctx.id ().size ();i++){
+            jsxCallIdentifier.getIdList ().add ((Id)visitId (ctx.id ().get (i)) );
+        }
+        return jsxCallIdentifier;
     }
 
     @Override
-    public Object visitJsxString(ReactParser.JsxStringContext ctx) {
-        return null;
+    public JsxBlock visitJsxBlock(ReactParser.JsxBlockContext ctx) {
+        JsxBlock jsxBlock =new JsxBlock ();
+        jsxBlock.setNode_type ("Block");
+        if (ctx.jsxElement () !=null){
+            jsxBlock.setJsxElement ((JsxElement) visitJsxElement (ctx.jsxElement ()));
+        }
+        return jsxBlock;
     }
 
     @Override
-    public Object visitJsxBool(ReactParser.JsxBoolContext ctx) {
-        return null;
+    public Block visitBlock(ReactParser.BlockContext ctx) {
+        Block block = new Block ();
+        block.setNode_type ("Block");
+        for ( int i =0 ;i<ctx.statment ().size ();i++){
+            block.getStatementList ().add ((Statement) visitStatment (ctx.statment ().get (i)));
+        }
+        return block;
     }
 
     @Override
-    public Object visitJsxNumber(ReactParser.JsxNumberContext ctx) {
-        return null;
+    public Else_if visitElse_if(ReactParser.Else_ifContext ctx) {
+        Else_if else_if = new Else_if ();
+        else_if.setNode_type ("Else_if");
+        if (ctx.conditions () !=null){
+            else_if.setCondition ((Condition) visitConditions (ctx.conditions ()));
+        }
+        if (ctx.block () !=null){
+            else_if.setBlock ((Block) visitBlock (ctx.block ()));
+        }
+        if (ctx.statment () !=null){
+            else_if.setStatement ((Statement) visitStatment (ctx.statment ()));
+        }
+        return else_if;
     }
 
     @Override
-    public Object visitJsxCallIdentifier(ReactParser.JsxCallIdentifierContext ctx) {
-        return null;
+    public Else visitElse(ReactParser.ElseContext ctx) {
+        Else elsee = new Else ();
+        elsee.setNode_type ("Else");
+        if (ctx.block () !=null){
+            elsee.setBlock ((Block) visitBlock (ctx.block ()));
+        }
+        if (ctx.statment () !=null){
+            elsee.setStatement ((Statement) visitStatment (ctx.statment ()));
+        }
+        return elsee;
     }
 
     @Override
-    public Object visitJsxBlock(ReactParser.JsxBlockContext ctx) {
-        return null;
+    public ForLoopParts visitForLoopParts(ReactParser.ForLoopPartsContext ctx) {
+        ForLoopParts forLoopParts = new ForLoopParts ();
+        forLoopParts.setNode_type ("ForLoopParts");
+        if (ctx.kind () !=null){
+            forLoopParts.setKind ((Kind) visitKind (ctx.kind ()));
+        }
+        if (ctx.conditions () !=null){
+            forLoopParts.setCondition ((Condition) visitConditions (ctx.conditions ()));
+        }
+        if (ctx.callIdentifier () !=null){
+            forLoopParts.setCallIdentifier ((CallIdentifier) visitCallIdentifier (ctx.callIdentifier ()));
+        }
+        for ( int i =0 ;i<ctx.variableDeclaration ().size ();i++){
+            forLoopParts.getVariableDeclarationList ().add ((VariableDeclaration) visitVariableDeclaration (ctx.variableDeclaration ().get (i)));
+        }
+        for ( int i =0 ;i<ctx.id ().size ();i++){
+            forLoopParts.getIdList ().add ((Id) visitId (ctx.id ().get (i)));
+        }
+        return forLoopParts;
     }
 
     @Override
-    public Object visitBlock(ReactParser.BlockContext ctx) {
-        return null;
+    public Condition visitConditions(ReactParser.ConditionsContext ctx) {
+        Condition condition = new Condition ();
+        condition.setNode_type ("Conditions");
+        for ( int i =0 ;i<ctx.data ().size ();i++){
+            condition.getDataList ().add ((Data) visit (ctx.data ().get (i)));
+        }
+        for ( int i =0 ;i<ctx.Not ().size ();i++){
+            condition.getNotList ().add (ctx.Not ().toString ());
+        }
+        if (ctx.operation () !=null){
+            condition.setOperation ((Operation) visitOperation (ctx.operation ()));
+        }
+        if (ctx.BooleanLiteral () !=null){
+            condition.setBool (ctx.BooleanLiteral ().toString ());
+        }
+        if (ctx.id () !=null){
+            condition.setId ((Id) visitId (ctx.id ()));
+        }
+        return condition;
     }
 
     @Override
-    public Object visitElse_if(ReactParser.Else_ifContext ctx) {
-        return null;
+    public Arguments visitArguments(ReactParser.ArgumentsContext ctx) {
+        Arguments arguments = new Arguments ();
+        arguments.setNode_type ("Arguments");
+
+        for ( int i =0 ;i< ctx.parameters ().size ();i++){
+            arguments.getParametersList ().add ((Parameters) visit (ctx.parameters ().get (i)));
+        }
+        return arguments;
     }
 
     @Override
-    public Object visitElse(ReactParser.ElseContext ctx) {
-        return null;
-    }
-
-    @Override
-    public Object visitForLoopParts(ReactParser.ForLoopPartsContext ctx) {
-        return null;
-    }
-
-    @Override
-    public Object visitConditions(ReactParser.ConditionsContext ctx) {
-        return null;
-    }
-
-    @Override
-    public Object visitArguments(ReactParser.ArgumentsContext ctx) {
-        return null;
-    }
-
-    @Override
-    public Object visitBlockOfarguments(ReactParser.BlockOfargumentsContext ctx) {
-        return null;
+    public BlockOfarguments visitBlockOfarguments(ReactParser.BlockOfargumentsContext ctx) {
+        BlockOfarguments blockOfarguments = new BlockOfarguments ();
+        blockOfarguments.setNode_type ("BlockOfarguments");
+        if (ctx.arguments () !=null){
+            blockOfarguments.setArguments ((Arguments) visitArguments (ctx.arguments ()));
+        }
+        return blockOfarguments;
     }
 
     @Override
     public Object visitVariableDeclaration(ReactParser.VariableDeclarationContext ctx) {
-        return null;
+        VariableDeclaration variableDeclaration = new VariableDeclaration ();
+        variableDeclaration.setNode_type ("VariableDeclaration");
+        if (ctx.kind () !=null){
+            variableDeclaration.setKind ((Kind) visitKind (ctx.kind ()));
+        }
+        if (ctx.id () !=null){
+            variableDeclaration.setId ((Id) visitId (ctx.id ()));
+        }
+        if (ctx.expression () !=null){
+            variableDeclaration.setExpression ((Expression) visit (ctx.expression ()));
+        }
+        if (ctx.callfunction () !=null){
+            variableDeclaration.setCallFunction ((CallFunction) visitCallfunction (ctx.callfunction ()));
+        }
+        if (ctx.callIdentifier () !=null){
+            variableDeclaration.setCallIdentifier ((CallIdentifier) visitCallIdentifier (ctx.callIdentifier ()));
+        }
+        if (ctx.arrowFunction () !=null){
+            variableDeclaration.setArrowFunction ((ArrowFunction) visitArrowFunction (ctx.arrowFunction ()));
+        }
+        return variableDeclaration;
     }
 
     @Override
-    public Object visitVariableDeclarationList(ReactParser.VariableDeclarationListContext ctx) {
-        return null;
+    public VariableDeclarationList visitVariableDeclarationList(ReactParser.VariableDeclarationListContext ctx) {
+        VariableDeclarationList variableDeclarationList =new VariableDeclarationList ();
+        variableDeclarationList.setNode_type ("VariableDeclarationList");
+
+        for ( int i =0 ;i<ctx.variableDeclaration ().size ();i++){
+            variableDeclarationList.getVariableDeclarationList ().add ((VariableDeclaration) visitVariableDeclaration (ctx.variableDeclaration ().get (i)));
+        }
+        return variableDeclarationList;
     }
 
     @Override
-    public Object visitArrowFunction(ReactParser.ArrowFunctionContext ctx) {
-        return null;
+    public ArrowFunction visitArrowFunction(ReactParser.ArrowFunctionContext ctx) {
+        ArrowFunction arrowFunction =new ArrowFunction ();
+        arrowFunction.setNode_type ("ArrowFunction");
+        if (ctx.Async () !=null){
+            arrowFunction.setAsync (ctx.Async ().toString ());
+        }
+        if (ctx.arguments () !=null){
+            arrowFunction.setArguments ((Arguments) visitArguments (ctx.arguments ()));
+        }
+        if (ctx.id () !=null){
+            arrowFunction.setId ((Id) visitId (ctx.id ()));
+        }
+        if (ctx.expression () !=null){
+            arrowFunction.setExperssion ((Expression) visit (ctx.expression ()));
+        }
+        for ( int i =0 ;i<ctx.statment ().size ();i++){
+            arrowFunction.getStatementList ().add ((Statement) visitStatment (ctx.statment ().get (i)));
+        }
+        if (ctx.returnstatment () !=null){
+            arrowFunction.setReturnstatment ((Returnstatment) visitReturnstatment (ctx.returnstatment ()));
+        }
+        if (ctx.jsxElement () !=null){
+            arrowFunction.setJsxElement ((JsxElement) visitJsxElement (ctx.jsxElement ()));
+        }
+        return arrowFunction;
     }
 
     @Override
-    public Object visitReturnstatment(ReactParser.ReturnstatmentContext ctx) {
-        return null;
+    public Returnstatment visitReturnstatment(ReactParser.ReturnstatmentContext ctx) {
+        Returnstatment returnstatment =new Returnstatment ();
+        returnstatment.setNode_type ("Returnstatment");
+
+        if (ctx.jsxBlock () !=null){
+            returnstatment.setJsxBlock ((JsxBlock) visitJsxBlock (ctx.jsxBlock ()));
+        }
+        if (ctx.expression () !=null){
+            returnstatment.setExperssion ((Expression) visit (ctx.expression ()));
+        }
+        return returnstatment;
     }
 
     @Override
-    public Object visitSimpleCallfunction(ReactParser.SimpleCallfunctionContext ctx) {
-        return null;
+    public SimpleCallfunction visitSimpleCallfunction(ReactParser.SimpleCallfunctionContext ctx) {
+
+        SimpleCallfunction SimpleCallfunction = new SimpleCallfunction ();
+        SimpleCallfunction.setNode_type ("SimpleCallfunction");
+        SimpleCallfunction.setNode_name (ctx.id ().toString ());
+        if (ctx.id () !=null){
+            SimpleCallfunction.setId ((Id) visitId (ctx.id ()));
+        }
+        if (ctx.arguments () !=null){
+            SimpleCallfunction.setArguments ((Arguments) visitArguments (ctx.arguments ()));
+        }
+
+        return SimpleCallfunction;
     }
 
     @Override
-    public Object visitArgument(ReactParser.ArgumentContext ctx) {
-        return null;
+    public Argument visitArgument(ReactParser.ArgumentContext ctx) {
+        Argument argument = new Argument ();
+        argument.setNode_type ("Argument");
+      //  argument.setNode_name ();
+
+        if (ctx.callIdentifier () !=null){
+            argument.setCallIdentifier ((CallIdentifier) visitCallIdentifier (ctx.callIdentifier ()));
+        }
+        if (ctx.expression () !=null){
+            argument.setExperssion ((Expression) visit (ctx.expression ()));
+        }
+        if (ctx.arrowFunction () !=null){
+            argument.setArrowFunction ((ArrowFunction) visitArrowFunction (ctx.arrowFunction ()));
+        }
+        return argument;
     }
 
     @Override

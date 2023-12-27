@@ -66,9 +66,9 @@ options{tokenVocab=ReactLexer;}
     ;
     ////// islam part
     jsxArrowFunction:(OpenParenIn jsxArguments? CloseParenIn | jsxArgument ) ARROWIn (jsxExpression? | OpenBraceIn jsxExpression* CloseBraceIn );
-    jsxCallfunction :(IDENTIFIERIn ( DotIn IDENTIFIERIn | DotIn jsxSimpleCallfunction)+ | jsxSimpleCallfunction) ;
-    jsxSimpleCallfunction : IDENTIFIERIn OpenParenIn jsxArguments? CloseParenIn ;
-    jsxArgument : (IDENTIFIERIn (AssignIn (jsxExpression|jsxArrowFunction))?);
+    jsxCallfunction :(id ( DotIn id | DotIn jsxSimpleCallfunction)+ | jsxSimpleCallfunction) ;
+    jsxSimpleCallfunction : id OpenParenIn jsxArguments? CloseParenIn ;
+    jsxArgument : (id (AssignIn (jsxExpression|jsxArrowFunction))?);
     jsxExpression:
                      OpenParenIn jsxExpression (MultiplyIn | DivideIn) jsxExpression CloseParenIn #jsxNormalExpression
                    | OpenParenIn jsxExpression( PlusIn | MinusIn) jsxExpression CloseParenIn #jsxNormalExpression
@@ -77,9 +77,9 @@ options{tokenVocab=ReactLexer;}
                    | NUMBERIn #jsxNumber
                    | StringIn #jsxString
                    | BooleanLiteralIn #jsxBool
-                   | IDENTIFIERIn #jsxId
+                   | id #jsxId
                    ;
-    jsxCallIdentifier: IDENTIFIERIn (DotIn IDENTIFIERIn)*;
+    jsxCallIdentifier: id (DotIn id)*;
     jsxBlock:
     (
     (openParen (jsxElement) closeParen)
@@ -94,16 +94,16 @@ options{tokenVocab=ReactLexer;}
 
     else_if : Else If OpenParen conditions CloseParen  ( block | statment ) ;
     else :  Else ( block | statment) ;
-    forLoopParts : (kind? variableDeclaration SemiColon conditions SemiColon  variableDeclaration | IDENTIFIER IDENTIFIER Colon callIdentifier ) ;
+    forLoopParts : (kind? variableDeclaration SemiColon conditions SemiColon  variableDeclaration | id id Colon callIdentifier ) ;
     conditions : data operation  data
                    | BooleanLiteral
-                   | Not* IDENTIFIER
+                   | Not* id
                  //  | jsxElementNonSelfClosing
                    ;
     arguments : parameters((Comma|CommaModeCall) parameters)*;
 
     blockOfarguments :OpenBrace arguments CloseBrace;
-    variableDeclaration : kind? (IDENTIFIER|array) (( Assign (expression | callfunction | callIdentifier | arrowFunction) )? )  ;
+    variableDeclaration : kind? (id|array) (( Assign (expression | callfunction | callIdentifier | arrowFunction) )? )  ;
     variableDeclarationList : variableDeclaration ( Comma variableDeclaration )* ;
 
     arrowFunction: Async?(openParen arguments? closeParen | id )(ARROW|ARROWModeCall)
@@ -117,7 +117,6 @@ options{tokenVocab=ReactLexer;}
     returnstatment : Return (expression|jsxBlock)? ;
     simpleCallfunction : id openParen arguments? closeParen ;
     //simpleCallfunctionModeCall : id openParen (callIdentifier|arrowFunction)? closeParen ;
-
     argument : (callIdentifier (assign (expression|arrowFunction))?);
     ////////////////rana part
     parameters :
@@ -132,7 +131,7 @@ options{tokenVocab=ReactLexer;}
                ;
 
 
-    callIdentifier: id ((Dot|DotModeCall)  )*;
+    callIdentifier: id ((Dot|DotModeCall) id  )*;
     expression:  openParen expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression closeParen #label_normalExpression
                | openParen expression( (Plus|PlusModeCall) | (Minus|MinusModeCall)) expression closeParen #label_normalExpression
                | expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression #label_normalExpression
@@ -180,7 +179,7 @@ options{tokenVocab=ReactLexer;}
                    | IdentityNotEqualsModeCall
                    ;
                    
-    id:IDENTIFIER|Id;
+    id:IDENTIFIER|Id|IDENTIFIERIn;
     openParen:OpenParen|OpenParenModeCall;
     closeParen:CloseParen|CloseParenModeCall;
     assign:Assign|AssignModeCall;

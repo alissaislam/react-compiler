@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BlockOfarguments extends Node {
-    List<Arguments> argumentsList=new ArrayList<> ();
+Arguments arguments;
 
-    public List<Arguments> getArgumentsList() {
-        return argumentsList;
+    public Arguments getArguments() {
+        return arguments;
     }
 
-    public void setArgumentsList(List<Arguments> argumentsList) {
-        this.argumentsList = argumentsList;
+    public void setArguments(Arguments arguments) {
+        this.arguments = arguments;
     }
 }
