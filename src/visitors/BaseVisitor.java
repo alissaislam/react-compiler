@@ -1,5 +1,6 @@
 package visitors;
 
+import SymbolTable.StRow;
 import antlr.ReactParser;
 import antlr.ReactParserBaseVisitor;
 import antlr.ReactParserVisitor;
@@ -23,6 +24,9 @@ public class BaseVisitor implements ReactParserVisitor {
                 start.getStatement_list().add((Statement) visitStatment(ctx.statment(i)));
             }
         }
+        StRow stRow = new StRow();
+        stRow.setType(start.getNode_type());
+        stRow.setValue(start.getNode_name());
         return start;
     }
 
@@ -30,6 +34,7 @@ public class BaseVisitor implements ReactParserVisitor {
     public Statement visitStatment(ReactParser.StatmentContext ctx) {
         Statement statement = new Statement();
         statement.setNode_type("Statement");
+        statement.setNode_name("");
         if (ctx.statmentElement()!=null)
             statement.setStatementElement((StatementElement) visit(ctx.statmentElement()));
         return statement;
