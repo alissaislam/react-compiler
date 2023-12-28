@@ -59,7 +59,7 @@ options{tokenVocab=ReactLexer;}
     jsxArguments:jsxParameters(CommaIn jsxParameters)*;
     jsxParameters:
       jsxArrowFunction  #jsxArrFunction
-    | jsxCallfunction   #jsxCallFunction
+    | jsxCallfunction   #labelJsxCallFunction
     | jsxArgument       #jsxArg
     | jsxCallIdentifier #jsxCallId
     | jsxExpression    #jsxExp

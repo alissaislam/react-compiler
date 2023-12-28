@@ -33,6 +33,7 @@ public class BaseVisitor implements ReactParserVisitor {
         return start;
     }
 
+
     @Override
     public Statement visitStatment(ReactParser.StatmentContext ctx) {
         Statement statement = new Statement();
@@ -287,7 +288,7 @@ public class BaseVisitor implements ReactParserVisitor {
     @Override
     public While visitWhile(ReactParser.WhileContext ctx) {
         While whileElement = new While();
-        whileElement.setNode_type("For");
+        whileElement.setNode_type("While");
         if (ctx.conditions()!=null)
             whileElement.setCondition((Condition) visitConditions(ctx.conditions()));
         if (ctx.block()!=null)
@@ -304,7 +305,7 @@ public class BaseVisitor implements ReactParserVisitor {
     @Override
     public DoWhile visitDo_while(ReactParser.Do_whileContext ctx) {
         DoWhile doWhile = new DoWhile();
-        doWhile.setNode_type("Dowhile");
+        doWhile.setNode_type("DoWhile");
         if (ctx.conditions()!=null)
             doWhile.setCondition((Condition) visitConditions(ctx.conditions()));
         if (ctx.block()!=null)
@@ -321,7 +322,7 @@ public class BaseVisitor implements ReactParserVisitor {
     @Override
     public CallFunction visitCallfunction(ReactParser.CallfunctionContext ctx) {
         CallFunction callFunction = new CallFunction();
-        callFunction.setNode_type("Callfunction");
+        callFunction.setNode_type("CallFunction");
         for (int i=0;i<ctx.simpleCallfunction().size();i++)
             callFunction.getSimpleCallfunctions().add((SimpleCallfunction) visitSimpleCallfunction(ctx.simpleCallfunction(i)));
         for (int i=0;i<ctx.callIdentifier().size();i++)
@@ -353,7 +354,7 @@ public class BaseVisitor implements ReactParserVisitor {
     @Override
     public TryCatch visitTryCatch(ReactParser.TryCatchContext ctx) {
         TryCatch tryCatch = new TryCatch();
-        tryCatch.setNode_type("Trycatch");
+        tryCatch.setNode_type("TryCatch");
         for (int i=0;i<ctx.block().size();i++)
             tryCatch.getBlocks().add((Block) visitBlock(ctx.block(i)));
         for (int i=0;i<ctx.id().size();i++)
@@ -384,7 +385,7 @@ public class BaseVisitor implements ReactParserVisitor {
     @Override
     public IfShort visitIfShort(ReactParser.IfShortContext ctx) {
         IfShort ifShort = new IfShort();
-        ifShort.setNode_type("Ifshort");
+        ifShort.setNode_type("IfShort");
         if (ctx.callIdentifier()!=null)
             ifShort.setCallIdentifier((CallIdentifier) visitCallIdentifier(ctx.callIdentifier()));
         if (ctx.operation()!=null)
@@ -403,9 +404,9 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitJsxElement(ReactParser.JsxElementContext ctx) {
+    public JsxElement visitJsxElement(ReactParser.JsxElementContext ctx) {
         JsxElement jsxElement = new JsxElement();
-        jsxElement.setNode_type("Jsxelement");
+        jsxElement.setNode_type("JsxElement");
         if (ctx.jsxElementNonSelfClosing()!=null)
             jsxElement.setJsxElementNonSelfClosing((JsxElementNonSelfClosing) visitJsxElementNonSelfClosing(ctx.jsxElementNonSelfClosing()));
         if (ctx.jsxElementSelfClosing()!=null)
@@ -418,9 +419,9 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitJsxElementNonSelfClosing(ReactParser.JsxElementNonSelfClosingContext ctx) {
+    public JsxElementNonSelfClosing visitJsxElementNonSelfClosing(ReactParser.JsxElementNonSelfClosingContext ctx) {
         JsxElementNonSelfClosing jsxElementNonSelfClosing = new JsxElementNonSelfClosing();
-        jsxElementNonSelfClosing.setNode_type("Jsxelementnonselfclosing");
+        jsxElementNonSelfClosing.setNode_type("JsxElementNonSelfClosing");
         for (int i=0;i<ctx.id().size();i++)
             jsxElementNonSelfClosing.getIds().add((Id) visitId(ctx.id(i)));
         for (int i=0;i<ctx.StringIn().size();i++)
@@ -441,9 +442,9 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitJsxElementSelfClosing(ReactParser.JsxElementSelfClosingContext ctx) {
+    public JsxElementSelfClosing visitJsxElementSelfClosing(ReactParser.JsxElementSelfClosingContext ctx) {
         JsxElementSelfClosing jsxElementSelfClosing = new JsxElementSelfClosing();
-        jsxElementSelfClosing.setNode_type("Jsxelementselfclosing");
+        jsxElementSelfClosing.setNode_type("JsxElementSelfClosing");
         if (ctx.jsx_tag()!=null)
             jsxElementSelfClosing.setJsxTag(ctx.jsx_tag().toString());
         for (int i=0;i<ctx.id().size();i++)
@@ -461,9 +462,9 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitJsxElementIn(ReactParser.JsxElementInContext ctx) {
+    public JsxElementIn visitJsxElementIn(ReactParser.JsxElementInContext ctx) {
         JsxElementIn jsxElementIn = new JsxElementIn();
-        jsxElementIn.setNode_type("Jsxelementin");
+        jsxElementIn.setNode_type("JsxElementIn");
         for (int i=0;i<ctx.id().size();i++)
             jsxElementIn.getIds().add((Id) visitId(ctx.id(i)));
         for (int i=0;i<ctx.blockIn().size();i++)
@@ -487,9 +488,9 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitBlockIn(ReactParser.BlockInContext ctx) {
+    public BlockIn visitBlockIn(ReactParser.BlockInContext ctx) {
         BlockIn blockIn = new BlockIn();
-        blockIn.setNode_type("Blockin");
+        blockIn.setNode_type("BlockIn");
         for (int i =0;i<ctx.jsxArguments().size();i++)
             blockIn.getJsxArgumentsList().add((JsxArguments) visitJsxArguments(ctx.jsxArguments(i)));
         StRow row = new StRow();
@@ -501,9 +502,9 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitJsxArguments(ReactParser.JsxArgumentsContext ctx) {
+    public JsxArguments visitJsxArguments(ReactParser.JsxArgumentsContext ctx) {
         JsxArguments jsxArguments = new JsxArguments();;
-        jsxArguments.setNode_type("Jsxarguments");
+        jsxArguments.setNode_type("JsxArguments");
         for (int i =0;i<ctx.jsxParameters().size();i++)
             jsxArguments.getJsxParametersList().add((JsxParameters) visit(ctx.jsxParameters(i)));
         StRow row = new StRow();
@@ -514,7 +515,7 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitJsxArrFunction(ReactParser.JsxArrFunctionContext ctx) {
+    public JsxArrowFunction visitJsxArrFunction(ReactParser.JsxArrFunctionContext ctx) {
         if(ctx.jsxArrowFunction()!=null)
             return ((JsxArrowFunction) visitJsxArrowFunction(ctx.jsxArrowFunction()));
         else
@@ -522,7 +523,7 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitJsxCallFunction(ReactParser.JsxCallFunctionContext ctx) {
+    public JsxCallfunction visitLabelJsxCallFunction(ReactParser.LabelJsxCallFunctionContext ctx) {
         if(ctx.jsxCallfunction()!=null)
             return ((JsxCallfunction) visitJsxCallfunction(ctx.jsxCallfunction()));
         else
@@ -530,7 +531,7 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitJsxArg(ReactParser.JsxArgContext ctx) {
+    public JsxArgument visitJsxArg(ReactParser.JsxArgContext ctx) {
         if(ctx.jsxArgument()!=null)
             return ((JsxArgument) visitJsxArgument(ctx.jsxArgument()));
         else
@@ -538,7 +539,7 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitJsxCallId(ReactParser.JsxCallIdContext ctx) {
+    public JsxCallIdentifier visitJsxCallId(ReactParser.JsxCallIdContext ctx) {
         if(ctx.jsxCallIdentifier()!=null)
             return ((JsxCallIdentifier) visitJsxCallIdentifier(ctx.jsxCallIdentifier()));
         else
@@ -546,7 +547,7 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitJsxExp(ReactParser.JsxExpContext ctx) {
+    public JsxExpression visitJsxExp(ReactParser.JsxExpContext ctx) {
         if(ctx.jsxExpression()!=null)
             return ((JsxExpression) visit(ctx.jsxExpression()));
         else

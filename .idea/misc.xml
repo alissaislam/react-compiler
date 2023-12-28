@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ANTLRGenerationPreferences">
     <option name="perGrammarGenerationSettings">
@@ -5,7 +6,7 @@
         <PerGrammarGenerationSettings>
           <option name="fileName" value="$PROJECT_DIR$/src/antlr/ReactParser.g4" />
           <option name="autoGen" value="true" />
-          <option name="outputDir" value="D:\react-compiler\src" />
+          <option name="outputDir" value="D:\ReactCompiler\react-compiler\src" />
           <option name="libDir" value="" />
           <option name="encoding" value="" />
           <option name="pkg" value="" />
