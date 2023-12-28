@@ -1,6 +1,7 @@
 package visitors;
 
 import SymbolTable.StRow;
+import SymbolTable.SymbolTable;
 import antlr.ReactParser;
 import antlr.ReactParserBaseVisitor;
 import antlr.ReactParserVisitor;
@@ -13,12 +14,13 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 
 public class BaseVisitor implements ReactParserVisitor {
-
+    SymbolTable symbolTable = new SymbolTable();
 
     @Override
     public Start visitStart(ReactParser.StartContext ctx) {
         Start start = new Start();
         start.setNode_type("Start");
+        start.setNode_name("Start");
         if (ctx.statment()!=null){
             for (int i=0;i<ctx.statment().size();i++){
                 start.getStatement_list().add((Statement) visitStatment(ctx.statment(i)));
@@ -27,6 +29,7 @@ public class BaseVisitor implements ReactParserVisitor {
         StRow stRow = new StRow();
         stRow.setType(start.getNode_type());
         stRow.setValue(start.getNode_name());
+        symbolTable.getRows().add(stRow);
         return start;
     }
 
@@ -34,9 +37,13 @@ public class BaseVisitor implements ReactParserVisitor {
     public Statement visitStatment(ReactParser.StatmentContext ctx) {
         Statement statement = new Statement();
         statement.setNode_type("Statement");
-        statement.setNode_name("");
+        statement.setNode_name("Statement");
         if (ctx.statmentElement()!=null)
             statement.setStatementElement((StatementElement) visit(ctx.statmentElement()));
+        StRow stRow = new StRow();
+        stRow.setType(statement.getNode_type());
+        stRow.setValue(statement.getNode_name());
+        symbolTable.getRows().add(stRow);
         return statement;
     }
 
@@ -44,6 +51,7 @@ public class BaseVisitor implements ReactParserVisitor {
     public VariableDeclarationList visitLabelvarDecList(ReactParser.LabelvarDecListContext ctx) {
         if (ctx.variableDeclarationList()!=null)
             return ((VariableDeclarationList) visitVariableDeclarationList(ctx.variableDeclarationList()));
+
         else
             return null;
     }
@@ -207,7 +215,7 @@ public class BaseVisitor implements ReactParserVisitor {
         for (int i=0;i<ctx.else_if().size();i++){
             ifElement.getElseIfList().add((Else_if) visitElse_if(ctx.else_if(i)));
         }
-        if (ctx.else_()!=null){
+        if (ctx.else_()!=null) {
             ifElement.setElseElement((Else) visitElse(ctx.else_()));
         }
         return ifElement;

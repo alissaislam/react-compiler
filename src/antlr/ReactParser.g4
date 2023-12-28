@@ -10,7 +10,7 @@ options{tokenVocab=ReactLexer;}
                     | forElement                                    #labelforElement
                     | function                                      #labelFunction
                     | comments                                      #labelComments
-                    | while                                         #labelWhile
+                    | while                                          #labelWhile
                     | do_while                                      #labelDoWhile
                     | callfunction                                  #labelCallFunction
                     | switch                                        #labelSwitch
