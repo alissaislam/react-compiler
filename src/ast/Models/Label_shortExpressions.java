@@ -1,6 +1,6 @@
 package ast.Models;
 
-public class Label_shortExpressions extends Expressions {
+public class Label_shortExpressions extends Parameters {
     CallIdentifier callIdentifier;
     String operation;
 

@@ -3,16 +3,16 @@ package ast.Models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Label_normalExpressions extends Expressions {
-    List<Expressions> expressions =new ArrayList<>();
+public class Label_normalExpressions extends Parameters {
+    List<Expression> expressions =new ArrayList<>();
 
     String operation;
 
-    public List<Expressions> getExpressions() {
+    public List<Expression> getExpressions() {
         return expressions;
     }
 
-    public void setExpressions(List<Expressions> expressions) {
+    public void setExpressions(List<Expression> expressions) {
         this.expressions = expressions;
     }
 

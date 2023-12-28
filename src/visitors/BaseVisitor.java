@@ -855,8 +855,8 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Expressions visitLabel_Expression(ReactParser.Label_ExpressionContext ctx) {
-        return ((Expressions)visit(ctx.expression()));
+    public Expression visitLabel_Expression(ReactParser.Label_ExpressionContext ctx) {
+        return ((Expression) visit(ctx.expression()));
 
     }
 
@@ -905,8 +905,6 @@ public class BaseVisitor implements ReactParserVisitor {
 
     @Override
     public Data visitLabel_dataExpression(ReactParser.Label_dataExpressionContext ctx) {
-        Data data = new Data();
-        data.setNode_type("Label_dataExpression");
             return ((Data) visit (ctx.data()));
     }
 
@@ -915,7 +913,7 @@ public class BaseVisitor implements ReactParserVisitor {
         Label_normalExpressions label_normalExpressions =new Label_normalExpressions();
         label_normalExpressions.setNode_type("Label_normalExpressions");
          for(int i=0 ; i<ctx.expression().size(); i++){
-                label_normalExpressions.getExpressions().add((Expressions) visit (ctx.expression(i)));
+                label_normalExpressions.getExpressions().add((Expression) visit (ctx.expression(i)));
             }
             if(ctx.Multiply() !=null){
                 label_normalExpressions.setOperation(ctx.Multiply().getText());
@@ -1049,7 +1047,7 @@ public class BaseVisitor implements ReactParserVisitor {
             mapElement.setCallIdentifier((CallIdentifier) visitCallIdentifier(ctx.callIdentifier()));
         }
         else if( ctx.expression() != null){
-            mapElement.setExpressions((Expressions) visit (ctx.expression()));
+            mapElement.setExpressions((Expression) visit (ctx.expression()));
         }
         return mapElement;
     }

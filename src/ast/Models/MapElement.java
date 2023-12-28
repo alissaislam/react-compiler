@@ -3,7 +3,7 @@ package ast.Models;
 public class MapElement extends Node {
     CallFunction callFunction;
     CallIdentifier callIdentifier;
-    Expressions expressions;
+    Expression expressions;
     String Identifier;
 
     public CallFunction getCallFunction() {
@@ -22,11 +22,11 @@ public class MapElement extends Node {
         this.callIdentifier = callIdentifier;
     }
 
-    public Expressions getExpressions() {
+    public Expression getExpressions() {
         return expressions;
     }
 
-    public void setExpressions(Expressions expressions) {
+    public void setExpressions(Expression expressions) {
         this.expressions = expressions;
     }
 
