@@ -218,6 +218,10 @@ public class BaseVisitor implements ReactParserVisitor {
         if (ctx.else_()!=null) {
             ifElement.setElseElement((Else) visitElse(ctx.else_()));
         }
+        StRow row = new StRow();
+        row.setType(ifElement.getNode_type());
+        row.setValue(ifElement.getNode_type());
+        symbolTable.getRows().add(row);
         return ifElement;
     }
 
@@ -231,6 +235,10 @@ public class BaseVisitor implements ReactParserVisitor {
             forElement.setBlock((Block) visitBlock(ctx.block()));
         if (ctx.statment()!=null)
             forElement.setStatement((Statement) visitStatment(ctx.statment()));
+        StRow row = new StRow();
+        row.setType(forElement.getNode_type());
+        row.setValue(forElement.getNode_type());
+        symbolTable.getRows().add(row);
         return forElement;
     }
 
@@ -240,6 +248,7 @@ public class BaseVisitor implements ReactParserVisitor {
         function.setNode_type("Function");
         if (ctx.id()!=null){
             function.setId( (Id) visitId(ctx.id()));
+            function.setNode_name(ctx.id().getText());
         }
         if (ctx.arguments()!=null){
             function.setArguments((Arguments) visitArguments(ctx.arguments()));
@@ -249,7 +258,10 @@ public class BaseVisitor implements ReactParserVisitor {
         for (int i=0;i<ctx.returnstatment().size();i++)
             function.getReturnstatments().add((Returnstatment) visitReturnstatment(ctx.returnstatment(i)));
 
-
+        StRow row = new StRow();
+        row.setType(function.getNode_type());
+        row.setValue(function.getNode_name());
+        symbolTable.getRows().add(row);
         return function;
     }
 
@@ -259,10 +271,15 @@ public class BaseVisitor implements ReactParserVisitor {
         comment.setNode_type("Comments");
         if (ctx.SINGLE_LINE_COMMENT()!=null){
             comment.setSingleLineComment(ctx.SINGLE_LINE_COMMENT().toString());
+            comment.setNode_name(ctx.SINGLE_LINE_COMMENT().toString());
         }
         if (ctx.MULTI_LINE_COMMENT()!=null){
             comment.setMultiLineComment(ctx.MULTI_LINE_COMMENT().toString());
         }
+        StRow row = new StRow();
+        row.setType(comment.getNode_type());
+        row.setValue(comment.getNode_name());
+        symbolTable.getRows().add(row);
         return comment;
 
     }
@@ -277,19 +294,27 @@ public class BaseVisitor implements ReactParserVisitor {
             whileElement.setBlock((Block) visitBlock(ctx.block()));
         if (ctx.statment()!=null)
             whileElement.setStatement((Statement) visitStatment(ctx.statment()));
+        StRow row = new StRow();
+        row.setType(whileElement.getNode_type());
+        row.setValue(whileElement.getNode_type());
+        symbolTable.getRows().add(row);
         return whileElement;
     }
 
     @Override
     public DoWhile visitDo_while(ReactParser.Do_whileContext ctx) {
         DoWhile doWhile = new DoWhile();
-        doWhile.setNode_type("For");
+        doWhile.setNode_type("Dowhile");
         if (ctx.conditions()!=null)
             doWhile.setCondition((Condition) visitConditions(ctx.conditions()));
         if (ctx.block()!=null)
             doWhile.setBlock((Block) visitBlock(ctx.block()));
         if (ctx.statment()!=null)
             doWhile.setStatement((Statement) visitStatment(ctx.statment()));
+        StRow row = new StRow();
+        row.setType(doWhile.getNode_type());
+        row.setValue(doWhile.getNode_type());
+        symbolTable.getRows().add(row);
         return doWhile;
     }
 
@@ -301,7 +326,10 @@ public class BaseVisitor implements ReactParserVisitor {
             callFunction.getSimpleCallfunctions().add((SimpleCallfunction) visitSimpleCallfunction(ctx.simpleCallfunction(i)));
         for (int i=0;i<ctx.callIdentifier().size();i++)
             callFunction.getCallIdentifiers().add((CallIdentifier) visitCallIdentifier(ctx.callIdentifier(i)));
-
+        StRow row = new StRow();
+        row.setType(callFunction.getNode_type());
+        row.setValue(callFunction.getNode_type());
+        symbolTable.getRows().add(row);
         return callFunction;
     }
 
@@ -315,6 +343,10 @@ public class BaseVisitor implements ReactParserVisitor {
             switchElement.getBlocks().add((Block) visitBlock(ctx.block(i)));
         for (int i=0;i<ctx.statment().size();i++)
             switchElement.getStatements().add((Statement) visitStatment(ctx.statment(i)));
+        StRow row = new StRow();
+        row.setType(switchElement.getNode_type());
+        row.setValue(switchElement.getNode_type());
+        symbolTable.getRows().add(row);
         return switchElement;
     }
 
@@ -326,6 +358,10 @@ public class BaseVisitor implements ReactParserVisitor {
             tryCatch.getBlocks().add((Block) visitBlock(ctx.block(i)));
         for (int i=0;i<ctx.id().size();i++)
             tryCatch.getIds().add((Id) visitId(ctx.id(i)));
+        StRow row = new StRow();
+        row.setType(tryCatch.getNode_type());
+        row.setValue(tryCatch.getNode_type());
+        symbolTable.getRows().add(row);
         return tryCatch;
     }
 
@@ -338,6 +374,10 @@ public class BaseVisitor implements ReactParserVisitor {
         }
         if (ctx.String()!=null)
             importElement.setString(ctx.String().toString());
+        StRow row = new StRow();
+        row.setType(importElement.getNode_type());
+        row.setValue(importElement.getNode_type());
+        symbolTable.getRows().add(row);
         return importElement;
     }
 
@@ -355,6 +395,10 @@ public class BaseVisitor implements ReactParserVisitor {
             ifShort.getStatements().add((Statement) visitStatment(ctx.statment(i)));
         for (int i =0;i<ctx.jsxElement().size();i++)
             ifShort.getJsxElements().add((JsxElement) visitJsxElement(ctx.jsxElement(i)));
+        StRow row = new StRow();
+        row.setType(ifShort.getNode_type());
+        row.setValue(ifShort.getNode_type());
+        symbolTable.getRows().add(row);
         return ifShort;
     }
 
@@ -366,6 +410,10 @@ public class BaseVisitor implements ReactParserVisitor {
             jsxElement.setJsxElementNonSelfClosing((JsxElementNonSelfClosing) visitJsxElementNonSelfClosing(ctx.jsxElementNonSelfClosing()));
         if (ctx.jsxElementSelfClosing()!=null)
             jsxElement.setJsxElementSelfClosing((JsxElementSelfClosing) visitJsxElementSelfClosing(ctx.jsxElementSelfClosing()));
+        StRow row = new StRow();
+        row.setType(jsxElement.getNode_type());
+        row.setValue(jsxElement.getNode_type());
+        symbolTable.getRows().add(row);
         return jsxElement;
     }
 
@@ -385,6 +433,10 @@ public class BaseVisitor implements ReactParserVisitor {
             jsxElementNonSelfClosing.getJsxElementIns().add((JsxElementIn) visitJsxElementIn(ctx.jsxElementIn(i)));
         for (int i=0;i<ctx.blockOfarguments().size();i++)
             jsxElementNonSelfClosing.getBlockOfarguments().add((BlockOfarguments) visitBlockOfarguments(ctx.blockOfarguments(i)));
+        StRow row = new StRow();
+        row.setType(jsxElementNonSelfClosing.getNode_type());
+        row.setValue(jsxElementNonSelfClosing.getNode_type());
+        symbolTable.getRows().add(row);
         return jsxElementNonSelfClosing;
     }
 
@@ -400,6 +452,10 @@ public class BaseVisitor implements ReactParserVisitor {
             jsxElementSelfClosing.getBlocks().add((BlockIn) visitBlockIn(ctx.blockIn(i)));
         for (int i=0;i<ctx.StringIn().size();i++)
             jsxElementSelfClosing.getStringsIns().add(ctx.StringIn(i).toString());
+        StRow row = new StRow();
+        row.setType(jsxElementSelfClosing.getNode_type());
+        row.setValue(jsxElementSelfClosing.getNode_type());
+        symbolTable.getRows().add(row);
         return jsxElementSelfClosing;
 
     }
@@ -422,6 +478,10 @@ public class BaseVisitor implements ReactParserVisitor {
             jsxElementIn.getLetterrs().add(ctx.LETTERR(i).toString());
         for (int i=0;i<ctx.blockOfarguments().size();i++)
             jsxElementIn.getBlockOfarguments().add((BlockOfarguments) visitBlockOfarguments(ctx.blockOfarguments(i)));
+        StRow row = new StRow();
+        row.setType(jsxElementIn.getNode_type());
+        row.setValue(jsxElementIn.getNode_type());
+        symbolTable.getRows().add(row);
         return jsxElementIn;
 
     }
@@ -432,6 +492,10 @@ public class BaseVisitor implements ReactParserVisitor {
         blockIn.setNode_type("Blockin");
         for (int i =0;i<ctx.jsxArguments().size();i++)
             blockIn.getJsxArgumentsList().add((JsxArguments) visitJsxArguments(ctx.jsxArguments(i)));
+        StRow row = new StRow();
+        row.setType(blockIn.getNode_type());
+        row.setValue(blockIn.getNode_type());
+        symbolTable.getRows().add(row);
         return blockIn;
 
     }
@@ -442,6 +506,10 @@ public class BaseVisitor implements ReactParserVisitor {
         jsxArguments.setNode_type("Jsxarguments");
         for (int i =0;i<ctx.jsxParameters().size();i++)
             jsxArguments.getJsxParametersList().add((JsxParameters) visit(ctx.jsxParameters(i)));
+        StRow row = new StRow();
+        row.setType(jsxArguments.getNode_type());
+        row.setValue(jsxArguments   .getNode_type());
+        symbolTable.getRows().add(row);
         return jsxArguments;
     }
 
