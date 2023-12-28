@@ -153,13 +153,17 @@ options{tokenVocab=ReactLexer;}
         ;
 //
     array : OpenBracket suquence? CloseBracket  ;
+    //
     map :OpenBrace (mapElementList)* CloseBrace ;
+    //
     mapElementList: mapElement (Comma mapElement)*;
+    //
     mapElement:IDENTIFIER Colon ( callfunction | callIdentifier | expression );
 
 
 //
     suquence : data(Comma data )* ;
+
     kind:    Const
            | Let
            | Var;

@@ -261,10 +261,8 @@ public class BaseVisitor implements ReactParserVisitor {
 
     @Override
     public ArrowFunction visitLabel_ArrowFunction(ReactParser.Label_ArrowFunctionContext ctx) {
-        ArrowFunction arrowFunction = new ArrowFunction();
-        arrowFunction.setNode_type("label_arrowFunction");
-        visitArrowFunction(ctx.arrowFunction());
-        return arrowFunction;
+
+        return (ArrowFunction) visitArrowFunction(ctx.arrowFunction()) ;
     }
 
     @Override
