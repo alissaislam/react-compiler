@@ -1,3 +1,5 @@
+package SymbolTable;
+
 public class StRow {
     String type,value;
 

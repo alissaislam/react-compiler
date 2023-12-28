@@ -1,4 +1,4 @@
-// Generated from C:/Users/HP/Desktop/react-compiler/src/antlr/ReactParser.g4 by ANTLR 4.13.1
+// Generated from D:/react-compiler/src/antlr/ReactParser.g4 by ANTLR 4.13.1
 package antlr;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -265,12 +265,12 @@ public interface ReactParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitJsxArrFunction(ReactParser.JsxArrFunctionContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code jsxCallFunction}
+	 * Visit a parse tree produced by the {@code labelJsxCallFunction}
 	 * labeled alternative in {@link ReactParser#jsxParameters}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitJsxCallFunction(ReactParser.JsxCallFunctionContext ctx);
+	T visitLabelJsxCallFunction(ReactParser.LabelJsxCallFunctionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code jsxArg}
 	 * labeled alternative in {@link ReactParser#jsxParameters}.

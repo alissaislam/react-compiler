@@ -10,7 +10,7 @@ options{tokenVocab=ReactLexer;}
                     | forElement                                    #labelforElement
                     | function                                      #labelFunction
                     | comments                                      #labelComments
-                    | while                                         #labelWhile
+                    | while                                          #labelWhile
                     | do_while                                      #labelDoWhile
                     | callfunction                                  #labelCallFunction
                     | switch                                        #labelSwitch
@@ -59,7 +59,7 @@ options{tokenVocab=ReactLexer;}
     jsxArguments:jsxParameters(CommaIn jsxParameters)*;
     jsxParameters:
       jsxArrowFunction  #jsxArrFunction
-    | jsxCallfunction   #jsxCallFunction
+    | jsxCallfunction   #labelJsxCallFunction
     | jsxArgument       #jsxArg
     | jsxCallIdentifier #jsxCallId
     | jsxExpression    #jsxExp

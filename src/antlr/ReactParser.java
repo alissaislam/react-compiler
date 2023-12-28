@@ -1,4 +1,4 @@
-// Generated from C:/Users/HP/Desktop/react-compiler/src/antlr/ReactParser.g4 by ANTLR 4.13.1
+// Generated from D:/react-compiler/src/antlr/ReactParser.g4 by ANTLR 4.13.1
 package antlr;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -2978,26 +2978,6 @@ public class ReactParser extends Parser {
 		}
 	}
 	@SuppressWarnings("CheckReturnValue")
-	public static class JsxCallFunctionContext extends JsxParametersContext {
-		public JsxCallfunctionContext jsxCallfunction() {
-			return getRuleContext(JsxCallfunctionContext.class,0);
-		}
-		public JsxCallFunctionContext(JsxParametersContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterJsxCallFunction(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitJsxCallFunction(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitJsxCallFunction(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
 	public static class JsxArrFunctionContext extends JsxParametersContext {
 		public JsxArrowFunctionContext jsxArrowFunction() {
 			return getRuleContext(JsxArrowFunctionContext.class,0);
@@ -3038,6 +3018,26 @@ public class ReactParser extends Parser {
 		}
 	}
 	@SuppressWarnings("CheckReturnValue")
+	public static class LabelJsxCallFunctionContext extends JsxParametersContext {
+		public JsxCallfunctionContext jsxCallfunction() {
+			return getRuleContext(JsxCallfunctionContext.class,0);
+		}
+		public LabelJsxCallFunctionContext(JsxParametersContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelJsxCallFunction(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelJsxCallFunction(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelJsxCallFunction(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class JsxCallIdContext extends JsxParametersContext {
 		public JsxCallIdentifierContext jsxCallIdentifier() {
 			return getRuleContext(JsxCallIdentifierContext.class,0);
@@ -3074,7 +3074,7 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 2:
-				_localctx = new JsxCallFunctionContext(_localctx);
+				_localctx = new LabelJsxCallFunctionContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(459);

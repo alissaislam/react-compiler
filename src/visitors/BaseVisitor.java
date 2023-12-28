@@ -1,38 +1,54 @@
 package visitors;
 
+
+import SymbolTable.SymbolTable;
+import SymbolTable.StRow;
+import antlr.ReactParser;
+import antlr.ReactParserBaseVisitor;
+import antlr.ReactParserVisitor;
 import ast.Models.*;
 import ast.Models.Number;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.RuleNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
-import antlr.ReactParser;
-import antlr.ReactParserVisitor;
+
 
 
 
 
 public class BaseVisitor implements ReactParserVisitor {
-
+    SymbolTable symbolTable = new SymbolTable();
 
     @Override
     public Start visitStart(ReactParser.StartContext ctx) {
         Start start = new Start();
         start.setNode_type("Start");
+        start.setNode_name("Start");
         if (ctx.statment()!=null){
             for (int i=0;i<ctx.statment().size();i++){
                 start.getStatement_list().add((Statement) visitStatment(ctx.statment(i)));
             }
         }
+        StRow stRow = new StRow ();
+        stRow.setType(start.getNode_type());
+        stRow.setValue(start.getNode_name());
+        symbolTable.getRows().add(stRow);
         return start;
     }
+
 
     @Override
     public Statement visitStatment(ReactParser.StatmentContext ctx) {
         Statement statement = new Statement();
         statement.setNode_type("Statement");
+        statement.setNode_name("Statement");
         if (ctx.statmentElement()!=null)
             statement.setStatementElement((StatementElement) visit(ctx.statmentElement()));
+        StRow stRow = new StRow();
+        stRow.setType(statement.getNode_type());
+        stRow.setValue(statement.getNode_name());
+        symbolTable.getRows().add(stRow);
         return statement;
     }
 
@@ -40,6 +56,7 @@ public class BaseVisitor implements ReactParserVisitor {
     public VariableDeclarationList visitLabelvarDecList(ReactParser.LabelvarDecListContext ctx) {
         if (ctx.variableDeclarationList()!=null)
             return ((VariableDeclarationList) visitVariableDeclarationList(ctx.variableDeclarationList()));
+
         else
             return null;
     }
@@ -203,9 +220,13 @@ public class BaseVisitor implements ReactParserVisitor {
         for (int i=0;i<ctx.else_if().size();i++){
             ifElement.getElseIfList().add((Else_if) visitElse_if(ctx.else_if(i)));
         }
-        if (ctx.else_()!=null){
+        if (ctx.else_()!=null) {
             ifElement.setElseElement((Else) visitElse(ctx.else_()));
         }
+        StRow row = new StRow();
+        row.setType(ifElement.getNode_type());
+        row.setValue(ifElement.getNode_type());
+        symbolTable.getRows().add(row);
         return ifElement;
     }
 
@@ -219,6 +240,10 @@ public class BaseVisitor implements ReactParserVisitor {
             forElement.setBlock((Block) visitBlock(ctx.block()));
         if (ctx.statment()!=null)
             forElement.setStatement((Statement) visitStatment(ctx.statment()));
+        StRow row = new StRow();
+        row.setType(forElement.getNode_type());
+        row.setValue(forElement.getNode_type());
+        symbolTable.getRows().add(row);
         return forElement;
     }
 
@@ -228,6 +253,7 @@ public class BaseVisitor implements ReactParserVisitor {
         function.setNode_type("Function");
         if (ctx.id()!=null){
             function.setId( (Id) visitId(ctx.id()));
+            function.setNode_name(ctx.id().getText());
         }
         if (ctx.arguments()!=null){
             function.setArguments((Arguments) visitArguments(ctx.arguments()));
@@ -237,7 +263,10 @@ public class BaseVisitor implements ReactParserVisitor {
         for (int i=0;i<ctx.returnstatment().size();i++)
             function.getReturnstatments().add((Returnstatment) visitReturnstatment(ctx.returnstatment(i)));
 
-
+        StRow row = new StRow();
+        row.setType(function.getNode_type());
+        row.setValue(function.getNode_name());
+        symbolTable.getRows().add(row);
         return function;
     }
 
@@ -247,10 +276,15 @@ public class BaseVisitor implements ReactParserVisitor {
         comment.setNode_type("Comments");
         if (ctx.SINGLE_LINE_COMMENT()!=null){
             comment.setSingleLineComment(ctx.SINGLE_LINE_COMMENT().toString());
+            comment.setNode_name(ctx.SINGLE_LINE_COMMENT().toString());
         }
         if (ctx.MULTI_LINE_COMMENT()!=null){
             comment.setMultiLineComment(ctx.MULTI_LINE_COMMENT().toString());
         }
+        StRow row = new StRow();
+        row.setType(comment.getNode_type());
+        row.setValue(comment.getNode_name());
+        symbolTable.getRows().add(row);
         return comment;
 
     }
@@ -258,38 +292,49 @@ public class BaseVisitor implements ReactParserVisitor {
     @Override
     public While visitWhile(ReactParser.WhileContext ctx) {
         While whileElement = new While();
-        whileElement.setNode_type("For");
+        whileElement.setNode_type("While");
         if (ctx.conditions()!=null)
             whileElement.setCondition((Condition) visitConditions(ctx.conditions()));
         if (ctx.block()!=null)
             whileElement.setBlock((Block) visitBlock(ctx.block()));
         if (ctx.statment()!=null)
             whileElement.setStatement((Statement) visitStatment(ctx.statment()));
+        StRow row = new StRow();
+        row.setType(whileElement.getNode_type());
+        row.setValue(whileElement.getNode_type());
+        symbolTable.getRows().add(row);
         return whileElement;
     }
 
     @Override
     public DoWhile visitDo_while(ReactParser.Do_whileContext ctx) {
         DoWhile doWhile = new DoWhile();
-        doWhile.setNode_type("For");
+        doWhile.setNode_type("DoWhile");
         if (ctx.conditions()!=null)
             doWhile.setCondition((Condition) visitConditions(ctx.conditions()));
         if (ctx.block()!=null)
             doWhile.setBlock((Block) visitBlock(ctx.block()));
         if (ctx.statment()!=null)
             doWhile.setStatement((Statement) visitStatment(ctx.statment()));
+        StRow row = new StRow();
+        row.setType(doWhile.getNode_type());
+        row.setValue(doWhile.getNode_type());
+        symbolTable.getRows().add(row);
         return doWhile;
     }
 
     @Override
     public CallFunction visitCallfunction(ReactParser.CallfunctionContext ctx) {
         CallFunction callFunction = new CallFunction();
-        callFunction.setNode_type("Callfunction");
+        callFunction.setNode_type("CallFunction");
         for (int i=0;i<ctx.simpleCallfunction().size();i++)
             callFunction.getSimpleCallfunctions().add((SimpleCallfunction) visitSimpleCallfunction(ctx.simpleCallfunction(i)));
         for (int i=0;i<ctx.callIdentifier().size();i++)
             callFunction.getCallIdentifiers().add((CallIdentifier) visitCallIdentifier(ctx.callIdentifier(i)));
-
+        StRow row = new StRow();
+        row.setType(callFunction.getNode_type());
+        row.setValue(callFunction.getNode_type());
+        symbolTable.getRows().add(row);
         return callFunction;
     }
 
@@ -303,17 +348,25 @@ public class BaseVisitor implements ReactParserVisitor {
             switchElement.getBlocks().add((Block) visitBlock(ctx.block(i)));
         for (int i=0;i<ctx.statment().size();i++)
             switchElement.getStatements().add((Statement) visitStatment(ctx.statment(i)));
+        StRow row = new StRow();
+        row.setType(switchElement.getNode_type());
+        row.setValue(switchElement.getNode_type());
+        symbolTable.getRows().add(row);
         return switchElement;
     }
 
     @Override
     public TryCatch visitTryCatch(ReactParser.TryCatchContext ctx) {
         TryCatch tryCatch = new TryCatch();
-        tryCatch.setNode_type("Trycatch");
+        tryCatch.setNode_type("TryCatch");
         for (int i=0;i<ctx.block().size();i++)
             tryCatch.getBlocks().add((Block) visitBlock(ctx.block(i)));
         for (int i=0;i<ctx.id().size();i++)
             tryCatch.getIds().add((Id) visitId(ctx.id(i)));
+        StRow row = new StRow();
+        row.setType(tryCatch.getNode_type());
+        row.setValue(tryCatch.getNode_type());
+        symbolTable.getRows().add(row);
         return tryCatch;
     }
 
@@ -326,13 +379,17 @@ public class BaseVisitor implements ReactParserVisitor {
         }
         if (ctx.String()!=null)
             importElement.setString(ctx.String().toString());
+        StRow row = new StRow();
+        row.setType(importElement.getNode_type());
+        row.setValue(importElement.getNode_type());
+        symbolTable.getRows().add(row);
         return importElement;
     }
 
     @Override
     public IfShort visitIfShort(ReactParser.IfShortContext ctx) {
         IfShort ifShort = new IfShort();
-        ifShort.setNode_type("Ifshort");
+        ifShort.setNode_type("IfShort");
         if (ctx.callIdentifier()!=null)
             ifShort.setCallIdentifier((CallIdentifier) visitCallIdentifier(ctx.callIdentifier()));
         if (ctx.operation()!=null)
@@ -343,24 +400,32 @@ public class BaseVisitor implements ReactParserVisitor {
             ifShort.getStatements().add((Statement) visitStatment(ctx.statment(i)));
         for (int i =0;i<ctx.jsxElement().size();i++)
             ifShort.getJsxElements().add((JsxElement) visitJsxElement(ctx.jsxElement(i)));
+        StRow row = new StRow();
+        row.setType(ifShort.getNode_type());
+        row.setValue(ifShort.getNode_type());
+        symbolTable.getRows().add(row);
         return ifShort;
     }
 
     @Override
-    public Object visitJsxElement(ReactParser.JsxElementContext ctx) {
+    public JsxElement visitJsxElement(ReactParser.JsxElementContext ctx) {
         JsxElement jsxElement = new JsxElement();
-        jsxElement.setNode_type("Jsxelement");
+        jsxElement.setNode_type("JsxElement");
         if (ctx.jsxElementNonSelfClosing()!=null)
             jsxElement.setJsxElementNonSelfClosing((JsxElementNonSelfClosing) visitJsxElementNonSelfClosing(ctx.jsxElementNonSelfClosing()));
         if (ctx.jsxElementSelfClosing()!=null)
             jsxElement.setJsxElementSelfClosing((JsxElementSelfClosing) visitJsxElementSelfClosing(ctx.jsxElementSelfClosing()));
+        StRow row = new StRow();
+        row.setType(jsxElement.getNode_type());
+        row.setValue(jsxElement.getNode_type());
+        symbolTable.getRows().add(row);
         return jsxElement;
     }
 
     @Override
-    public Object visitJsxElementNonSelfClosing(ReactParser.JsxElementNonSelfClosingContext ctx) {
+    public JsxElementNonSelfClosing visitJsxElementNonSelfClosing(ReactParser.JsxElementNonSelfClosingContext ctx) {
         JsxElementNonSelfClosing jsxElementNonSelfClosing = new JsxElementNonSelfClosing();
-        jsxElementNonSelfClosing.setNode_type("Jsxelementnonselfclosing");
+        jsxElementNonSelfClosing.setNode_type("JsxElementNonSelfClosing");
         for (int i=0;i<ctx.id().size();i++)
             jsxElementNonSelfClosing.getIds().add((Id) visitId(ctx.id(i)));
         for (int i=0;i<ctx.StringIn().size();i++)
@@ -373,13 +438,17 @@ public class BaseVisitor implements ReactParserVisitor {
             jsxElementNonSelfClosing.getJsxElementIns().add((JsxElementIn) visitJsxElementIn(ctx.jsxElementIn(i)));
         for (int i=0;i<ctx.blockOfarguments().size();i++)
             jsxElementNonSelfClosing.getBlockOfarguments().add((BlockOfarguments) visitBlockOfarguments(ctx.blockOfarguments(i)));
+        StRow row = new StRow();
+        row.setType(jsxElementNonSelfClosing.getNode_type());
+        row.setValue(jsxElementNonSelfClosing.getNode_type());
+        symbolTable.getRows().add(row);
         return jsxElementNonSelfClosing;
     }
 
     @Override
-    public Object visitJsxElementSelfClosing(ReactParser.JsxElementSelfClosingContext ctx) {
+    public JsxElementSelfClosing visitJsxElementSelfClosing(ReactParser.JsxElementSelfClosingContext ctx) {
         JsxElementSelfClosing jsxElementSelfClosing = new JsxElementSelfClosing();
-        jsxElementSelfClosing.setNode_type("Jsxelementselfclosing");
+        jsxElementSelfClosing.setNode_type("JsxElementSelfClosing");
         if (ctx.jsx_tag()!=null)
             jsxElementSelfClosing.setJsxTag(ctx.jsx_tag().toString());
         for (int i=0;i<ctx.id().size();i++)
@@ -388,14 +457,18 @@ public class BaseVisitor implements ReactParserVisitor {
             jsxElementSelfClosing.getBlocks().add((BlockIn) visitBlockIn(ctx.blockIn(i)));
         for (int i=0;i<ctx.StringIn().size();i++)
             jsxElementSelfClosing.getStringsIns().add(ctx.StringIn(i).toString());
+        StRow row = new StRow();
+        row.setType(jsxElementSelfClosing.getNode_type());
+        row.setValue(jsxElementSelfClosing.getNode_type());
+        symbolTable.getRows().add(row);
         return jsxElementSelfClosing;
 
     }
 
     @Override
-    public Object visitJsxElementIn(ReactParser.JsxElementInContext ctx) {
+    public JsxElementIn visitJsxElementIn(ReactParser.JsxElementInContext ctx) {
         JsxElementIn jsxElementIn = new JsxElementIn();
-        jsxElementIn.setNode_type("Jsxelementin");
+        jsxElementIn.setNode_type("JsxElementIn");
         for (int i=0;i<ctx.id().size();i++)
             jsxElementIn.getIds().add((Id) visitId(ctx.id(i)));
         for (int i=0;i<ctx.blockIn().size();i++)
@@ -410,31 +483,43 @@ public class BaseVisitor implements ReactParserVisitor {
             jsxElementIn.getLetterrs().add(ctx.LETTERR(i).toString());
         for (int i=0;i<ctx.blockOfarguments().size();i++)
             jsxElementIn.getBlockOfarguments().add((BlockOfarguments) visitBlockOfarguments(ctx.blockOfarguments(i)));
+        StRow row = new StRow();
+        row.setType(jsxElementIn.getNode_type());
+        row.setValue(jsxElementIn.getNode_type());
+        symbolTable.getRows().add(row);
         return jsxElementIn;
 
     }
 
     @Override
-    public Object visitBlockIn(ReactParser.BlockInContext ctx) {
+    public BlockIn visitBlockIn(ReactParser.BlockInContext ctx) {
         BlockIn blockIn = new BlockIn();
-        blockIn.setNode_type("Blockin");
+        blockIn.setNode_type("BlockIn");
         for (int i =0;i<ctx.jsxArguments().size();i++)
             blockIn.getJsxArgumentsList().add((JsxArguments) visitJsxArguments(ctx.jsxArguments(i)));
+        StRow row = new StRow();
+        row.setType(blockIn.getNode_type());
+        row.setValue(blockIn.getNode_type());
+        symbolTable.getRows().add(row);
         return blockIn;
 
     }
 
     @Override
-    public Object visitJsxArguments(ReactParser.JsxArgumentsContext ctx) {
+    public JsxArguments visitJsxArguments(ReactParser.JsxArgumentsContext ctx) {
         JsxArguments jsxArguments = new JsxArguments();;
-        jsxArguments.setNode_type("Jsxarguments");
+        jsxArguments.setNode_type("JsxArguments");
         for (int i =0;i<ctx.jsxParameters().size();i++)
             jsxArguments.getJsxParametersList().add((JsxParameters) visit(ctx.jsxParameters(i)));
+        StRow row = new StRow();
+        row.setType(jsxArguments.getNode_type());
+        row.setValue(jsxArguments   .getNode_type());
+        symbolTable.getRows().add(row);
         return jsxArguments;
     }
 
     @Override
-    public Object visitJsxArrFunction(ReactParser.JsxArrFunctionContext ctx) {
+    public JsxArrowFunction visitJsxArrFunction(ReactParser.JsxArrFunctionContext ctx) {
         if(ctx.jsxArrowFunction()!=null)
             return ((JsxArrowFunction) visitJsxArrowFunction(ctx.jsxArrowFunction()));
         else
@@ -442,7 +527,7 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitJsxCallFunction(ReactParser.JsxCallFunctionContext ctx) {
+    public JsxCallfunction visitLabelJsxCallFunction(ReactParser.LabelJsxCallFunctionContext ctx) {
         if(ctx.jsxCallfunction()!=null)
             return ((JsxCallfunction) visitJsxCallfunction(ctx.jsxCallfunction()));
         else
@@ -450,7 +535,7 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitJsxArg(ReactParser.JsxArgContext ctx) {
+    public JsxArgument visitJsxArg(ReactParser.JsxArgContext ctx) {
         if(ctx.jsxArgument()!=null)
             return ((JsxArgument) visitJsxArgument(ctx.jsxArgument()));
         else
@@ -458,7 +543,7 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitJsxCallId(ReactParser.JsxCallIdContext ctx) {
+    public JsxCallIdentifier visitJsxCallId(ReactParser.JsxCallIdContext ctx) {
         if(ctx.jsxCallIdentifier()!=null)
             return ((JsxCallIdentifier) visitJsxCallIdentifier(ctx.jsxCallIdentifier()));
         else
@@ -466,7 +551,7 @@ public class BaseVisitor implements ReactParserVisitor {
     }
 
     @Override
-    public Object visitJsxExp(ReactParser.JsxExpContext ctx) {
+    public JsxExpression visitJsxExp(ReactParser.JsxExpContext ctx) {
         if(ctx.jsxExpression()!=null)
             return ((JsxExpression) visit(ctx.jsxExpression()));
         else

@@ -1,1 +1,19 @@
-let x;
+import React from 'react';
+
+const ProductCard = ({ product,onProductClick }) => {
+ return (
+   <div className="product" onClick={() => onProductClick(product)}>
+     <div>
+      <h2>{product.name}</h2>
+     </div>
+     <div>
+      <img src={product.image} alt={product.name} />
+     </div>
+     <div>
+      <p>{product.description}</p>
+     </div>
+   </div>
+ );
+};
+
+export default ProductCard;

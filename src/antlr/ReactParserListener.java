@@ -1,4 +1,4 @@
-// Generated from C:/Users/HP/Desktop/react-compiler/src/antlr/ReactParser.g4 by ANTLR 4.13.1
+// Generated from D:/react-compiler/src/antlr/ReactParser.g4 by ANTLR 4.13.1
 package antlr;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -438,17 +438,17 @@ public interface ReactParserListener extends ParseTreeListener {
 	 */
 	void exitJsxArrFunction(ReactParser.JsxArrFunctionContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code jsxCallFunction}
+	 * Enter a parse tree produced by the {@code labelJsxCallFunction}
 	 * labeled alternative in {@link ReactParser#jsxParameters}.
 	 * @param ctx the parse tree
 	 */
-	void enterJsxCallFunction(ReactParser.JsxCallFunctionContext ctx);
+	void enterLabelJsxCallFunction(ReactParser.LabelJsxCallFunctionContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code jsxCallFunction}
+	 * Exit a parse tree produced by the {@code labelJsxCallFunction}
 	 * labeled alternative in {@link ReactParser#jsxParameters}.
 	 * @param ctx the parse tree
 	 */
-	void exitJsxCallFunction(ReactParser.JsxCallFunctionContext ctx);
+	void exitLabelJsxCallFunction(ReactParser.LabelJsxCallFunctionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code jsxArg}
 	 * labeled alternative in {@link ReactParser#jsxParameters}.

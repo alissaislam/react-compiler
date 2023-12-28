@@ -15,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            String source  = "src/tests/test.txt";
+            String source  = "src/test/test.txt";
             CharStream cs = fromFileName(source);
             ReactLexer lexer = new ReactLexer(cs);
             CommonTokenStream token =  new CommonTokenStream((TokenSource) lexer);

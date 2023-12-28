@@ -1,4 +1,4 @@
-// Generated from C:/Users/HP/Desktop/react-compiler/src/antlr/ReactParser.g4 by ANTLR 4.13.1
+// Generated from D:/react-compiler/src/antlr/ReactParser.g4 by ANTLR 4.13.1
 package antlr;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -485,13 +485,13 @@ public class ReactParserBaseListener implements ReactParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterJsxCallFunction(ReactParser.JsxCallFunctionContext ctx) { }
+	@Override public void enterLabelJsxCallFunction(ReactParser.LabelJsxCallFunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitJsxCallFunction(ReactParser.JsxCallFunctionContext ctx) { }
+	@Override public void exitLabelJsxCallFunction(ReactParser.LabelJsxCallFunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
