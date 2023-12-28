@@ -10,7 +10,7 @@ public class JsxElementNonSelfClosing extends Node {
     List<String> strings = new ArrayList<>();
     List<IfShort> ifShorts = new ArrayList<>();
     List<String> letterrs = new ArrayList<>();
-    List<JsxElement> jsxElements = new ArrayList<>();
+    List<JsxElementIn> jsxElementIns = new ArrayList<>();
     List<BlockOfarguments> blockOfarguments = new ArrayList<>();
 
     public String getJsxTag() {
@@ -61,12 +61,12 @@ public class JsxElementNonSelfClosing extends Node {
         this.letterrs = letterrs;
     }
 
-    public List<JsxElement> getJsxElements() {
-        return jsxElements;
+    public List<JsxElementIn> getJsxElementIns() {
+        return jsxElementIns;
     }
 
-    public void setJsxElements(List<JsxElement> jsxElements) {
-        this.jsxElements = jsxElements;
+    public void setJsxElementIns(List<JsxElementIn> jsxElementIns) {
+        this.jsxElementIns = jsxElementIns;
     }
 
     public List<BlockOfarguments> getBlockOfarguments() {

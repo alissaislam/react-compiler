@@ -1,6 +1,6 @@
 package ast.Models;
 
-public class Number extends Data{
+public class Number extends JsxExpression{
     int value;
 
     public int getValue() {

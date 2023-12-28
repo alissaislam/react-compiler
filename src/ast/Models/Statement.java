@@ -1,6 +1,6 @@
 package ast.Models;
 
-public class Statement {
+public class Statement extends Node {
     StatementElement statementElement;
 
     public StatementElement getStatementElement() {

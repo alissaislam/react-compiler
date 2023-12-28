@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Import extends Node{
     List<Id> ids = new ArrayList<>();
-    Stringg stringg;
+    String string;
 
     public List<Id> getIds() {
         return ids;
@@ -15,11 +15,11 @@ public class Import extends Node{
         this.ids = ids;
     }
 
-    public Stringg getStringg() {
-        return stringg;
+    public String getString() {
+        return string;
     }
 
-    public void setStringg(Stringg stringg) {
-        this.stringg = stringg;
+    public void setString(String string) {
+        this.string = string;
     }
 }

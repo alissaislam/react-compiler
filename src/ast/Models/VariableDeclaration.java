@@ -4,7 +4,7 @@ public class VariableDeclaration extends Node{
      Kind kind;
      Id id;
      Array array;
-     Exception exception;
+     Expression expression;
      CallIdentifier callIdentifier;
      CallFunction callFunction;
      ArrowFunction arrowFunction;
@@ -33,12 +33,12 @@ public class VariableDeclaration extends Node{
         this.array = array;
     }
 
-    public Exception getException() {
-        return exception;
+    public Expression getExpression() {
+        return expression;
     }
 
-    public void setException(Exception exception) {
-        this.exception = exception;
+    public void setExpression(Expression expression) {
+        this.expression = expression;
     }
 
     public CallIdentifier getCallIdentifier() {
