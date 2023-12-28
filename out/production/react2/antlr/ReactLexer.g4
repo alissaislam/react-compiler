@@ -2,7 +2,6 @@ lexer grammar ReactLexer;
 
 DoubleQuote :'"';
 SingleQuote :'\'';
-Semicolon : ';';
 
 //Identifier: [a-zA-Z_][a-zA-Z0-9_]*;
 
@@ -35,6 +34,7 @@ In         : 'in';
 Try        : 'try';
 As         : 'as';
 From       : 'from';
+//Foreach    : 'foreach';
 
 /// Future Reserved Words
 
@@ -49,6 +49,9 @@ Import  : 'import';
 Async : 'async';
 Await : 'await';
 
+
+
+IgSemiColon                : ';;' -> skip ;
 OpenBracket                : '[';
 CloseBracket               : ']';
 OpenParen                  : '(';
@@ -58,10 +61,10 @@ CloseBrace                 : '}';
 SemiColon                  : ';';
 Comma                      : ',';
 Assign                     : '=';
-QuestionMark               : '?';
-Colon                      : ':';
+QuestionMark               : '?' |QuestionMarkModeCall;
+Colon                      : ':' | ColonModeCall;
 Ellipsis                   : '...';
-Dot                        : '.';
+Dot                        : Dott | DotModeCall;
 PlusPlus                   : '++';
 MinusMinus                 : '--';
 Plus                       : '+';
@@ -78,7 +81,7 @@ RightShiftArithmetic       : '>>';
 LeftShiftArithmetic        : '<<';
 RightShiftLogical          : '>>>';
 LessThan                   : '<';
-MoreThan                   : '>';
+MoreThan                   : '>'|MoreThanModeCall ;
 LessThanEquals             : '<=';
 GreaterThanEquals          : '>=';
 Equals_                    : '==';
@@ -104,6 +107,7 @@ BitOrAssign                : '|=';
 PowerAssign                : '**=';
 ARROW                      : '=>';
 
+
 /// Null Literals
 
 NullLiteral: 'null';
@@ -125,27 +129,104 @@ Protected    : 'protected' ;
 Static       : 'static'    ;
 Yield        : 'yield'     ;
 
+JSX_TAG: LessThan WS* IDENTIFIER  -> pushMode(INSIDE_TAG);
+
 //ws
-WS: [\t]+ ->channel(HIDDEN);
-NEWLINE: [\n\r' ']+ ->skip;
+WS: [ \t\n\r]+ ->skip;
+NEWLINE: [\n\r ]+ ->skip;
 
 //comment
 SINGLE_LINE_COMMENT : '//' ~[\r\n]* -> skip ;
 MULTI_LINE_COMMENT : '/*'. *? '*/'  -> skip ;
+
+
 
 NUMBER : DIGIT+ ( '.' DIGIT+ )?;
 //string
 String : StringDQ | StringSQ ;
 StringDQ : '"' StringContentDQ*? '"' ;
 
-
 //Id
-IDENTIFIER : IDENTIFIER_START IDENTIFIER_PART* ;
+IDENTIFIER : IDENTIFIER_START IDENTIFIER_PART* |Id ;
 
-fragment StringSQ : '\'' StringContentSQ*? '\'' ;
+mode INSIDE_TAG;
+CLOSE_TAG:  '</' WS_INSIDE* IDENTIFIERIn WS_INSIDE* ->popMode;
+Self_CLOSE_TAG: '/>'->popMode;
+//Attribute : IDENTIFIER WS_INSIDE* Assign;
+MoreThanIn                   : '>' ->pushMode(L);
+LessThanIn                   : '<';
+JSX_TAGIn: JSX_TAG -> pushMode(INSIDE_TAG);
+WS_INSIDE: WS+ -> skip;
+NewIn:NEWLINE -> skip;
+StringIn :String;
+CloseBraceIn:CloseBrace;
+OpenBraceIn:OpenBrace;
+IDENTIFIERIn:IDENTIFIER;
+AssignIn:Assign;
+CommaIn:Comma;
+OpenParenIn:OpenParen;
+CloseParenIn:CloseParen;
+ARROWIn:ARROW;
+DotIn:Dott;
+MultiplyIn:Multiply;
+DivideIn:Divide;
+PlusIn:Plus;
+MinusIn:Minus;
+NUMBERIn:NUMBER;
+BooleanLiteralIn:BooleanLiteral;
+
+mode L;
+CLOSE_TAGIn                   :'</' WS_INSIDE* IDENTIFIERIn WS_INSIDE*-> popMode ,popMode;
+MoreThanInIn: '>';
+JSX_TAGInIn: JSX_TAG -> pushMode(INSIDE_TAG);
+WS_INSIDEIN: WS+ -> skip;
+NewInIN:NEWLINE -> skip;
+OpenBraceInIn:OpenBrace -> pushMode(CallId);
+LETTERR: ~[><{}]+;
+
+mode CallId;
+Id:IDENTIFIER_START IDENTIFIER_PART*;
+JSX_TAGModeCall: JSX_TAG -> pushMode(INSIDE_TAG);
+CloseBraceCall:CloseBrace -> popMode;
+NullLiteralModeCall:NullLiteral;
+StringModeCall :String;
+CloseBraceModeCall:CloseBrace;
+OpenBraceModeCall:OpenBrace;
+AssignModeCall:Assign;
+CommaModeCall:Comma;
+OpenParenModeCall:OpenParen;
+CloseParenModeCall:CloseParen;
+ARROWModeCall:ARROW;
+DotModeCall:Dott;
+MultiplyModeCall:Multiply;
+DivideModeCall:Divide;
+PlusModeCall:Plus;
+MinusModeCall:Minus;
+NUMBERModeCall:NUMBER;
+BooleanLiteralModeCall:BooleanLiteral;
+MoreThanModeCall                   : '>' ;
+LessThanModeCall                   : '<';
+QuestionMarkModeCall:'?';
+ColonModeCall: ':';
+ReturnModeCall:Return;
+Equals_ModeCall                    : '==';
+IdentityNotEqualsModeCall:IdentityNotEquals;
+IdentityEqualsModeCall:IdentityEquals;
+NotEqualsModeCall:NotEquals;
+LessThanEqualsModeCall:LessThanEquals;
+GreaterThanEqualsModeCall:GreaterThanEquals;
+IgSemiColonModeCall:IgSemiColon ->skip;
+SemiColonModeCall:SemiColon;
+WS_INSIDECall: WS+ -> skip;
+NewInCall:NEWLINE -> skip;
+
+
+
+fragment Dott :'.';
+fragment StringSQ : ['] StringContentSQ*? ['] ;
 fragment DIGIT : '0' .. '9' ;
 fragment StringContentDQ : ~('\\' | '"' | '\n' | '\r' | '$') | '\\' ~('\n' | '\r') | StringDQ | '${' StringContentDQ*? '}';
-fragment StringContentSQ : ~('\\' | '\'' | '\n' | '\r' | '$') | '\\' ~('\n' | '\r') | StringSQ | '${' StringContentSQ*? '}'  ;
+fragment StringContentSQ : ~('\\' | ['] | '\n' | '\r' | '$') | '\\' ~('\n' | '\r') | StringSQ | '${' StringContentSQ*? '}'  ;
 fragment IDENTIFIER_NO_DOLLAR : (LETTER | '_') IDENTIFIER_PART_NO_DOLLAR* ;
 fragment IDENTIFIER_PART_NO_DOLLAR : LETTER | '_' | DIGIT ;
 fragment IDENTIFIER_START : LETTER | '_' | '$' ;

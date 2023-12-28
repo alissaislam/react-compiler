@@ -1,13 +1,13 @@
 package ast.Models;
 
 public class Bool extends Data{
-    boolean bool;
+    String bool;
 
-    public boolean isBool() {
+    public String isBool() {
         return bool;
     }
 
-    public void setBool(boolean bool) {
+    public void setBool(String bool) {
         this.bool = bool;
     }
 }

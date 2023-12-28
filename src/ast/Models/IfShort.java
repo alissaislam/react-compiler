@@ -5,7 +5,7 @@ import java.util.List;
 public class IfShort extends Node{
     List<CallIdentifier> callIdentifiers;
     List<Operation> operations;
-    List<Expression> expressions;
+    List<Expressions> expressions;
     List<Statement> statements;
     List<JsxElement> jsxElements;
 
@@ -25,11 +25,11 @@ public class IfShort extends Node{
         this.operations = operations;
     }
 
-    public List<Expression> getExpressions() {
+    public List<Expressions> getExpressions() {
         return expressions;
     }
 
-    public void setExpressions(List<Expression> expressions) {
+    public void setExpressions(List<Expressions> expressions) {
         this.expressions = expressions;
     }
 

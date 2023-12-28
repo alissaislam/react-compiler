@@ -23,7 +23,7 @@ options{tokenVocab=ReactLexer;}
                                         | jsxElement
                                         | expression
                                         | arrowFunction
-                                        ;
+                                  ;
     if : If OpenParen  conditions CloseParen  ( block | statment ) else_if* else? ;
     forElement :  For OpenParen forLoopParts CloseParen ( block | statment );
     function :Function_? IDENTIFIER OpenParen arguments? CloseParen OpenBrace   (statment|returnstatment )*  CloseBrace;
@@ -119,6 +119,7 @@ options{tokenVocab=ReactLexer;}
 
     argument : (callIdentifier (assign (expression|arrowFunction))?);
     ////////////////rana part
+//
     parameters :
                  arrowFunction  #label_ArrowFunction
                | callIdentifier  #label_CallIdentifier
@@ -130,8 +131,8 @@ options{tokenVocab=ReactLexer;}
                | blockOfarguments  #label_BlockOfarguments
                ;
 
-
-    callIdentifier: id ((Dot|DotModeCall)  )*;
+//
+    callIdentifier: id ((Dot|DotModeCall)id )*;
     expression:  openParen expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression closeParen #label_normalExpression
                | openParen expression( (Plus|PlusModeCall) | (Minus|MinusModeCall)) expression closeParen #label_normalExpression
                | expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression #label_normalExpression
@@ -139,8 +140,9 @@ options{tokenVocab=ReactLexer;}
                | callIdentifier (PlusPlus|MinusMinus) #shortExpression
                | data #label_dataExpression
                ;
+ //
     export:Export Default callIdentifier SemiColon* IgSemiColon *;
-
+//
     data :
           array #label_Array
         | (NUMBER|NUMBERModeCall) #label_Number
@@ -149,15 +151,19 @@ options{tokenVocab=ReactLexer;}
         | map #label_Map
         |(BooleanLiteral|BooleanLiteralModeCall) #label_Bool
         ;
-
-         array : OpenBracket suquence? CloseBracket  ;
+//
+    array : OpenBracket suquence? CloseBracket  ;
+    //
     map :OpenBrace (mapElementList)* CloseBrace ;
+    //
     mapElementList: mapElement (Comma mapElement)*;
+    //
     mapElement:IDENTIFIER Colon ( callfunction | callIdentifier | expression );
 
 
-
+//
     suquence : data(Comma data )* ;
+
     kind:    Const
            | Let
            | Var;
@@ -178,7 +184,7 @@ options{tokenVocab=ReactLexer;}
                    | IdentityNotEquals
                    | IdentityNotEqualsModeCall
                    ;
-                   
+     //
     id:IDENTIFIER|Id;
     openParen:OpenParen|OpenParenModeCall;
     closeParen:CloseParen|CloseParenModeCall;

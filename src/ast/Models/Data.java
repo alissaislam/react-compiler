@@ -1,4 +1,4 @@
 package ast.Models;
 
-abstract class Data extends Node {
+public  class Data extends Node {
 }

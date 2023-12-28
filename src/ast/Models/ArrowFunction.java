@@ -8,7 +8,7 @@ public class ArrowFunction extends  Parameters{
     String async;
     Arguments arguments;
     Id id;
-    Expression experssion;
+    Expressions experssion;
     List<Statement> statementList=new ArrayList<> ();
     Returnstatment returnstatment;
     JsxElement jsxElement;
@@ -37,11 +37,11 @@ public class ArrowFunction extends  Parameters{
         this.id = id;
     }
 
-    public Expression getExperssion() {
+    public Expressions getExperssion() {
         return experssion;
     }
 
-    public void setExperssion(Expression experssion) {
+    public void setExperssion(Expressions experssion) {
         this.experssion = experssion;
     }
 

@@ -226,7 +226,7 @@ fragment Dott :'.';
 fragment StringSQ : ['] StringContentSQ*? ['] ;
 fragment DIGIT : '0' .. '9' ;
 fragment StringContentDQ : ~('\\' | '"' | '\n' | '\r' | '$') | '\\' ~('\n' | '\r') | StringDQ | '${' StringContentDQ*? '}';
-fragment StringContentSQ : ~('\\' | ['] | '\n' | '\r' | '$') | '\\' ~('\n' | '\r') | StringSQ | '${' StringContentSQ*? '}' | '$' { CheckNotOpenBrace() }?  ;
+fragment StringContentSQ : ~('\\' | ['] | '\n' | '\r' | '$') | '\\' ~('\n' | '\r') | StringSQ | '${' StringContentSQ*? '}'  ;
 fragment IDENTIFIER_NO_DOLLAR : (LETTER | '_') IDENTIFIER_PART_NO_DOLLAR* ;
 fragment IDENTIFIER_PART_NO_DOLLAR : LETTER | '_' | DIGIT ;
 fragment IDENTIFIER_START : LETTER | '_' | '$' ;

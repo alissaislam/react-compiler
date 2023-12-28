@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Switch extends Node{
-    List<Expression> expressions = new ArrayList<>();
+    List<Expressions> expressions = new ArrayList<>();
     List<Block> blocks = new ArrayList<>();
     List<Statement> statements = new ArrayList<>();
 
-    public List<Expression> getExpressions() {
+    public List<Expressions> getExpressions() {
         return expressions;
     }
 
-    public void setExpressions(List<Expression> expressions) {
+    public void setExpressions(List<Expressions> expressions) {
         this.expressions = expressions;
     }
 

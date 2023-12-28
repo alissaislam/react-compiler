@@ -2,14 +2,14 @@ package ast.Models;
 
 public class Returnstatment extends Node{
 
-    Expression experssion;
+    Expressions experssion;
     JsxBlock jsxBlock;
 
-    public Expression getExperssion() {
+    public Expressions getExperssion() {
         return experssion;
     }
 
-    public void setExperssion(Expression experssion) {
+    public void setExperssion(Expressions experssion) {
         this.experssion = experssion;
     }
 

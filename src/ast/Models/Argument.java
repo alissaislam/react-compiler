@@ -3,7 +3,7 @@ package ast.Models;
 public class Argument extends Parameters{
 
     CallIdentifier callIdentifier;
-    Expression experssion;
+    Expressions experssion;
     ArrowFunction arrowFunction;
 
     public CallIdentifier getCallIdentifier() {
@@ -14,11 +14,11 @@ public class Argument extends Parameters{
         this.callIdentifier = callIdentifier;
     }
 
-    public Expression getExperssion() {
+    public Expressions getExperssion() {
         return experssion;
     }
 
-    public void setExperssion(Expression experssion) {
+    public void setExperssion(Expressions experssion) {
         this.experssion = experssion;
     }
 
