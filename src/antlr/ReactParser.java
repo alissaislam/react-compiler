@@ -1,4 +1,4 @@
-// Generated from D:/react-compiler/src/antlr/ReactParser.g4 by ANTLR 4.13.1
+// Generated from D:/ReactCompiler/react-compiler/src/antlr/ReactParser.g4 by ANTLR 4.13.1
 package antlr;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -352,393 +352,78 @@ public class ReactParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class StatmentElementContext extends ParserRuleContext {
+		public VariableDeclarationListContext variableDeclarationList() {
+			return getRuleContext(VariableDeclarationListContext.class,0);
+		}
+		public IfContext if_() {
+			return getRuleContext(IfContext.class,0);
+		}
+		public ForElementContext forElement() {
+			return getRuleContext(ForElementContext.class,0);
+		}
+		public FunctionContext function() {
+			return getRuleContext(FunctionContext.class,0);
+		}
+		public CommentsContext comments() {
+			return getRuleContext(CommentsContext.class,0);
+		}
+		public WhileContext while_() {
+			return getRuleContext(WhileContext.class,0);
+		}
+		public Do_whileContext do_while() {
+			return getRuleContext(Do_whileContext.class,0);
+		}
+		public CallfunctionContext callfunction() {
+			return getRuleContext(CallfunctionContext.class,0);
+		}
+		public SwitchContext switch_() {
+			return getRuleContext(SwitchContext.class,0);
+		}
+		public BlockContext block() {
+			return getRuleContext(BlockContext.class,0);
+		}
+		public BreakContext break_() {
+			return getRuleContext(BreakContext.class,0);
+		}
+		public TryCatchContext tryCatch() {
+			return getRuleContext(TryCatchContext.class,0);
+		}
+		public ImporttContext importt() {
+			return getRuleContext(ImporttContext.class,0);
+		}
+		public IfShortContext ifShort() {
+			return getRuleContext(IfShortContext.class,0);
+		}
+		public SuquenceContext suquence() {
+			return getRuleContext(SuquenceContext.class,0);
+		}
+		public ExportContext export() {
+			return getRuleContext(ExportContext.class,0);
+		}
+		public JsxElementContext jsxElement() {
+			return getRuleContext(JsxElementContext.class,0);
+		}
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
+		}
+		public ArrowFunctionContext arrowFunction() {
+			return getRuleContext(ArrowFunctionContext.class,0);
+		}
 		public StatmentElementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_statmentElement; }
-	 
-		public StatmentElementContext() { }
-		public void copyFrom(StatmentElementContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class LabelforElementContext extends StatmentElementContext {
-		public ForElementContext forElement() {
-			return getRuleContext(ForElementContext.class,0);
-		}
-		public LabelforElementContext(StatmentElementContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelforElement(this);
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterStatmentElement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelforElement(this);
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitStatmentElement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelforElement(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class LabelCommentsContext extends StatmentElementContext {
-		public CommentsContext comments() {
-			return getRuleContext(CommentsContext.class,0);
-		}
-		public LabelCommentsContext(StatmentElementContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelComments(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelComments(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelComments(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class LabelWhileContext extends StatmentElementContext {
-		public WhileContext while_() {
-			return getRuleContext(WhileContext.class,0);
-		}
-		public LabelWhileContext(StatmentElementContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelWhile(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelWhile(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelWhile(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class LabelImportContext extends StatmentElementContext {
-		public ImporttContext importt() {
-			return getRuleContext(ImporttContext.class,0);
-		}
-		public LabelImportContext(StatmentElementContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelImport(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelImport(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelImport(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class LabelIfShortContext extends StatmentElementContext {
-		public IfShortContext ifShort() {
-			return getRuleContext(IfShortContext.class,0);
-		}
-		public LabelIfShortContext(StatmentElementContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelIfShort(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelIfShort(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelIfShort(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class LabelArrowFunctionContext extends StatmentElementContext {
-		public ArrowFunctionContext arrowFunction() {
-			return getRuleContext(ArrowFunctionContext.class,0);
-		}
-		public LabelArrowFunctionContext(StatmentElementContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelArrowFunction(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelArrowFunction(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelArrowFunction(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class LabelTryCatchContext extends StatmentElementContext {
-		public TryCatchContext tryCatch() {
-			return getRuleContext(TryCatchContext.class,0);
-		}
-		public LabelTryCatchContext(StatmentElementContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelTryCatch(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelTryCatch(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelTryCatch(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class LabelFunctionContext extends StatmentElementContext {
-		public FunctionContext function() {
-			return getRuleContext(FunctionContext.class,0);
-		}
-		public LabelFunctionContext(StatmentElementContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelFunction(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelFunction(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelFunction(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class LabelifContext extends StatmentElementContext {
-		public IfContext if_() {
-			return getRuleContext(IfContext.class,0);
-		}
-		public LabelifContext(StatmentElementContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelif(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelif(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelif(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class LabelBlockContext extends StatmentElementContext {
-		public BlockContext block() {
-			return getRuleContext(BlockContext.class,0);
-		}
-		public LabelBlockContext(StatmentElementContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelBlock(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelBlock(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelBlock(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class LabelExpressionContext extends StatmentElementContext {
-		public ExpressionContext expression() {
-			return getRuleContext(ExpressionContext.class,0);
-		}
-		public LabelExpressionContext(StatmentElementContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelExpression(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelExpression(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelExpression(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class LabelExportContext extends StatmentElementContext {
-		public ExportContext export() {
-			return getRuleContext(ExportContext.class,0);
-		}
-		public LabelExportContext(StatmentElementContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelExport(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelExport(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelExport(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class LabelDoWhileContext extends StatmentElementContext {
-		public Do_whileContext do_while() {
-			return getRuleContext(Do_whileContext.class,0);
-		}
-		public LabelDoWhileContext(StatmentElementContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelDoWhile(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelDoWhile(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelDoWhile(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class LabelSwitchContext extends StatmentElementContext {
-		public SwitchContext switch_() {
-			return getRuleContext(SwitchContext.class,0);
-		}
-		public LabelSwitchContext(StatmentElementContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelSwitch(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelSwitch(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelSwitch(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class LabelSequenceContext extends StatmentElementContext {
-		public SuquenceContext suquence() {
-			return getRuleContext(SuquenceContext.class,0);
-		}
-		public LabelSequenceContext(StatmentElementContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelSequence(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelSequence(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelSequence(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class LabelJsxElementContext extends StatmentElementContext {
-		public JsxElementContext jsxElement() {
-			return getRuleContext(JsxElementContext.class,0);
-		}
-		public LabelJsxElementContext(StatmentElementContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelJsxElement(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelJsxElement(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelJsxElement(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class LabelCallFunctionContext extends StatmentElementContext {
-		public CallfunctionContext callfunction() {
-			return getRuleContext(CallfunctionContext.class,0);
-		}
-		public LabelCallFunctionContext(StatmentElementContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelCallFunction(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelCallFunction(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelCallFunction(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class LabelvarDecListContext extends StatmentElementContext {
-		public VariableDeclarationListContext variableDeclarationList() {
-			return getRuleContext(VariableDeclarationListContext.class,0);
-		}
-		public LabelvarDecListContext(StatmentElementContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelvarDecList(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelvarDecList(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelvarDecList(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class LabelBreakContext extends StatmentElementContext {
-		public BreakContext break_() {
-			return getRuleContext(BreakContext.class,0);
-		}
-		public LabelBreakContext(StatmentElementContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelBreak(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelBreak(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelBreak(this);
+			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitStatmentElement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -751,7 +436,6 @@ public class ReactParser extends Parser {
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 			case 1:
-				_localctx = new LabelvarDecListContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(143);
@@ -759,7 +443,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 2:
-				_localctx = new LabelifContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(144);
@@ -767,7 +450,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 3:
-				_localctx = new LabelforElementContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(145);
@@ -775,7 +457,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 4:
-				_localctx = new LabelFunctionContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(146);
@@ -783,7 +464,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 5:
-				_localctx = new LabelCommentsContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(147);
@@ -791,7 +471,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 6:
-				_localctx = new LabelWhileContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
 				setState(148);
@@ -799,7 +478,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 7:
-				_localctx = new LabelDoWhileContext(_localctx);
 				enterOuterAlt(_localctx, 7);
 				{
 				setState(149);
@@ -807,7 +485,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 8:
-				_localctx = new LabelCallFunctionContext(_localctx);
 				enterOuterAlt(_localctx, 8);
 				{
 				setState(150);
@@ -815,7 +492,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 9:
-				_localctx = new LabelSwitchContext(_localctx);
 				enterOuterAlt(_localctx, 9);
 				{
 				setState(151);
@@ -823,7 +499,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 10:
-				_localctx = new LabelBlockContext(_localctx);
 				enterOuterAlt(_localctx, 10);
 				{
 				setState(152);
@@ -831,7 +506,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 11:
-				_localctx = new LabelBreakContext(_localctx);
 				enterOuterAlt(_localctx, 11);
 				{
 				setState(153);
@@ -839,7 +513,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 12:
-				_localctx = new LabelTryCatchContext(_localctx);
 				enterOuterAlt(_localctx, 12);
 				{
 				setState(154);
@@ -847,7 +520,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 13:
-				_localctx = new LabelImportContext(_localctx);
 				enterOuterAlt(_localctx, 13);
 				{
 				setState(155);
@@ -855,7 +527,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 14:
-				_localctx = new LabelIfShortContext(_localctx);
 				enterOuterAlt(_localctx, 14);
 				{
 				setState(156);
@@ -863,7 +534,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 15:
-				_localctx = new LabelSequenceContext(_localctx);
 				enterOuterAlt(_localctx, 15);
 				{
 				setState(157);
@@ -871,7 +541,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 16:
-				_localctx = new LabelExportContext(_localctx);
 				enterOuterAlt(_localctx, 16);
 				{
 				setState(158);
@@ -879,7 +548,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 17:
-				_localctx = new LabelJsxElementContext(_localctx);
 				enterOuterAlt(_localctx, 17);
 				{
 				setState(159);
@@ -887,7 +555,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 18:
-				_localctx = new LabelExpressionContext(_localctx);
 				enterOuterAlt(_localctx, 18);
 				{
 				setState(160);
@@ -895,7 +562,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 19:
-				_localctx = new LabelArrowFunctionContext(_localctx);
 				enterOuterAlt(_localctx, 19);
 				{
 				setState(161);
@@ -2947,113 +2613,36 @@ public class ReactParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class JsxParametersContext extends ParserRuleContext {
+		public JsxArrowFunctionContext jsxArrowFunction() {
+			return getRuleContext(JsxArrowFunctionContext.class,0);
+		}
+		public JsxCallfunctionContext jsxCallfunction() {
+			return getRuleContext(JsxCallfunctionContext.class,0);
+		}
+		public JsxArgumentContext jsxArgument() {
+			return getRuleContext(JsxArgumentContext.class,0);
+		}
+		public JsxCallIdentifierContext jsxCallIdentifier() {
+			return getRuleContext(JsxCallIdentifierContext.class,0);
+		}
+		public JsxExpressionContext jsxExpression() {
+			return getRuleContext(JsxExpressionContext.class,0);
+		}
 		public JsxParametersContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_jsxParameters; }
-	 
-		public JsxParametersContext() { }
-		public void copyFrom(JsxParametersContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class JsxExpContext extends JsxParametersContext {
-		public JsxExpressionContext jsxExpression() {
-			return getRuleContext(JsxExpressionContext.class,0);
-		}
-		public JsxExpContext(JsxParametersContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterJsxExp(this);
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterJsxParameters(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitJsxExp(this);
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitJsxParameters(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitJsxExp(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class JsxArrFunctionContext extends JsxParametersContext {
-		public JsxArrowFunctionContext jsxArrowFunction() {
-			return getRuleContext(JsxArrowFunctionContext.class,0);
-		}
-		public JsxArrFunctionContext(JsxParametersContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterJsxArrFunction(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitJsxArrFunction(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitJsxArrFunction(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class JsxArgContext extends JsxParametersContext {
-		public JsxArgumentContext jsxArgument() {
-			return getRuleContext(JsxArgumentContext.class,0);
-		}
-		public JsxArgContext(JsxParametersContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterJsxArg(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitJsxArg(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitJsxArg(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class LabelJsxCallFunctionContext extends JsxParametersContext {
-		public JsxCallfunctionContext jsxCallfunction() {
-			return getRuleContext(JsxCallfunctionContext.class,0);
-		}
-		public LabelJsxCallFunctionContext(JsxParametersContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabelJsxCallFunction(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabelJsxCallFunction(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabelJsxCallFunction(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class JsxCallIdContext extends JsxParametersContext {
-		public JsxCallIdentifierContext jsxCallIdentifier() {
-			return getRuleContext(JsxCallIdentifierContext.class,0);
-		}
-		public JsxCallIdContext(JsxParametersContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterJsxCallId(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitJsxCallId(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitJsxCallId(this);
+			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitJsxParameters(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3066,7 +2655,6 @@ public class ReactParser extends Parser {
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,51,_ctx) ) {
 			case 1:
-				_localctx = new JsxArrFunctionContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(458);
@@ -3074,7 +2662,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 2:
-				_localctx = new LabelJsxCallFunctionContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(459);
@@ -3082,7 +2669,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 3:
-				_localctx = new JsxArgContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(460);
@@ -3090,7 +2676,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 4:
-				_localctx = new JsxCallIdContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(461);
@@ -3098,7 +2683,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 5:
-				_localctx = new JsxExpContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(462);

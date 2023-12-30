@@ -1,7 +1,8 @@
 package ast.Models;
 
 public class StatementElement extends Node{
-    If ifElement ;
+    VariableDeclarationList variableDeclarationList;
+    If ifElement;
     For forElement;
     Function functionElement;
     Comment comment;
@@ -17,7 +18,32 @@ public class StatementElement extends Node{
     Sequence sequence ;
     Export exportElement ;
     JsxElement jsxElement;
-//    Expression expression;
+    Expression expression;
+    ArrowFunction arrowFunction;
+
+    public ArrowFunction getArrowFunction() {
+        return arrowFunction;
+    }
+
+    public void setArrowFunction(ArrowFunction arrowFunction) {
+        this.arrowFunction = arrowFunction;
+    }
+
+    public Expression getExpression() {
+        return expression;
+    }
+
+    public void setExpression(Expression expression) {
+        this.expression = expression;
+    }
+
+    public VariableDeclarationList getVariableDeclarationList() {
+        return variableDeclarationList;
+    }
+
+    public void setVariableDeclarationList(VariableDeclarationList variableDeclarationList) {
+        this.variableDeclarationList = variableDeclarationList;
+    }
 
     public If getIfElement() {
         return ifElement;

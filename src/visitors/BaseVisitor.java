@@ -29,6 +29,7 @@ public class BaseVisitor extends ReactParserBaseVisitor {
         if (ctx.statment()!=null){
             for (int i=0;i<ctx.statment().size();i++){
                 start.getStatement_list().add((Statement) visitStatment(ctx.statment(i)));
+                start.getChild().add(start.getStatement_list().get(i));
             }
         }
         //start.setChild (start.getStatement_list ());
@@ -53,177 +54,299 @@ public class BaseVisitor extends ReactParserBaseVisitor {
         symbolTable.getRows().add(stRow);
         return statement;
     }
+//
+//    @Override
+//    public VariableDeclarationList visitLabelvarDecList(ReactParser.LabelvarDecListContext ctx) {
+//        if (ctx.variableDeclarationList()!=null)
+//            return ((VariableDeclarationList) visitVariableDeclarationList(ctx.variableDeclarationList()));
+//
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public If visitLabelif(ReactParser.LabelifContext ctx) {
+//        if (ctx.if_()!=null)
+//            return ((If) visitIf(ctx.if_()));
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public For visitLabelforElement(ReactParser.LabelforElementContext ctx) {
+//        if (ctx.forElement()!=null)
+//            return ((For) visitForElement(ctx.forElement()));
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public Function visitLabelFunction(ReactParser.LabelFunctionContext ctx) {
+//        if (ctx.function()!=null)
+//            return ((Function) visitFunction(ctx.function()));
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public Comment visitLabelComments(ReactParser.LabelCommentsContext ctx) {
+//        if (ctx.comments()!=null)
+//            return ((Comment) visitComments(ctx.comments()));
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public While visitLabelWhile(ReactParser.LabelWhileContext ctx) {
+//        if (ctx.while_()!=null)
+//            return ((While) visitWhile(ctx.while_()));
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public DoWhile visitLabelDoWhile(ReactParser.LabelDoWhileContext ctx) {
+//        if (ctx.do_while()!=null)
+//            return ((DoWhile) visitDo_while(ctx.do_while()));
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public CallFunction visitLabelCallFunction(ReactParser.LabelCallFunctionContext ctx) {
+//        if (ctx.callfunction()!=null)
+//            return ((CallFunction) visitCallfunction(ctx.callfunction()));
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public Switch visitLabelSwitch(ReactParser.LabelSwitchContext ctx) {
+//        if (ctx.switch_()!=null)
+//            return ((Switch) visitSwitch(ctx.switch_()));
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public Block visitLabelBlock(ReactParser.LabelBlockContext ctx) {
+//        if (ctx.block()!=null)
+//            return ((Block) visitBlock(ctx.block()));
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public Break visitLabelBreak(ReactParser.LabelBreakContext ctx) {
+//        if (ctx.break_()!=null)
+//            return ((Break) visitBreak(ctx.break_()));
+//        else
+//            return null;    }
+//
+//    @Override
+//    public TryCatch visitLabelTryCatch(ReactParser.LabelTryCatchContext ctx) {
+//        if (ctx.tryCatch()!=null)
+//            return ((TryCatch) visitTryCatch(ctx.tryCatch()));
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public Import visitLabelImport(ReactParser.LabelImportContext ctx) {
+//        if (ctx.importt()!=null)
+//            return ((Import) visitImportt(ctx.importt()));
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public IfShort visitLabelIfShort(ReactParser.LabelIfShortContext ctx) {
+//        if (ctx.ifShort()!=null)
+//            return ((IfShort) visitIfShort(ctx.ifShort()));
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public Sequence visitLabelSequence(ReactParser.LabelSequenceContext ctx) {
+//        if (ctx.suquence()!=null)
+//            return ((Sequence) visitSuquence(ctx.suquence()));
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public Export visitLabelExport(ReactParser.LabelExportContext ctx) {
+//        if (ctx.export()!=null)
+//            return ((Export) visitExport(ctx.export()));
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public JsxElement visitLabelJsxElement(ReactParser.LabelJsxElementContext ctx) {
+//        if (ctx.jsxElement()!=null)
+//            return ((JsxElement) visitJsxElement(ctx.jsxElement()));
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public Expression visitLabelExpression(ReactParser.LabelExpressionContext ctx) {
+//        if (ctx.expression()!=null)
+//            return ((Expression) visit(ctx.expression()));
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public ArrowFunction visitLabelArrowFunction(ReactParser.LabelArrowFunctionContext ctx) {
+//        if (ctx.arrowFunction()!=null)
+//            return ((ArrowFunction) visitArrowFunction(ctx.arrowFunction()));
+//        else
+//            return null;
+//    }
+
+//    @Override
+//    public Object visitStatmentElement(ReactParser.StatmentElementContext ctx) {
+//
+//    }
 
     @Override
-    public VariableDeclarationList visitLabelvarDecList(ReactParser.LabelvarDecListContext ctx) {
-        if (ctx.variableDeclarationList()!=null)
-            return ((VariableDeclarationList) visitVariableDeclarationList(ctx.variableDeclarationList()));
-
-        else
-            return null;
+    public StatementElement visitStatmentElement(ReactParser.StatmentElementContext ctx) {
+        StatementElement statementElement = new StatementElement();
+        statementElement.setNode_type("StatementElement");
+        if (ctx.variableDeclarationList()!=null) {
+            statementElement.setVariableDeclarationList((VariableDeclarationList) visitVariableDeclarationList(ctx.variableDeclarationList()));
+            statementElement.getChild().add(statementElement.getVariableDeclarationList());
+        }
+        else if (ctx.if_()!=null) {
+            statementElement.setForelement((For) visitForElement(ctx.forElement()));
+            statementElement.getChild().add(statementElement.getForelement());
+        }
+        else if (ctx.function()!=null) {
+            statementElement.setFunctionElement((Function) visitFunction(ctx.function()));
+            statementElement.getChild().add(statementElement.getFunctionElement());
+        }
+        else if (ctx.comments()!=null) {
+            statementElement.setComment((Comment) visitComments(ctx.comments()));
+            statementElement.getChild().add(statementElement.getComment());
+        }
+        else if (ctx.while_()!=null) {
+            statementElement.setWhileElement((While) visitWhile(ctx.while_()));
+            statementElement.getChild().add(statementElement.getWhileElement());
+        }
+        else if (ctx.do_while()!=null) {
+            statementElement.setDoWhileElement((DoWhile) visitDo_while(ctx.do_while()));
+            statementElement.getChild().add(statementElement.getDoWhileElement());
+        }
+        else if (ctx.callfunction()!=null) {
+            statementElement.setCallFunction((CallFunction) visitCallfunction(ctx.callfunction()));
+            statementElement.getChild().add(statementElement.getCallFunction());
+        }
+        else if (ctx.switch_()!=null) {
+            statementElement.setSwitchElement((Switch) visitSwitch(ctx.switch_()));
+            statementElement.getChild().add(statementElement.getSwitchElement());
+        }
+        else if (ctx.block()!=null) {
+            statementElement.setBlock((Block) visitBlock(ctx.block()));
+            statementElement.getChild().add(statementElement.getBlock());
+        }
+        else if (ctx.break_()!=null) {
+            statementElement.setBreakElement((Break) visitBreak(ctx.break_()));
+            statementElement.getChild().add(statementElement.getBreakElement());
+        }
+        else if (ctx.tryCatch()!=null) {
+            statementElement.setTryCatch((TryCatch) visitTryCatch(ctx.tryCatch()));
+            statementElement.getChild().add(statementElement.getTryCatch());
+        }
+        else if (ctx.importt()!=null) {
+            statementElement.setImportElement((Import) visitImportt(ctx.importt()));
+            statementElement.getChild().add(statementElement.getImportElement());
+        }
+        else if (ctx.ifShort()!=null) {
+            statementElement.setIfShort((IfShort) visitIfShort(ctx.ifShort()));
+            statementElement.getChild().add(statementElement.getIfShort());
+        }
+        else if (ctx.suquence()!=null) {
+            statementElement.setSequence((Sequence) visitSuquence(ctx.suquence()));
+            statementElement.getChild().add(statementElement.getSequence());
+        }
+        else if (ctx.export()!=null) {
+            statementElement.setExportElement((Export) visitExport(ctx.export()));
+            statementElement.getChild().add(statementElement.getExportElement());
+        }
+        else if (ctx.jsxElement()!=null) {
+            statementElement.setJsxElement((JsxElement) visitJsxElement(ctx.jsxElement()));
+            statementElement.getChild().add(statementElement.getJsxElement());
+        }
+        else if (ctx.expression()!=null) {
+            statementElement.setExpression((Expression) visitExpression(ctx.expression()));
+            statementElement.getChild().add(statementElement.getExpression());
+        }
+        else if (ctx.arrowFunction()!=null) {
+            statementElement.setArrowFunction((ArrowFunction) visitArrowFunction(ctx.arrowFunction()));
+            statementElement.getChild().add(statementElement.getArrowFunction());
+        }
+        StRow stRow = new StRow();
+        stRow.setType(statementElement.getNode_type());
+        stRow.setValue(statementElement.getNode_type());
+        return statementElement;
     }
 
     @Override
-    public If visitLabelif(ReactParser.LabelifContext ctx) {
-        if (ctx.if_()!=null)
-            return ((If) visitIf(ctx.if_()));
-        else
-            return null;
-    }
-
-    @Override
-    public For visitLabelforElement(ReactParser.LabelforElementContext ctx) {
-        if (ctx.forElement()!=null)
-            return ((For) visitForElement(ctx.forElement()));
-        else
-            return null;
-    }
-
-    @Override
-    public Function visitLabelFunction(ReactParser.LabelFunctionContext ctx) {
-        if (ctx.function()!=null)
-            return ((Function) visitFunction(ctx.function()));
-        else
-            return null;
-    }
-
-    @Override
-    public Comment visitLabelComments(ReactParser.LabelCommentsContext ctx) {
-        if (ctx.comments()!=null)
-            return ((Comment) visitComments(ctx.comments()));
-        else
-            return null;
-    }
-
-    @Override
-    public While visitLabelWhile(ReactParser.LabelWhileContext ctx) {
-        if (ctx.while_()!=null)
-            return ((While) visitWhile(ctx.while_()));
-        else
-            return null;
-    }
-
-    @Override
-    public DoWhile visitLabelDoWhile(ReactParser.LabelDoWhileContext ctx) {
-        if (ctx.do_while()!=null)
-            return ((DoWhile) visitDo_while(ctx.do_while()));
-        else
-            return null;
-    }
-
-    @Override
-    public CallFunction visitLabelCallFunction(ReactParser.LabelCallFunctionContext ctx) {
-        if (ctx.callfunction()!=null)
-            return ((CallFunction) visitCallfunction(ctx.callfunction()));
-        else
-            return null;
-    }
-
-    @Override
-    public Switch visitLabelSwitch(ReactParser.LabelSwitchContext ctx) {
-        if (ctx.switch_()!=null)
-            return ((Switch) visitSwitch(ctx.switch_()));
-        else
-            return null;
-    }
-
-    @Override
-    public Block visitLabelBlock(ReactParser.LabelBlockContext ctx) {
-        if (ctx.block()!=null)
-            return ((Block) visitBlock(ctx.block()));
-        else
-            return null;
-    }
-
-    @Override
-    public Break visitLabelBreak(ReactParser.LabelBreakContext ctx) {
-        if (ctx.break_()!=null)
-            return ((Break) visitBreak(ctx.break_()));
-        else
-            return null;    }
-
-    @Override
-    public TryCatch visitLabelTryCatch(ReactParser.LabelTryCatchContext ctx) {
-        if (ctx.tryCatch()!=null)
-            return ((TryCatch) visitTryCatch(ctx.tryCatch()));
-        else
-            return null;
-    }
-
-    @Override
-    public Import visitLabelImport(ReactParser.LabelImportContext ctx) {
-        if (ctx.importt()!=null)
-            return ((Import) visitImportt(ctx.importt()));
-        else
-            return null;
-    }
-
-    @Override
-    public IfShort visitLabelIfShort(ReactParser.LabelIfShortContext ctx) {
-        if (ctx.ifShort()!=null)
-            return ((IfShort) visitIfShort(ctx.ifShort()));
-        else
-            return null;
-    }
-
-    @Override
-    public Sequence visitLabelSequence(ReactParser.LabelSequenceContext ctx) {
-        if (ctx.suquence()!=null)
-            return ((Sequence) visitSuquence(ctx.suquence()));
-        else
-            return null;
-    }
-
-    @Override
-    public Export visitLabelExport(ReactParser.LabelExportContext ctx) {
-        if (ctx.export()!=null)
-            return ((Export) visitExport(ctx.export()));
-        else
-            return null;
-    }
-
-    @Override
-    public JsxElement visitLabelJsxElement(ReactParser.LabelJsxElementContext ctx) {
-        if (ctx.jsxElement()!=null)
-            return ((JsxElement) visitJsxElement(ctx.jsxElement()));
-        else
-            return null;
-    }
-
-    @Override
-    public Expression visitLabelExpression(ReactParser.LabelExpressionContext ctx) {
-        if (ctx.expression()!=null)
-            return ((Expression) visit(ctx.expression()));
-        else
-            return null;
-    }
-
-    @Override
-    public ArrowFunction visitLabelArrowFunction(ReactParser.LabelArrowFunctionContext ctx) {
-        if (ctx.arrowFunction()!=null)
-            return ((ArrowFunction) visitArrowFunction(ctx.arrowFunction()));
-        else
-            return null;
+    public JsxParameters visitJsxParameters(ReactParser.JsxParametersContext ctx) {
+        JsxParameters jsxParameters = new JsxParameters();
+        jsxParameters.setNode_type("JsxParameters");
+        if(ctx.jsxArrowFunction()!=null) {
+            jsxParameters.setJsxArrowFunction((JsxArrowFunction) visitJsxArrowFunction(ctx.jsxArrowFunction()));
+            jsxParameters.getChild().add(jsxParameters.getJsxArrowFunction());
+        }
+        else if (ctx.jsxCallfunction()!=null) {
+            jsxParameters.setJsxCallfunction((JsxCallfunction) visitJsxCallfunction(ctx.jsxCallfunction()));
+            jsxParameters.getChild().add(jsxParameters.getJsxCallfunction());
+        }
+        else if (ctx.jsxArgument()!=null) {
+            jsxParameters.setJsxArgument((JsxArgument) visitJsxArgument(ctx.jsxArgument()));
+            jsxParameters.getChild().add(jsxParameters.getJsxArgument());
+        }
+        else if (ctx.jsxCallIdentifier()!=null) {
+            jsxParameters.setJsxCallIdentifier((JsxCallIdentifier) visitJsxCallIdentifier(ctx.jsxCallIdentifier()));
+            jsxParameters.getChild().add(jsxParameters.getJsxCallIdentifier());
+        }
+        else if (ctx.jsxExpression()!=null) {
+            jsxParameters.setJsxExpression((JsxExpression) visitJsxExpression(ctx.jsxCallfunction()));
+            jsxParameters.getChild().add(jsxParameters.getJsxExpression());
+        }
+        StRow stRow = new StRow();
+        stRow.setType(jsxParameters.getNode_type());
+        stRow.setValue(jsxParameters.getNode_type());
+        return jsxParameters;
     }
 
     @Override
     public If visitIf(ReactParser.IfContext ctx) {
         If ifElement = new If();
         ifElement.setNode_type("If");
-        if (ctx.conditions()!=null){
+        if (ctx.conditions()!=null) {
             ifElement.setCondition((Condition) visitConditions(ctx.conditions()));
+            ifElement.getChild().add(ifElement.getCondition());
         }
         if (ctx.block()!=null){
             ifElement.setBlock((Block) visitBlock(ctx.block()));
+            ifElement.getChild().add(ifElement.getBlock());
         }
         if (ctx.statment()!=null){
             ifElement.setStatement((Statement) visitStatment(ctx.statment()));
+            ifElement.getChild().add(ifElement.getStatement());
         }
         for (int i=0;i<ctx.else_if().size();i++){
             ifElement.getElseIfList().add((Else_if) visitElse_if(ctx.else_if(i)));
+            ifElement.getChild().add(ifElement.getElseIfList().get(i));
         }
         if (ctx.else_()!=null) {
             ifElement.setElseElement((Else) visitElse(ctx.else_()));
+            ifElement.getChild().add(ifElement.getElseElement());
         }
         StRow row = new StRow();
         row.setType(ifElement.getNode_type());
@@ -236,12 +359,18 @@ public class BaseVisitor extends ReactParserBaseVisitor {
     public For visitForElement(ReactParser.ForElementContext ctx) {
         For forElement = new For();
         forElement.setNode_type("For");
-        if (ctx.forLoopParts()!=null)
+        if (ctx.forLoopParts()!=null) {
             forElement.setForLoopParts((ForLoopParts) visitForLoopParts(ctx.forLoopParts()));
-        if (ctx.block()!=null)
+            forElement.getChild().add(forElement.getForLoopParts());
+        }
+        if (ctx.block()!=null) {
             forElement.setBlock((Block) visitBlock(ctx.block()));
-        if (ctx.statment()!=null)
+            forElement.getChild().add(forElement.getBlock());
+        }
+        if (ctx.statment()!=null) {
             forElement.setStatement((Statement) visitStatment(ctx.statment()));
+            forElement.getChild().add(forElement.getStatement());
+        }
         StRow row = new StRow();
         row.setType(forElement.getNode_type());
         row.setValue(forElement.getNode_type());
@@ -256,14 +385,20 @@ public class BaseVisitor extends ReactParserBaseVisitor {
         if (ctx.id()!=null){
             function.setId( (Id) visitId(ctx.id()));
             function.setNode_name(ctx.id().getText());
+            function.getChild().add(function.getId());
         }
         if (ctx.arguments()!=null){
             function.setArguments((Arguments) visitArguments(ctx.arguments()));
+            function.getChild().add(function.getArguments());
         }
-        for (int i=0;i<ctx.statment().size();i++)
+        for (int i=0;i<ctx.statment().size();i++) {
             function.getStatements().add((Statement) visitStatment(ctx.statment(i)));
-        for (int i=0;i<ctx.returnstatment().size();i++)
+            function.getChild().add(function.getStatements().get(i));
+        }
+        for (int i=0;i<ctx.returnstatment().size();i++) {
             function.getReturnstatments().add((Returnstatment) visitReturnstatment(ctx.returnstatment(i)));
+            function.getChild().add(function.getReturnstatments().get(i));
+        }
 
         StRow row = new StRow();
         row.setType(function.getNode_type());
@@ -279,9 +414,18 @@ public class BaseVisitor extends ReactParserBaseVisitor {
         if (ctx.SINGLE_LINE_COMMENT()!=null){
             comment.setSingleLineComment(ctx.SINGLE_LINE_COMMENT().toString());
             comment.setNode_name(ctx.SINGLE_LINE_COMMENT().toString());
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("SINGLE_LINE_COMMENT");
+            stringg.setString(ctx.SINGLE_LINE_COMMENT().toString());
+            comment.getChild().add(stringg);
         }
         if (ctx.MULTI_LINE_COMMENT()!=null){
             comment.setMultiLineComment(ctx.MULTI_LINE_COMMENT().toString());
+            comment.setNode_name(ctx.MULTI_LINE_COMMENT().toString());
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("MULTI_LINE_COMMENT");
+            stringg.setString(ctx.MULTI_LINE_COMMENT().toString());
+            comment.getChild().add(stringg);
         }
         StRow row = new StRow();
         row.setType(comment.getNode_type());
@@ -295,12 +439,18 @@ public class BaseVisitor extends ReactParserBaseVisitor {
     public While visitWhile(ReactParser.WhileContext ctx) {
         While whileElement = new While();
         whileElement.setNode_type("While");
-        if (ctx.conditions()!=null)
+        if (ctx.conditions()!=null) {
             whileElement.setCondition((Condition) visitConditions(ctx.conditions()));
-        if (ctx.block()!=null)
+            whileElement.getChild().add(whileElement.getCondition());
+        }
+        if (ctx.block()!=null) {
             whileElement.setBlock((Block) visitBlock(ctx.block()));
-        if (ctx.statment()!=null)
+            whileElement.getChild().add(whileElement.getBlock());
+        }
+        if (ctx.statment()!=null) {
             whileElement.setStatement((Statement) visitStatment(ctx.statment()));
+            whileElement.getChild().add(whileElement.getStatement());
+        }
         StRow row = new StRow();
         row.setType(whileElement.getNode_type());
         row.setValue(whileElement.getNode_type());
@@ -312,12 +462,18 @@ public class BaseVisitor extends ReactParserBaseVisitor {
     public DoWhile visitDo_while(ReactParser.Do_whileContext ctx) {
         DoWhile doWhile = new DoWhile();
         doWhile.setNode_type("DoWhile");
-        if (ctx.conditions()!=null)
+        if (ctx.conditions()!=null) {
             doWhile.setCondition((Condition) visitConditions(ctx.conditions()));
-        if (ctx.block()!=null)
+            doWhile.getChild().add(doWhile.getCondition());
+        }
+        if (ctx.block()!=null) {
             doWhile.setBlock((Block) visitBlock(ctx.block()));
-        if (ctx.statment()!=null)
+            doWhile.getChild().add(doWhile.getBlock());
+        }
+        if (ctx.statment()!=null) {
             doWhile.setStatement((Statement) visitStatment(ctx.statment()));
+            doWhile.getChild().add(doWhile.getCondition());
+        }
         StRow row = new StRow();
         row.setType(doWhile.getNode_type());
         row.setValue(doWhile.getNode_type());
@@ -329,10 +485,14 @@ public class BaseVisitor extends ReactParserBaseVisitor {
     public CallFunction visitCallfunction(ReactParser.CallfunctionContext ctx) {
         CallFunction callFunction = new CallFunction();
         callFunction.setNode_type("CallFunction");
-        for (int i=0;i<ctx.simpleCallfunction().size();i++)
+        for (int i=0;i<ctx.simpleCallfunction().size();i++) {
             callFunction.getSimpleCallfunctions().add((SimpleCallfunction) visitSimpleCallfunction(ctx.simpleCallfunction(i)));
-        for (int i=0;i<ctx.callIdentifier().size();i++)
+            callFunction.getChild().add(callFunction.getSimpleCallfunctions().get(i));
+        }
+        for (int i=0;i<ctx.callIdentifier().size();i++) {
             callFunction.getCallIdentifiers().add((CallIdentifier) visitCallIdentifier(ctx.callIdentifier(i)));
+            callFunction.getChild().add(callFunction.getCallIdentifiers().get(i));
+        }
         StRow row = new StRow();
         row.setType(callFunction.getNode_type());
         row.setValue(callFunction.getNode_type());
@@ -344,12 +504,18 @@ public class BaseVisitor extends ReactParserBaseVisitor {
     public Switch visitSwitch(ReactParser.SwitchContext ctx) {
         Switch switchElement = new Switch();
         switchElement.setNode_type("Switch");
-        for (int i=0;i<ctx.expression().size();i++)
+        for (int i=0;i<ctx.expression().size();i++) {
             switchElement.getExpressions().add((Expression) visit(ctx.expression(i)));
-        for (int i=0;i<ctx.block().size();i++)
+            switchElement.getChild().add(switchElement.getExpressions().get(i));
+        }
+        for (int i=0;i<ctx.block().size();i++) {
             switchElement.getBlocks().add((Block) visitBlock(ctx.block(i)));
-        for (int i=0;i<ctx.statment().size();i++)
+            switchElement.getChild().add(switchElement.getBlocks().get(i));
+        }
+        for (int i=0;i<ctx.statment().size();i++) {
             switchElement.getStatements().add((Statement) visitStatment(ctx.statment(i)));
+            switchElement.getChild().add(switchElement.getStatements().get(i));
+        }
         StRow row = new StRow();
         row.setType(switchElement.getNode_type());
         row.setValue(switchElement.getNode_type());
@@ -361,10 +527,14 @@ public class BaseVisitor extends ReactParserBaseVisitor {
     public TryCatch visitTryCatch(ReactParser.TryCatchContext ctx) {
         TryCatch tryCatch = new TryCatch();
         tryCatch.setNode_type("TryCatch");
-        for (int i=0;i<ctx.block().size();i++)
+        for (int i=0;i<ctx.block().size();i++) {
             tryCatch.getBlocks().add((Block) visitBlock(ctx.block(i)));
-        for (int i=0;i<ctx.id().size();i++)
+            tryCatch.getChild().add(tryCatch.getBlocks().get(i));
+        }
+        for (int i=0;i<ctx.id().size();i++) {
             tryCatch.getIds().add((Id) visitId(ctx.id(i)));
+            tryCatch.getChild().add(tryCatch.getIds().get(i));
+        }
         StRow row = new StRow();
         row.setType(tryCatch.getNode_type());
         row.setValue(tryCatch.getNode_type());
@@ -378,9 +548,15 @@ public class BaseVisitor extends ReactParserBaseVisitor {
         importElement.setNode_type("Import");
         for (int i=0 ; i<ctx.id().size();i++){
             importElement.getIds().add( (Id) visitId(ctx.id(i)));
+            importElement.getChild().add(importElement.getIds().get(i));
         }
-        if (ctx.String()!=null)
+        if (ctx.String()!=null) {
             importElement.setString(ctx.String().toString());
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("String");
+            stringg.setString(ctx.String().toString());
+            importElement.getChild().add(stringg);
+        }
         StRow row = new StRow();
         row.setType(importElement.getNode_type());
         row.setValue(importElement.getNode_type());
@@ -392,16 +568,26 @@ public class BaseVisitor extends ReactParserBaseVisitor {
     public IfShort visitIfShort(ReactParser.IfShortContext ctx) {
         IfShort ifShort = new IfShort();
         ifShort.setNode_type("IfShort");
-        if (ctx.callIdentifier()!=null)
+        if (ctx.callIdentifier()!=null) {
             ifShort.setCallIdentifier((CallIdentifier) visitCallIdentifier(ctx.callIdentifier()));
-        if (ctx.operation()!=null)
+            ifShort.getChild().add(ifShort.getCallIdentifier());
+        }
+        if (ctx.operation()!=null) {
             ifShort.setOperation((Operation) visitOperation(ctx.operation()));
-        if (ctx.expression()!=null)
+            ifShort.getChild().add(ifShort.getOperation());
+        }
+        if (ctx.expression()!=null) {
             ifShort.setExpression((Expression) visit(ctx.expression()));
-        for (int i =0;i<ctx.statment().size();i++)
+            ifShort.getChild().add(ifShort.getExpression());
+        }
+        for (int i =0;i<ctx.statment().size();i++) {
             ifShort.getStatements().add((Statement) visitStatment(ctx.statment(i)));
-        for (int i =0;i<ctx.jsxElement().size();i++)
+            ifShort.getChild().add(ifShort.getStatements().get(i));
+        }
+        for (int i =0;i<ctx.jsxElement().size();i++) {
             ifShort.getJsxElements().add((JsxElement) visitJsxElement(ctx.jsxElement(i)));
+            ifShort.getChild().add(ifShort.getJsxElements().get(i));
+        }
         StRow row = new StRow();
         row.setType(ifShort.getNode_type());
         row.setValue(ifShort.getNode_type());
@@ -428,18 +614,50 @@ public class BaseVisitor extends ReactParserBaseVisitor {
     public JsxElementNonSelfClosing visitJsxElementNonSelfClosing(ReactParser.JsxElementNonSelfClosingContext ctx) {
         JsxElementNonSelfClosing jsxElementNonSelfClosing = new JsxElementNonSelfClosing();
         jsxElementNonSelfClosing.setNode_type("JsxElementNonSelfClosing");
-        for (int i=0;i<ctx.id().size();i++)
+        if(ctx.JSX_TAG()!=null){
+            jsxElementNonSelfClosing.setJsxTag((String)ctx.JSX_TAG().toString());
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("JSX_TAG");
+            stringg.setString(ctx.JSX_TAG().toString());
+            jsxElementNonSelfClosing.getChild().add(stringg);
+        }
+        if(ctx.JSX_TAGModeCall()!=null){
+            jsxElementNonSelfClosing.setJsxTag((String)ctx.JSX_TAGModeCall().toString());
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("JSX_TAGModeCall");
+            stringg.setString(ctx.JSX_TAGModeCall().toString());
+            jsxElementNonSelfClosing.getChild().add(stringg);
+        }
+        for (int i=0;i<ctx.id().size();i++) {
             jsxElementNonSelfClosing.getIds().add((Id) visitId(ctx.id(i)));
-        for (int i=0;i<ctx.StringIn().size();i++)
+            jsxElementNonSelfClosing.getChild().add(jsxElementNonSelfClosing.getIds().get(i));
+        }
+        for (int i=0;i<ctx.StringIn().size();i++) {
             jsxElementNonSelfClosing.getStrings().add(ctx.StringIn(i).toString());
-        for (int i=0;i<ctx.ifShort().size();i++)
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("StringIn");
+            stringg.setString(ctx.StringIn().toString());
+            jsxElementNonSelfClosing.getChild().add(stringg);
+        }
+        for (int i=0;i<ctx.ifShort().size();i++) {
             jsxElementNonSelfClosing.getIfShorts().add((IfShort) visitIfShort(ctx.ifShort(i)));
-        for (int i=0;i<ctx.LETTERR().size();i++)
+            jsxElementNonSelfClosing.getChild().add(jsxElementNonSelfClosing.getIfShorts().get(i));
+        }
+        for (int i=0;i<ctx.LETTERR().size();i++) {
             jsxElementNonSelfClosing.getLetterrs().add(ctx.LETTERR(i).toString());
-        for (int i=0;i<ctx.jsxElementIn().size();i++)
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("LETTERR");
+            stringg.setString(ctx.LETTERR().toString());
+            jsxElementNonSelfClosing.getChild().add(stringg);
+        }
+        for (int i=0;i<ctx.jsxElementIn().size();i++) {
             jsxElementNonSelfClosing.getJsxElementIns().add((JsxElementIn) visitJsxElementIn(ctx.jsxElementIn(i)));
-        for (int i=0;i<ctx.blockOfarguments().size();i++)
+            jsxElementNonSelfClosing.getChild().add(jsxElementNonSelfClosing.getJsxElementIns().get(i));
+        }
+        for (int i=0;i<ctx.blockOfarguments().size();i++) {
             jsxElementNonSelfClosing.getBlockOfarguments().add((BlockOfarguments) visitBlockOfarguments(ctx.blockOfarguments(i)));
+            jsxElementNonSelfClosing.getChild().add(jsxElementNonSelfClosing.getBlockOfarguments().get(i));
+        }
         StRow row = new StRow();
         row.setType(jsxElementNonSelfClosing.getNode_type());
         row.setValue(jsxElementNonSelfClosing.getNode_type());
@@ -451,14 +669,28 @@ public class BaseVisitor extends ReactParserBaseVisitor {
     public JsxElementSelfClosing visitJsxElementSelfClosing(ReactParser.JsxElementSelfClosingContext ctx) {
         JsxElementSelfClosing jsxElementSelfClosing = new JsxElementSelfClosing();
         jsxElementSelfClosing.setNode_type("JsxElementSelfClosing");
-        if (ctx.jsx_tag()!=null)
+        if (ctx.jsx_tag()!=null) {
             jsxElementSelfClosing.setJsxTag(ctx.jsx_tag().toString());
-        for (int i=0;i<ctx.id().size();i++)
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("jsx_tag");
+            stringg.setString(ctx.jsx_tag().toString());
+            jsxElementSelfClosing.getChild().add(stringg);
+        }
+        for (int i=0;i<ctx.id().size();i++) {
             jsxElementSelfClosing.getIds().add((Id) visitId(ctx.id(i)));
-        for (int i=0;i<ctx.blockIn().size();i++)
+            jsxElementSelfClosing.getChild().add(jsxElementSelfClosing.getIds().get(i));
+        }
+        for (int i=0;i<ctx.blockIn().size();i++) {
             jsxElementSelfClosing.getBlocks().add((BlockIn) visitBlockIn(ctx.blockIn(i)));
-        for (int i=0;i<ctx.StringIn().size();i++)
+            jsxElementSelfClosing.getChild().add(jsxElementSelfClosing.getBlocks().get(i));
+        }
+        for (int i=0;i<ctx.StringIn().size();i++) {
             jsxElementSelfClosing.getStringsIns().add(ctx.StringIn(i).toString());
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("StringIn");
+            stringg.setString(ctx.StringIn().toString());
+            jsxElementSelfClosing.getChild().add(stringg);
+        }
         StRow row = new StRow();
         row.setType(jsxElementSelfClosing.getNode_type());
         row.setValue(jsxElementSelfClosing.getNode_type());
@@ -471,20 +703,51 @@ public class BaseVisitor extends ReactParserBaseVisitor {
     public JsxElementIn visitJsxElementIn(ReactParser.JsxElementInContext ctx) {
         JsxElementIn jsxElementIn = new JsxElementIn();
         jsxElementIn.setNode_type("JsxElementIn");
-        for (int i=0;i<ctx.id().size();i++)
+        if(ctx.JSX_TAGIn()!=null){
+            jsxElementIn.setJsxTag(ctx.JSX_TAGIn().toString());
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("JSX_TAGIn");
+            stringg.setString(ctx.JSX_TAGIn().toString());
+            jsxElementIn.getChild().add(stringg);
+        }
+        if(ctx.JSX_TAGInIn()!=null){
+            jsxElementIn.setJsxTag(ctx.JSX_TAGInIn().toString());
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("JSX_TAGInIn");
+            stringg.setString(ctx.JSX_TAGInIn().toString());
+            jsxElementIn.getChild().add(stringg);
+        }
+        for (int i=0;i<ctx.id().size();i++) {
             jsxElementIn.getIds().add((Id) visitId(ctx.id(i)));
-        for (int i=0;i<ctx.blockIn().size();i++)
+            jsxElementIn.getChild().add(jsxElementIn.getIds().get(i));
+        }
+        for (int i=0;i<ctx.blockIn().size();i++) {
             jsxElementIn.getBlocks().add((BlockIn) visitBlockIn(ctx.blockIn(i)));
-        for (int i=0;i<ctx.StringIn().size();i++)
+            jsxElementIn.getChild().add(jsxElementIn.getBlocks().get(i));
+        }
+        for (int i=0;i<ctx.StringIn().size();i++) {
             jsxElementIn.getStringsIns().add(ctx.StringIn(i).toString());
-        for (int i=0;i<ctx.Id().size();i++)
-            jsxElementIn.getIds().add((Id) ctx.Id(i));
-        for (int i=0;i<ctx.jsxElementIn().size();i++)
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("StringIn");
+            stringg.setString(ctx.StringIn().get(i).toString());
+            jsxElementIn.getChild().add(stringg);
+        }
+
+        for (int i=0;i<ctx.jsxElementIn().size();i++) {
             jsxElementIn.getJsxElementIns().add((JsxElementIn) visitJsxElementIn(ctx.jsxElementIn(i)));
-        for (int i=0;i<ctx.LETTERR().size();i++)
+            jsxElementIn.getChild().add(jsxElementIn.getJsxElementIns().get(i));
+        }
+        for (int i=0;i<ctx.LETTERR().size();i++) {
             jsxElementIn.getLetterrs().add(ctx.LETTERR(i).toString());
-        for (int i=0;i<ctx.blockOfarguments().size();i++)
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("LETTERR");
+            stringg.setString(ctx.LETTERR().get(i).toString());
+            jsxElementIn.getChild().add(stringg);
+        }
+        for (int i=0;i<ctx.blockOfarguments().size();i++) {
             jsxElementIn.getBlockOfarguments().add((BlockOfarguments) visitBlockOfarguments(ctx.blockOfarguments(i)));
+            jsxElementIn.getChild().add(jsxElementIn.getBlockOfarguments().get(i));
+        }
         StRow row = new StRow();
         row.setType(jsxElementIn.getNode_type());
         row.setValue(jsxElementIn.getNode_type());
@@ -497,8 +760,10 @@ public class BaseVisitor extends ReactParserBaseVisitor {
     public BlockIn visitBlockIn(ReactParser.BlockInContext ctx) {
         BlockIn blockIn = new BlockIn();
         blockIn.setNode_type("BlockIn");
-        for (int i =0;i<ctx.jsxArguments().size();i++)
+        for (int i =0;i<ctx.jsxArguments().size();i++) {
             blockIn.getJsxArgumentsList().add((JsxArguments) visitJsxArguments(ctx.jsxArguments(i)));
+            blockIn.getChild().add(blockIn.getJsxArgumentsList().get(i));
+        }
         StRow row = new StRow();
         row.setType(blockIn.getNode_type());
         row.setValue(blockIn.getNode_type());
@@ -511,54 +776,56 @@ public class BaseVisitor extends ReactParserBaseVisitor {
     public JsxArguments visitJsxArguments(ReactParser.JsxArgumentsContext ctx) {
         JsxArguments jsxArguments = new JsxArguments();;
         jsxArguments.setNode_type("JsxArguments");
-        for (int i =0;i<ctx.jsxParameters().size();i++)
+        for (int i =0;i<ctx.jsxParameters().size();i++) {
             jsxArguments.getJsxParametersList().add((JsxParameters) visit(ctx.jsxParameters(i)));
+            jsxArguments.getChild().add(jsxArguments.getJsxParametersList().get(i));
+        }
         StRow row = new StRow();
         row.setType(jsxArguments.getNode_type());
-        row.setValue(jsxArguments   .getNode_type());
+        row.setValue(jsxArguments.getNode_type());
         symbolTable.getRows().add(row);
         return jsxArguments;
     }
 
-    @Override
-    public JsxArrowFunction visitJsxArrFunction(ReactParser.JsxArrFunctionContext ctx) {
-        if(ctx.jsxArrowFunction()!=null)
-            return ((JsxArrowFunction) visitJsxArrowFunction(ctx.jsxArrowFunction()));
-        else
-            return null;
-    }
-
-    @Override
-    public JsxCallfunction visitLabelJsxCallFunction(ReactParser.LabelJsxCallFunctionContext ctx) {
-        if(ctx.jsxCallfunction()!=null)
-            return ((JsxCallfunction) visitJsxCallfunction(ctx.jsxCallfunction()));
-        else
-            return null;
-    }
-
-    @Override
-    public JsxArgument visitJsxArg(ReactParser.JsxArgContext ctx) {
-        if(ctx.jsxArgument()!=null)
-            return ((JsxArgument) visitJsxArgument(ctx.jsxArgument()));
-        else
-            return null;
-    }
-
-    @Override
-    public JsxCallIdentifier visitJsxCallId(ReactParser.JsxCallIdContext ctx) {
-        if(ctx.jsxCallIdentifier()!=null)
-            return ((JsxCallIdentifier) visitJsxCallIdentifier(ctx.jsxCallIdentifier()));
-        else
-            return null;
-    }
-
-    @Override
-    public JsxExpression visitJsxExp(ReactParser.JsxExpContext ctx) {
-        if(ctx.jsxExpression()!=null)
-            return ((JsxExpression) visit(ctx.jsxExpression()));
-        else
-            return null;
-    }
+//    @Override
+//    public JsxArrowFunction visitJsxArrFunction(ReactParser.JsxArrFunctionContext ctx) {
+//        if(ctx.jsxArrowFunction()!=null)
+//            return ((JsxArrowFunction) visitJsxArrowFunction(ctx.jsxArrowFunction()));
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public JsxCallfunction visitLabelJsxCallFunction(ReactParser.LabelJsxCallFunctionContext ctx) {
+//        if(ctx.jsxCallfunction()!=null)
+//            return ((JsxCallfunction) visitJsxCallfunction(ctx.jsxCallfunction()));
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public JsxArgument visitJsxArg(ReactParser.JsxArgContext ctx) {
+//        if(ctx.jsxArgument()!=null)
+//            return ((JsxArgument) visitJsxArgument(ctx.jsxArgument()));
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public JsxCallIdentifier visitJsxCallId(ReactParser.JsxCallIdContext ctx) {
+//        if(ctx.jsxCallIdentifier()!=null)
+//            return ((JsxCallIdentifier) visitJsxCallIdentifier(ctx.jsxCallIdentifier()));
+//        else
+//            return null;
+//    }
+//
+//    @Override
+//    public JsxExpression visitJsxExp(ReactParser.JsxExpContext ctx) {
+//        if(ctx.jsxExpression()!=null)
+//            return ((JsxExpression) visit(ctx.jsxExpression()));
+//        else
+//            return null;
+//    }
 
     @Override
     public JsxArrowFunction visitJsxArrowFunction(ReactParser.JsxArrowFunctionContext ctx) {
