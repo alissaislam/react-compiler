@@ -315,7 +315,7 @@ public class BaseVisitor extends ReactParserBaseVisitor {
             jsxParameters.getChild().add(jsxParameters.getJsxCallIdentifier());
         }
         else if (ctx.jsxExpression()!=null) {
-            jsxParameters.setJsxExpression((JsxExpression) visitJsxExpression(ctx.jsxCallfunction()));
+            jsxParameters.setJsxExpression((JsxExpression) visitJsxExpression(ctx.jsxExpression ()));
             jsxParameters.getChild().add(jsxParameters.getJsxExpression());
         }
         StRow stRow = new StRow();
