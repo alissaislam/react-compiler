@@ -5,25 +5,25 @@ options{tokenVocab=ReactLexer;}
     start: statment*  EOF;
     statment :      statmentElement SemiColon* IgSemiColon *;
     statmentElement:
-                    variableDeclarationList                         #labelvarDecList
-                    | if                                            #labelif
-                    | forElement                                    #labelforElement
-                    | function                                      #labelFunction
-                    | comments                                      #labelComments
-                    | while                                          #labelWhile
-                    | do_while                                      #labelDoWhile
-                    | callfunction                                  #labelCallFunction
-                    | switch                                        #labelSwitch
-                    | block                                         #labelBlock
-                    | break                                         #labelBreak
-                    | tryCatch                                      #labelTryCatch
-                    | importt                                       #labelImport
-                    | ifShort                                       #labelIfShort
-                    | suquence                                      #labelSequence
-                    | export                                        #labelExport
-                    | jsxElement                                    #labelJsxElement
-                    | expression                                    #labelExpression
-                    | arrowFunction                                 #labelArrowFunction
+                      variableDeclarationList
+                    | if
+                    | forElement
+                    | function
+                    | comments
+                    | while
+                    | do_while
+                    | callfunction
+                    | switch
+                    | block
+                    | break
+                    | tryCatch
+                    | importt
+                    | ifShort
+                    | suquence
+                    | export
+                    | jsxElement
+                    | expression
+                    | arrowFunction
                     ;
     if : If OpenParen  conditions CloseParen  ( block | statment ) else_if* else? ;
     forElement :  For OpenParen forLoopParts CloseParen ( block | statment );
@@ -58,11 +58,11 @@ options{tokenVocab=ReactLexer;}
     blockIn:OpenBraceIn (jsxArguments )* CloseBraceIn;
     jsxArguments:jsxParameters(CommaIn jsxParameters)*;
     jsxParameters:
-      jsxArrowFunction  #jsxArrFunction
-    | jsxCallfunction   #labelJsxCallFunction
-    | jsxArgument       #jsxArg
-    | jsxCallIdentifier #jsxCallId
-    | jsxExpression    #jsxExp
+      jsxArrowFunction
+    | jsxCallfunction
+    | jsxArgument
+    | jsxCallIdentifier
+    | jsxExpression
     ;
     ////// islam part
     jsxArrowFunction:(OpenParenIn jsxArguments? CloseParenIn | jsxArgument ) ARROWIn (jsxExpression? | OpenBraceIn jsxExpression* CloseBraceIn );

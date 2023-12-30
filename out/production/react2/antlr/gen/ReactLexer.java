@@ -1,5 +1,4 @@
-// Generated from D:/ReactCompiler/react-compiler/src/antlr/ReactLexer.g4 by ANTLR 4.13.1
-package antlr;
+// Generated from D:/ReactCompiler/react-compiler/out/production/react2/antlr/ReactLexer.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
