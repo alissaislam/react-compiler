@@ -1,4 +1,4 @@
-// Generated from D:/ReactCompiler/react-compiler/src/antlr/ReactParser.g4 by ANTLR 4.13.1
+// Generated from D:/react-compiler/src/antlr/ReactParser.g4 by ANTLR 4.13.1
 package antlr;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -281,47 +281,11 @@ public interface ReactParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExport(ReactParser.ExportContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code label_Array}
-	 * labeled alternative in {@link ReactParser#data}.
+	 * Visit a parse tree produced by {@link ReactParser#data}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLabel_Array(ReactParser.Label_ArrayContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code label_Number}
-	 * labeled alternative in {@link ReactParser#data}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLabel_Number(ReactParser.Label_NumberContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code label_String}
-	 * labeled alternative in {@link ReactParser#data}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLabel_String(ReactParser.Label_StringContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code label_Id}
-	 * labeled alternative in {@link ReactParser#data}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLabel_Id(ReactParser.Label_IdContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code label_Map}
-	 * labeled alternative in {@link ReactParser#data}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLabel_Map(ReactParser.Label_MapContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code label_Bool}
-	 * labeled alternative in {@link ReactParser#data}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLabel_Bool(ReactParser.Label_BoolContext ctx);
+	T visitData(ReactParser.DataContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ReactParser#array}.
 	 * @param ctx the parse tree

@@ -142,12 +142,12 @@ options{tokenVocab=ReactLexer;}
     export:Export Default callIdentifier SemiColon* IgSemiColon *;
 
     data :
-          array #label_Array
-        | (NUMBER|NUMBERModeCall) #label_Number
-        | (String|StringModeCall) #label_String
-        | id # label_Id
-        | map #label_Map
-        |(BooleanLiteral|BooleanLiteralModeCall) #label_Bool
+          array
+        | (NUMBER|NUMBERModeCall)
+        | (String|StringModeCall)
+        | id
+        | map
+        |(BooleanLiteral|BooleanLiteralModeCall)
         ;
 
          array : OpenBracket suquence? CloseBracket  ;

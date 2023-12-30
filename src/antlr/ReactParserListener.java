@@ -1,4 +1,4 @@
-// Generated from D:/ReactCompiler/react-compiler/src/antlr/ReactParser.g4 by ANTLR 4.13.1
+// Generated from D:/react-compiler/src/antlr/ReactParser.g4 by ANTLR 4.13.1
 package antlr;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -458,77 +458,15 @@ public interface ReactParserListener extends ParseTreeListener {
 	 */
 	void exitExport(ReactParser.ExportContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code label_Array}
-	 * labeled alternative in {@link ReactParser#data}.
+	 * Enter a parse tree produced by {@link ReactParser#data}.
 	 * @param ctx the parse tree
 	 */
-	void enterLabel_Array(ReactParser.Label_ArrayContext ctx);
+	void enterData(ReactParser.DataContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code label_Array}
-	 * labeled alternative in {@link ReactParser#data}.
+	 * Exit a parse tree produced by {@link ReactParser#data}.
 	 * @param ctx the parse tree
 	 */
-	void exitLabel_Array(ReactParser.Label_ArrayContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code label_Number}
-	 * labeled alternative in {@link ReactParser#data}.
-	 * @param ctx the parse tree
-	 */
-	void enterLabel_Number(ReactParser.Label_NumberContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code label_Number}
-	 * labeled alternative in {@link ReactParser#data}.
-	 * @param ctx the parse tree
-	 */
-	void exitLabel_Number(ReactParser.Label_NumberContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code label_String}
-	 * labeled alternative in {@link ReactParser#data}.
-	 * @param ctx the parse tree
-	 */
-	void enterLabel_String(ReactParser.Label_StringContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code label_String}
-	 * labeled alternative in {@link ReactParser#data}.
-	 * @param ctx the parse tree
-	 */
-	void exitLabel_String(ReactParser.Label_StringContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code label_Id}
-	 * labeled alternative in {@link ReactParser#data}.
-	 * @param ctx the parse tree
-	 */
-	void enterLabel_Id(ReactParser.Label_IdContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code label_Id}
-	 * labeled alternative in {@link ReactParser#data}.
-	 * @param ctx the parse tree
-	 */
-	void exitLabel_Id(ReactParser.Label_IdContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code label_Map}
-	 * labeled alternative in {@link ReactParser#data}.
-	 * @param ctx the parse tree
-	 */
-	void enterLabel_Map(ReactParser.Label_MapContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code label_Map}
-	 * labeled alternative in {@link ReactParser#data}.
-	 * @param ctx the parse tree
-	 */
-	void exitLabel_Map(ReactParser.Label_MapContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code label_Bool}
-	 * labeled alternative in {@link ReactParser#data}.
-	 * @param ctx the parse tree
-	 */
-	void enterLabel_Bool(ReactParser.Label_BoolContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code label_Bool}
-	 * labeled alternative in {@link ReactParser#data}.
-	 * @param ctx the parse tree
-	 */
-	void exitLabel_Bool(ReactParser.Label_BoolContext ctx);
+	void exitData(ReactParser.DataContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ReactParser#array}.
 	 * @param ctx the parse tree

@@ -961,7 +961,7 @@ public class BaseVisitor extends ReactParserBaseVisitor {
             if (ctx.StringIn () != null) {
                 stringg.setString( ctx.StringIn ().getText());
                 stringg.setNode_name(ctx.StringIn ().getText());
-                jsxExpression.getChild ().add (jsxExpression.getString ());
+                jsxExpression.getChild ().add (jsxExpression.getStringg ());
             }
         }
         if (ctx.BooleanLiteralIn () !=null){
@@ -1390,83 +1390,135 @@ public class BaseVisitor extends ReactParserBaseVisitor {
             export.setEap(ctx.Export().getText());
         }
         if (ctx.Default() != null) {
+
             export.setDef(ctx.Default().getText());
         }
         if (ctx.callIdentifier() != null) {
-            visitCallIdentifier(ctx.callIdentifier());
+
+            export.setCallIdentifier ( visitCallIdentifier(ctx.callIdentifier()));
+           
 
         }
         return export;
     }
 
     @Override
-    public Array visitLabel_Array(ReactParser.Label_ArrayContext ctx) {
-        return (Array) visitArray(ctx.array());
-    }
+    public Data visitData(ReactParser.DataContext ctx) {
+        Data data = new Data ();
 
-    @Override
-    public Number visitLabel_Number(ReactParser.Label_NumberContext ctx) {
-        Number number = new Number();
-        number.setNode_type("Number");
-        if (ctx.NUMBER() != null) {
-            number.setValue(Integer.parseInt(ctx.NUMBER().getText()));
-            number.setNode_name(ctx.NUMBER().getText());
+        if (ctx.array () != null) {
+           data.setArray (visitArray (ctx.array ()));
+        }
+        if (ctx.NUMBER () != null) {
+            Number number = new Number ();
+            number.setValue (Integer.parseInt (ctx.NUMBER ().toString ()));
+            data.setNumber (number);
+        }
+        if (ctx.NUMBERModeCall () != null) {
+            Number number = new Number ();
+            number.setValue (Integer.parseInt (ctx.NUMBERModeCall ().toString ()));
+            data.setNumber (number);
+        }
+        if (ctx.String () != null) {
+            Stringg stringg = new Stringg ();
+            stringg.setString (ctx.String ().toString ());
+            data.setStringg (stringg);
 
         }
-        else if (ctx.NUMBERModeCall() != null) {
-            number.setValue(Integer.parseInt(ctx.NUMBERModeCall().getText()));
-            number.setNode_name(ctx.NUMBERModeCall().getText());
+        if (ctx.StringModeCall () != null) {
+            Stringg stringg = new Stringg ();
+            stringg.setString (ctx.StringModeCall ().toString());
+            data.setStringg (stringg);
         }
-        return number;
-    }
-
-    @Override
-    public Stringg visitLabel_String(ReactParser.Label_StringContext ctx) {
-        Stringg stringg = new Stringg();
-        stringg.setNode_type("string");
-        if (ctx.String() != null) {
-            stringg.setString( ctx.String().getText());
-            stringg.setNode_name(ctx.String().getText());
-
+        if (ctx.id () != null) {
+            data.setId ((Id) visitId (ctx.id ()));
         }
-        else if (ctx.StringModeCall() != null) {
-            stringg.setString( ctx.StringModeCall().getText());
-            stringg.setNode_name(ctx.StringModeCall().getText());
+        if (ctx.map () != null) {
+            data.setMap (visitMap (ctx.map ()));
         }
-        return stringg;
-    }
-
-    @Override
-    public Id visitLabel_Id(ReactParser.Label_IdContext ctx) {
-        return (Id) visitId(ctx.id());
-    }
-
-    @Override
-    public Map visitLabel_Map(ReactParser.Label_MapContext ctx) {
-        return (Map) visitMap(ctx.map());
-    }
-
-    @Override
-    public Bool visitLabel_Bool(ReactParser.Label_BoolContext ctx) {
-        Bool bool = new Bool();
-        bool.setNode_type("Boolean");
-        if (ctx.BooleanLiteral() != null) {
-            bool.setBool(ctx.BooleanLiteral().getText());
-            bool.setNode_name(ctx.BooleanLiteral().getText());
+        if (ctx.BooleanLiteral () != null) {
+            Bool bool = new Bool ();
+            bool.setBool (ctx.BooleanLiteral ().toString ());
+            data.setBool (bool);
 
         }
-        else if (ctx.BooleanLiteralModeCall() != null) {
-            bool.setBool( ctx.BooleanLiteralModeCall().getText());
-            bool.setNode_name(ctx.BooleanLiteralModeCall().getText());
+        if (ctx.BooleanLiteralModeCall () != null) {
+            Bool bool = new Bool ();
+            bool.setBool (ctx.BooleanLiteralModeCall ().toString ());
+            data.setBool (bool);
         }
-        return bool;
+
+        return data;
     }
+//    @Override
+//    public Array visitLabel_Array(ReactParser.Label_ArrayContext ctx) {
+//        return (Array) visitArray(ctx.array());
+//    }
+//
+//    @Override
+//    public Number visitLabel_Number(ReactParser.Label_NumberContext ctx) {
+//        Number number = new Number();
+//        number.setNode_type("Number");
+//        if (ctx.NUMBER() != null) {
+//            number.setValue(Integer.parseInt(ctx.NUMBER().getText()));
+//            number.setNode_name(ctx.NUMBER().getText());
+//
+//        }
+//        else if (ctx.NUMBERModeCall() != null) {
+//            number.setValue(Integer.parseInt(ctx.NUMBERModeCall().getText()));
+//            number.setNode_name(ctx.NUMBERModeCall().getText());
+//        }
+//        return number;
+//    }
+//
+//    @Override
+//    public Stringg visitLabel_String(ReactParser.Label_StringContext ctx) {
+//        Stringg stringg = new Stringg();
+//        stringg.setNode_type("string");
+//        if (ctx.String() != null) {
+//            stringg.setString( ctx.String().getText());
+//            stringg.setNode_name(ctx.String().getText());
+//
+//        }
+//        else if (ctx.StringModeCall() != null) {
+//            stringg.setString( ctx.StringModeCall().getText());
+//            stringg.setNode_name(ctx.StringModeCall().getText());
+//        }
+//        return stringg;
+//    }
+//
+//    @Override
+//    public Id visitLabel_Id(ReactParser.Label_IdContext ctx) {
+//        return (Id) visitId(ctx.id());
+//    }
+//
+//    @Override
+//    public Map visitLabel_Map(ReactParser.Label_MapContext ctx) {
+//        return (Map) visitMap(ctx.map());
+//    }
+//
+//    @Override
+//    public Bool visitLabel_Bool(ReactParser.Label_BoolContext ctx) {
+//        Bool bool = new Bool();
+//        bool.setNode_type("Boolean");
+//        if (ctx.BooleanLiteral() != null) {
+//            bool.setBool(ctx.BooleanLiteral().getText());
+//            bool.setNode_name(ctx.BooleanLiteral().getText());
+//
+//        }
+//        else if (ctx.BooleanLiteralModeCall() != null) {
+//            bool.setBool( ctx.BooleanLiteralModeCall().getText());
+//            bool.setNode_name(ctx.BooleanLiteralModeCall().getText());
+//        }
+//        return bool;
+//    }
 
     @Override
     public Array visitArray(ReactParser.ArrayContext ctx) {
         Array array = new Array();
         if(ctx.suquence()!= null){
             array.setSequence((Sequence)( visitSuquence(ctx.suquence())));
+            array.getChild ().add (array.getSequence ());
         }
         return array;
     }
@@ -1477,6 +1529,7 @@ public class BaseVisitor extends ReactParserBaseVisitor {
         map.setNode_type("map");
         for(int i=0 ; i<ctx.mapElementList().size(); i++){
             map.getMapElementLists().add((MapElementList) ( visitMapElementList(ctx.mapElementList(i))));
+            map.getChild ().add (map.getMapElementLists ().get (i));
         }
         return map;
     }
@@ -1487,6 +1540,7 @@ public class BaseVisitor extends ReactParserBaseVisitor {
         mapElementList.setNode_type("MapElementList");
         for(int i=0 ; i<ctx.mapElement().size(); i++){
             mapElementList.getMapElement().add((MapElement) ( visitMapElement(ctx.mapElement(i))));
+            mapElementList.getChild ().add (mapElementList.getMapElement ().get (i));
         }
         return  mapElementList;
     }
@@ -1496,16 +1550,22 @@ public class BaseVisitor extends ReactParserBaseVisitor {
         MapElement mapElement = new MapElement();
         mapElement.setNode_type("mapElement");
         if(ctx.IDENTIFIER() != null){
-            mapElement.setIdentifier(ctx.IDENTIFIER().getText());
+            Id id =new Id ();
+            id.setId (ctx.IDENTIFIER().getText ());
+            mapElement.setIdentifier(id);
+            mapElement.getChild ().add (mapElement.getIdentifier ());
         }
         if(ctx.callfunction() != null){
             mapElement.setCallFunction((CallFunction) visitCallfunction(ctx.callfunction()));
+            mapElement.getChild ().add (mapElement.getCallIdentifier ());
         }
         else if(ctx.callIdentifier() != null){
             mapElement.setCallIdentifier((CallIdentifier) visitCallIdentifier(ctx.callIdentifier()));
+            mapElement.getChild ().add (mapElement.getCallIdentifier ());
         }
         else if( ctx.expression() != null){
             mapElement.setExpressions((Expression) visit (ctx.expression()));
+            mapElement.getChild ().add (mapElement.getExpressions ());
         }
         return mapElement;
     }
@@ -1516,6 +1576,7 @@ public class BaseVisitor extends ReactParserBaseVisitor {
         sequence.setNode_type("Sequence");
         for(int i=0; i<ctx.data().size(); i++){
             sequence.getListData().add((Data)visit (ctx.data(i)));
+            sequence.getChild ().add (sequence.getListData ().get (i));
         }
         return sequence;
     }
@@ -1526,12 +1587,15 @@ public class BaseVisitor extends ReactParserBaseVisitor {
         kind.setNode_type("Kind");
         if (ctx.Const() != null) {
             kind.setType(ctx.Const().getText());
+            kind.setNode_name (ctx.Const().getText());
         }
         else if (ctx.Let() != null) {
             kind.setType(ctx.Let().getText());
+            kind.setNode_name (ctx.Let ().getText());
         }
         else if (ctx.Var() != null) {
             kind.setType(ctx.Var().getText());
+            kind.setNode_name (ctx.Var ().getText());
         }
         return kind;
 
@@ -1543,51 +1607,67 @@ public class BaseVisitor extends ReactParserBaseVisitor {
         operation.setNode_type("operation");
         if (ctx.LessThan() != null) {
             operation.setOperation(ctx.LessThan().getText());
+            operation.setNode_name (ctx.LessThan().getText());
         }
         else if (ctx.LessThanModeCall() != null) {
             operation.setOperation(ctx.LessThanModeCall().getText());
+            operation.setNode_name (ctx.LessThanModeCall ().getText());
         }
         else if (ctx.MoreThan() != null) {
             operation.setOperation(ctx.MoreThan().getText());
+            operation.setNode_name (ctx.MoreThan().getText());
         }
         else if (ctx.MoreThanModeCall() != null) {
             operation.setOperation(ctx.MoreThanModeCall().getText());
+            operation.setNode_name (ctx.MoreThanModeCall ().getText());
         }
         else if (ctx.Equals_() != null) {
             operation.setOperation(ctx.Equals_().getText());
+            operation.setNode_name (ctx.Equals_ ().getText());
         }
         else if (ctx.Equals_ModeCall() != null) {
             operation.setOperation(ctx.Equals_ModeCall().getText());
+            operation.setNode_name (ctx.Equals_ModeCall ().getText());
         }
         else if (ctx.GreaterThanEquals() != null) {
             operation.setOperation(ctx.GreaterThanEquals().getText());
+            operation.setNode_name (ctx.GreaterThanEquals ().getText());
         }
         else if (ctx.GreaterThanEqualsModeCall() != null) {
             operation.setOperation(ctx.GreaterThanEqualsModeCall().getText());
+            operation.setNode_name (ctx.GreaterThanEqualsModeCall ().getText());
         }
         else if (ctx.LessThanEquals() != null) {
             operation.setOperation(ctx.LessThanEquals().getText());
+            operation.setNode_name (ctx.LessThanEquals ().getText());
         }
         else if (ctx.LessThanEqualsModeCall() != null) {
             operation.setOperation(ctx.LessThanEqualsModeCall().getText());
+            operation.setNode_name (ctx.LessThanEqualsModeCall ().getText());
         }
         else if (ctx.NotEquals() != null) {
             operation.setOperation(ctx.NotEquals().getText());
+            operation.setNode_name (ctx.NotEquals ().getText());
         }
         else if (ctx.NotEqualsModeCall() != null) {
             operation.setOperation(ctx.NotEqualsModeCall().getText());
+            operation.setNode_name (ctx.NotEqualsModeCall ().getText());
         }
         else if (ctx.IdentityEquals() != null) {
             operation.setOperation(ctx.IdentityEquals().getText());
+            operation.setNode_name (ctx.IdentityEquals ().getText());
         }
         else if (ctx.IdentityEqualsModeCall() != null) {
             operation.setOperation(ctx.IdentityEqualsModeCall().getText());
+            operation.setNode_name (ctx.IdentityEqualsModeCall ().getText());
         }
         else if (ctx.IdentityNotEquals() != null) {
             operation.setOperation(ctx.IdentityNotEquals().getText());
+            operation.setNode_name (ctx.IdentityNotEquals ().getText());
         }
         else if (ctx.IdentityNotEqualsModeCall() != null) {
             operation.setOperation(ctx.IdentityNotEqualsModeCall().getText());
+            operation.setNode_name (ctx.IdentityNotEqualsModeCall ().getText());
         }
         return operation;
     }
@@ -1599,9 +1679,15 @@ public class BaseVisitor extends ReactParserBaseVisitor {
         id.setNode_name(ctx.IDENTIFIER().getText());
         if (ctx.IDENTIFIER() != null) {
             id.setId(ctx.IDENTIFIER().getText());
+            id.setNode_name(ctx.IDENTIFIER().getText());
         }
         else if (ctx.Id() != null) {
             id.setId(ctx.Id().getText());
+            id.setNode_name(ctx.Id().getText());
+        }
+        else if (ctx.IDENTIFIERIn () != null) {
+            id.setId(ctx.IDENTIFIERIn ().getText());
+            id.setNode_name(ctx.IDENTIFIERIn ().getText());
         }
         return id;
     }

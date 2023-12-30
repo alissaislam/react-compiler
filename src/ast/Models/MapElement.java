@@ -4,7 +4,7 @@ public class MapElement extends Node {
     CallFunction callFunction;
     CallIdentifier callIdentifier;
     Expression expressions;
-    String Identifier;
+    Id Identifier;
 
     public CallFunction getCallFunction() {
         return callFunction;
@@ -30,11 +30,11 @@ public class MapElement extends Node {
         this.expressions = expressions;
     }
 
-    public String getIdentifier() {
+    public Id getIdentifier() {
         return Identifier;
     }
 
-    public void setIdentifier(String identifier) {
+    public void setIdentifier(Id identifier) {
         Identifier = identifier;
     }
 }

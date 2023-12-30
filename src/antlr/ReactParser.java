@@ -1,4 +1,4 @@
-// Generated from D:/ReactCompiler/react-compiler/src/antlr/ReactParser.g4 by ANTLR 4.13.1
+// Generated from D:/react-compiler/src/antlr/ReactParser.g4 by ANTLR 4.13.1
 package antlr;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -5272,130 +5272,36 @@ public class ReactParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class DataContext extends ParserRuleContext {
+		public ArrayContext array() {
+			return getRuleContext(ArrayContext.class,0);
+		}
+		public TerminalNode NUMBER() { return getToken(ReactParser.NUMBER, 0); }
+		public TerminalNode NUMBERModeCall() { return getToken(ReactParser.NUMBERModeCall, 0); }
+		public TerminalNode String() { return getToken(ReactParser.String, 0); }
+		public TerminalNode StringModeCall() { return getToken(ReactParser.StringModeCall, 0); }
+		public IdContext id() {
+			return getRuleContext(IdContext.class,0);
+		}
+		public MapContext map() {
+			return getRuleContext(MapContext.class,0);
+		}
+		public TerminalNode BooleanLiteral() { return getToken(ReactParser.BooleanLiteral, 0); }
+		public TerminalNode BooleanLiteralModeCall() { return getToken(ReactParser.BooleanLiteralModeCall, 0); }
 		public DataContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_data; }
-	 
-		public DataContext() { }
-		public void copyFrom(DataContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class Label_ArrayContext extends DataContext {
-		public ArrayContext array() {
-			return getRuleContext(ArrayContext.class,0);
-		}
-		public Label_ArrayContext(DataContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabel_Array(this);
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterData(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabel_Array(this);
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitData(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabel_Array(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class Label_StringContext extends DataContext {
-		public TerminalNode String() { return getToken(ReactParser.String, 0); }
-		public TerminalNode StringModeCall() { return getToken(ReactParser.StringModeCall, 0); }
-		public Label_StringContext(DataContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabel_String(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabel_String(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabel_String(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class Label_NumberContext extends DataContext {
-		public TerminalNode NUMBER() { return getToken(ReactParser.NUMBER, 0); }
-		public TerminalNode NUMBERModeCall() { return getToken(ReactParser.NUMBERModeCall, 0); }
-		public Label_NumberContext(DataContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabel_Number(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabel_Number(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabel_Number(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class Label_MapContext extends DataContext {
-		public MapContext map() {
-			return getRuleContext(MapContext.class,0);
-		}
-		public Label_MapContext(DataContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabel_Map(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabel_Map(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabel_Map(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class Label_BoolContext extends DataContext {
-		public TerminalNode BooleanLiteral() { return getToken(ReactParser.BooleanLiteral, 0); }
-		public TerminalNode BooleanLiteralModeCall() { return getToken(ReactParser.BooleanLiteralModeCall, 0); }
-		public Label_BoolContext(DataContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabel_Bool(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabel_Bool(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabel_Bool(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class Label_IdContext extends DataContext {
-		public IdContext id() {
-			return getRuleContext(IdContext.class,0);
-		}
-		public Label_IdContext(DataContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabel_Id(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabel_Id(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabel_Id(this);
+			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitData(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -5409,7 +5315,6 @@ public class ReactParser extends Parser {
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case OpenBracket:
-				_localctx = new Label_ArrayContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(787);
@@ -5418,7 +5323,6 @@ public class ReactParser extends Parser {
 				break;
 			case NUMBER:
 			case NUMBERModeCall:
-				_localctx = new Label_NumberContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(788);
@@ -5435,7 +5339,6 @@ public class ReactParser extends Parser {
 				break;
 			case String:
 			case StringModeCall:
-				_localctx = new Label_StringContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(789);
@@ -5453,7 +5356,6 @@ public class ReactParser extends Parser {
 			case IDENTIFIER:
 			case IDENTIFIERIn:
 			case Id:
-				_localctx = new Label_IdContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(790);
@@ -5461,7 +5363,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case OpenBrace:
-				_localctx = new Label_MapContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(791);
@@ -5470,7 +5371,6 @@ public class ReactParser extends Parser {
 				break;
 			case BooleanLiteral:
 			case BooleanLiteralModeCall:
-				_localctx = new Label_BoolContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
 				setState(792);

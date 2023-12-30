@@ -9,7 +9,7 @@ public class JsxExpression extends Data {
     List<JsxExpression> jsxExpressionList = new ArrayList<> ();
     String operation;
     Number number;
-    Stringg string;
+    Stringg stringg;
     Bool bool;
     Id id;
 
@@ -37,12 +37,12 @@ public class JsxExpression extends Data {
         this.number = number;
     }
 
-    public Stringg getString() {
-        return string;
+    public Stringg getStringg() {
+        return stringg;
     }
 
-    public void setString(Stringg string) {
-        this.string = string;
+    public void setStringg(Stringg string) {
+        this.stringg = string;
     }
 
     public Bool getBool() {
