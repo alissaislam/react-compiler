@@ -1332,18 +1332,128 @@ public class BaseVisitor extends ReactParserBaseVisitor {
         callIdentifier.setNode_type("callIdentifier");
         for (int i = 0; i < ctx.id().size(); i++) {
             callIdentifier.getIds().add((Id) ( visitId(ctx.id().get(i))));
+            callIdentifier.getChild().add(callIdentifier.getIds().get(i));
         }
         return callIdentifier;
     }
 
     @Override
     public Parameters visitParameters(ReactParser.ParametersContext ctx){
-        return null;
+        Parameters parameters = new Parameters();
+        parameters.setNode_type("Parameters");
+        if(ctx.arrowFunction()!=null){
+            parameters.setArrowFunction((ArrowFunction) visitArrowFunction(ctx.arrowFunction()));
+            parameters.getChild().add(parameters.getArrowFunction());
+        }
+        if(ctx.callIdentifier()!=null){
+            parameters.setCallIdentifier((CallIdentifier) visitCallIdentifier(ctx.callIdentifier()));
+            parameters.getChild().add(parameters.getCallIdentifier());
+        }
+        if(ctx.argument()!=null){
+            parameters.setArgument((Argument) visitArgument(ctx.argument()));
+            parameters.getChild().add(parameters.getArgument());
+        }
+        if(ctx.callfunction()!=null){
+            parameters.setCallFunction((CallFunction) visitCallfunction(ctx.callfunction()));
+            parameters.getChild().add(parameters.getCallFunction());
+        }
+        if(ctx.expression()!=null){
+            parameters.setExpression((Expression) visitExpression(ctx.expression()));
+            parameters.getChild().add(parameters.getExpression());
+        }
+        if(ctx.blockOfarguments()!=null){
+            parameters.setBlockOfarguments((BlockOfarguments) visitBlockOfarguments(ctx.blockOfarguments()));
+            parameters.getChild().add(parameters.getBlockOfarguments());
+        }
+        return parameters;
     }
 
     @Override
     public Expression visitExpression(ReactParser.ExpressionContext ctx){
-        return null;
+        Expression expression = new Expression();
+        for(int i=0;i<ctx.expression().size();i++){
+            expression.getExpressionList().add((Expression) visitExpression(ctx.expression(i)));
+            expression.getChild().add(expression.getExpressionList().get(i));
+        }
+        if(ctx.Multiply()!=null){
+            expression.setOperator(ctx.Multiply().toString());
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("Multiply");
+            stringg.setString(ctx.Multiply().toString());
+            expression.getChild().add(stringg);
+        }
+        if(ctx.MultiplyModeCall()!=null){
+            expression.setOperator(ctx.MultiplyModeCall().toString());
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("MultiplyModeCall");
+            stringg.setString(ctx.MultiplyModeCall().toString());
+            expression.getChild().add(stringg);
+        }
+        if(ctx.Divide()!=null){
+            expression.setOperator(ctx.Divide().toString());
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("Divide");
+            stringg.setString(ctx.Divide().toString());
+            expression.getChild().add(stringg);
+        }
+        if(ctx.DivideModeCall()!=null){
+            expression.setOperator(ctx.DivideModeCall().toString());
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("DivideModeCall");
+            stringg.setString(ctx.MultiplyModeCall().toString());
+            expression.getChild().add(stringg);
+        }
+        if(ctx.Plus()!=null){
+            expression.setOperator(ctx.Plus().toString());
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("Plus");
+            stringg.setString(ctx.Plus().toString());
+            expression.getChild().add(stringg);
+        }
+        if(ctx.PlusModeCall()!=null){
+            expression.setOperator(ctx.PlusModeCall().toString());
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("PlusModeCall");
+            stringg.setString(ctx.PlusModeCall().toString());
+            expression.getChild().add(stringg);
+        }
+        if(ctx.Minus()!=null){
+            expression.setOperator(ctx.Minus().toString());
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("Minus");
+            stringg.setString(ctx.Minus().toString());
+            expression.getChild().add(stringg);
+        }
+        if(ctx.MinusModeCall()!=null){
+            expression.setOperator(ctx.MinusModeCall().toString());
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("MinusModeCall");
+            stringg.setString(ctx.MinusModeCall().toString());
+            expression.getChild().add(stringg);
+        }
+        if(ctx.callIdentifier()!=null){
+        expression.setCallIdentifier((CallIdentifier) visitCallIdentifier(ctx.callIdentifier()));
+        expression.getChild().add(expression.getCallIdentifier());
+        }
+        if(ctx.MinusMinus()!=null){
+            expression.setOperator(ctx.MinusMinus().toString());
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("MinusMinus");
+            stringg.setString(ctx.MinusMinus().toString());
+            expression.getChild().add(stringg);
+        }
+        if(ctx.PlusPlus()!=null){
+            expression.setOperator(ctx.PlusPlus().toString());
+            Stringg stringg = new Stringg();
+            stringg.setNode_type("PlusPlus");
+            stringg.setString(ctx.PlusPlus().toString());
+            expression.getChild().add(stringg);
+        }
+        if(ctx.data()!=null){
+            expression.setData((Data) visitData(ctx.data()));
+            expression.getChild().add(expression.getData());
+        }
+        return expression;
     }
 
 
