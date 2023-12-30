@@ -70,14 +70,14 @@ options{tokenVocab=ReactLexer;}
     jsxSimpleCallfunction : id OpenParenIn jsxArguments? CloseParenIn ;
     jsxArgument : (id (AssignIn (jsxExpression|jsxArrowFunction))?);
     jsxExpression:
-                     OpenParenIn jsxExpression (MultiplyIn | DivideIn) jsxExpression CloseParenIn #jsxNormalExpression
-                   | OpenParenIn jsxExpression( PlusIn | MinusIn) jsxExpression CloseParenIn #jsxNormalExpression
-                   | jsxExpression (MultiplyIn | DivideIn) jsxExpression #jsxNormalExpression
-                   | jsxExpression( PlusIn | MinusIn) jsxExpression #jsxNormalExpression
-                   | NUMBERIn #jsxNumber
-                   | StringIn #jsxString
-                   | BooleanLiteralIn #jsxBool
-                   | id #jsxId
+                     OpenParenIn jsxExpression (MultiplyIn | DivideIn) jsxExpression CloseParenIn
+                   | OpenParenIn jsxExpression( PlusIn | MinusIn) jsxExpression CloseParenIn
+                   | jsxExpression (MultiplyIn | DivideIn) jsxExpression
+                   | jsxExpression( PlusIn | MinusIn) jsxExpression
+                   | NUMBERIn
+                   | StringIn
+                   | BooleanLiteralIn
+                   | id
                    ;
     jsxCallIdentifier: id (DotIn id)*;
     jsxBlock:
@@ -120,24 +120,24 @@ options{tokenVocab=ReactLexer;}
     argument : (callIdentifier (assign (expression|arrowFunction))?);
     ////////////////rana part
     parameters :
-                 arrowFunction  #label_ArrowFunction
-               | callIdentifier  #label_CallIdentifier
-               | argument #lable_Argument
-               | callfunction #label_Callfunction
-               | expression #label_Expression
-               | NullLiteral #label_NullLiteral
-               | NullLiteralModeCall #label_NullLiteral
-               | blockOfarguments  #label_BlockOfarguments
+                 arrowFunction
+               | callIdentifier
+               | argument
+               | callfunction
+               | expression
+               | NullLiteral
+               | NullLiteralModeCall
+               | blockOfarguments
                ;
 
 
     callIdentifier: id ((Dot|DotModeCall) id  )*;
-    expression:  openParen expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression closeParen #label_normalExpression
-               | openParen expression( (Plus|PlusModeCall) | (Minus|MinusModeCall)) expression closeParen #label_normalExpression
-               | expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression #label_normalExpression
-               | expression( (Plus|PlusModeCall) | (Minus|MinusModeCall)) expression #label_normalExpression
-               | callIdentifier (PlusPlus|MinusMinus) #shortExpression
-               | data #label_dataExpression
+    expression:  openParen expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression closeParen
+               | openParen expression( (Plus|PlusModeCall) | (Minus|MinusModeCall)) expression closeParen
+               | expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression
+               | expression( (Plus|PlusModeCall) | (Minus|MinusModeCall)) expression
+               | callIdentifier (PlusPlus|MinusMinus)
+               | data
                ;
     export:Export Default callIdentifier SemiColon* IgSemiColon *;
 

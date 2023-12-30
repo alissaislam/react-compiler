@@ -526,65 +526,15 @@ public interface ReactParserListener extends ParseTreeListener {
 	 */
 	void exitJsxArgument(ReactParser.JsxArgumentContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code jsxNormalExpression}
-	 * labeled alternative in {@link ReactParser#jsxExpression}.
+	 * Enter a parse tree produced by {@link ReactParser#jsxExpression}.
 	 * @param ctx the parse tree
 	 */
-	void enterJsxNormalExpression(ReactParser.JsxNormalExpressionContext ctx);
+	void enterJsxExpression(ReactParser.JsxExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code jsxNormalExpression}
-	 * labeled alternative in {@link ReactParser#jsxExpression}.
+	 * Exit a parse tree produced by {@link ReactParser#jsxExpression}.
 	 * @param ctx the parse tree
 	 */
-	void exitJsxNormalExpression(ReactParser.JsxNormalExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code jsxId}
-	 * labeled alternative in {@link ReactParser#jsxExpression}.
-	 * @param ctx the parse tree
-	 */
-	void enterJsxId(ReactParser.JsxIdContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code jsxId}
-	 * labeled alternative in {@link ReactParser#jsxExpression}.
-	 * @param ctx the parse tree
-	 */
-	void exitJsxId(ReactParser.JsxIdContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code jsxString}
-	 * labeled alternative in {@link ReactParser#jsxExpression}.
-	 * @param ctx the parse tree
-	 */
-	void enterJsxString(ReactParser.JsxStringContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code jsxString}
-	 * labeled alternative in {@link ReactParser#jsxExpression}.
-	 * @param ctx the parse tree
-	 */
-	void exitJsxString(ReactParser.JsxStringContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code jsxBool}
-	 * labeled alternative in {@link ReactParser#jsxExpression}.
-	 * @param ctx the parse tree
-	 */
-	void enterJsxBool(ReactParser.JsxBoolContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code jsxBool}
-	 * labeled alternative in {@link ReactParser#jsxExpression}.
-	 * @param ctx the parse tree
-	 */
-	void exitJsxBool(ReactParser.JsxBoolContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code jsxNumber}
-	 * labeled alternative in {@link ReactParser#jsxExpression}.
-	 * @param ctx the parse tree
-	 */
-	void enterJsxNumber(ReactParser.JsxNumberContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code jsxNumber}
-	 * labeled alternative in {@link ReactParser#jsxExpression}.
-	 * @param ctx the parse tree
-	 */
-	void exitJsxNumber(ReactParser.JsxNumberContext ctx);
+	void exitJsxExpression(ReactParser.JsxExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ReactParser#jsxCallIdentifier}.
 	 * @param ctx the parse tree
@@ -736,89 +686,15 @@ public interface ReactParserListener extends ParseTreeListener {
 	 */
 	void exitArgument(ReactParser.ArgumentContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code label_ArrowFunction}
-	 * labeled alternative in {@link ReactParser#parameters}.
+	 * Enter a parse tree produced by {@link ReactParser#parameters}.
 	 * @param ctx the parse tree
 	 */
-	void enterLabel_ArrowFunction(ReactParser.Label_ArrowFunctionContext ctx);
+	void enterParameters(ReactParser.ParametersContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code label_ArrowFunction}
-	 * labeled alternative in {@link ReactParser#parameters}.
+	 * Exit a parse tree produced by {@link ReactParser#parameters}.
 	 * @param ctx the parse tree
 	 */
-	void exitLabel_ArrowFunction(ReactParser.Label_ArrowFunctionContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code label_CallIdentifier}
-	 * labeled alternative in {@link ReactParser#parameters}.
-	 * @param ctx the parse tree
-	 */
-	void enterLabel_CallIdentifier(ReactParser.Label_CallIdentifierContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code label_CallIdentifier}
-	 * labeled alternative in {@link ReactParser#parameters}.
-	 * @param ctx the parse tree
-	 */
-	void exitLabel_CallIdentifier(ReactParser.Label_CallIdentifierContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code lable_Argument}
-	 * labeled alternative in {@link ReactParser#parameters}.
-	 * @param ctx the parse tree
-	 */
-	void enterLable_Argument(ReactParser.Lable_ArgumentContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code lable_Argument}
-	 * labeled alternative in {@link ReactParser#parameters}.
-	 * @param ctx the parse tree
-	 */
-	void exitLable_Argument(ReactParser.Lable_ArgumentContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code label_Callfunction}
-	 * labeled alternative in {@link ReactParser#parameters}.
-	 * @param ctx the parse tree
-	 */
-	void enterLabel_Callfunction(ReactParser.Label_CallfunctionContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code label_Callfunction}
-	 * labeled alternative in {@link ReactParser#parameters}.
-	 * @param ctx the parse tree
-	 */
-	void exitLabel_Callfunction(ReactParser.Label_CallfunctionContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code label_Expression}
-	 * labeled alternative in {@link ReactParser#parameters}.
-	 * @param ctx the parse tree
-	 */
-	void enterLabel_Expression(ReactParser.Label_ExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code label_Expression}
-	 * labeled alternative in {@link ReactParser#parameters}.
-	 * @param ctx the parse tree
-	 */
-	void exitLabel_Expression(ReactParser.Label_ExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code label_NullLiteral}
-	 * labeled alternative in {@link ReactParser#parameters}.
-	 * @param ctx the parse tree
-	 */
-	void enterLabel_NullLiteral(ReactParser.Label_NullLiteralContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code label_NullLiteral}
-	 * labeled alternative in {@link ReactParser#parameters}.
-	 * @param ctx the parse tree
-	 */
-	void exitLabel_NullLiteral(ReactParser.Label_NullLiteralContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code label_BlockOfarguments}
-	 * labeled alternative in {@link ReactParser#parameters}.
-	 * @param ctx the parse tree
-	 */
-	void enterLabel_BlockOfarguments(ReactParser.Label_BlockOfargumentsContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code label_BlockOfarguments}
-	 * labeled alternative in {@link ReactParser#parameters}.
-	 * @param ctx the parse tree
-	 */
-	void exitLabel_BlockOfarguments(ReactParser.Label_BlockOfargumentsContext ctx);
+	void exitParameters(ReactParser.ParametersContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ReactParser#callIdentifier}.
 	 * @param ctx the parse tree
@@ -830,41 +706,15 @@ public interface ReactParserListener extends ParseTreeListener {
 	 */
 	void exitCallIdentifier(ReactParser.CallIdentifierContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code shortExpression}
-	 * labeled alternative in {@link ReactParser#expression}.
+	 * Enter a parse tree produced by {@link ReactParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void enterShortExpression(ReactParser.ShortExpressionContext ctx);
+	void enterExpression(ReactParser.ExpressionContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code shortExpression}
-	 * labeled alternative in {@link ReactParser#expression}.
+	 * Exit a parse tree produced by {@link ReactParser#expression}.
 	 * @param ctx the parse tree
 	 */
-	void exitShortExpression(ReactParser.ShortExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code label_dataExpression}
-	 * labeled alternative in {@link ReactParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterLabel_dataExpression(ReactParser.Label_dataExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code label_dataExpression}
-	 * labeled alternative in {@link ReactParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitLabel_dataExpression(ReactParser.Label_dataExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code label_normalExpression}
-	 * labeled alternative in {@link ReactParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterLabel_normalExpression(ReactParser.Label_normalExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code label_normalExpression}
-	 * labeled alternative in {@link ReactParser#expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitLabel_normalExpression(ReactParser.Label_normalExpressionContext ctx);
+	void exitExpression(ReactParser.ExpressionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ReactParser#export}.
 	 * @param ctx the parse tree

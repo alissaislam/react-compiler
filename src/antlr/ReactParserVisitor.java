@@ -317,40 +317,11 @@ public interface ReactParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitJsxArgument(ReactParser.JsxArgumentContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code jsxNormalExpression}
-	 * labeled alternative in {@link ReactParser#jsxExpression}.
+	 * Visit a parse tree produced by {@link ReactParser#jsxExpression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitJsxNormalExpression(ReactParser.JsxNormalExpressionContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code jsxId}
-	 * labeled alternative in {@link ReactParser#jsxExpression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitJsxId(ReactParser.JsxIdContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code jsxString}
-	 * labeled alternative in {@link ReactParser#jsxExpression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitJsxString(ReactParser.JsxStringContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code jsxBool}
-	 * labeled alternative in {@link ReactParser#jsxExpression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitJsxBool(ReactParser.JsxBoolContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code jsxNumber}
-	 * labeled alternative in {@link ReactParser#jsxExpression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitJsxNumber(ReactParser.JsxNumberContext ctx);
+	T visitJsxExpression(ReactParser.JsxExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ReactParser#jsxCallIdentifier}.
 	 * @param ctx the parse tree
@@ -442,54 +413,11 @@ public interface ReactParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitArgument(ReactParser.ArgumentContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code label_ArrowFunction}
-	 * labeled alternative in {@link ReactParser#parameters}.
+	 * Visit a parse tree produced by {@link ReactParser#parameters}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLabel_ArrowFunction(ReactParser.Label_ArrowFunctionContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code label_CallIdentifier}
-	 * labeled alternative in {@link ReactParser#parameters}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLabel_CallIdentifier(ReactParser.Label_CallIdentifierContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code lable_Argument}
-	 * labeled alternative in {@link ReactParser#parameters}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLable_Argument(ReactParser.Lable_ArgumentContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code label_Callfunction}
-	 * labeled alternative in {@link ReactParser#parameters}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLabel_Callfunction(ReactParser.Label_CallfunctionContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code label_Expression}
-	 * labeled alternative in {@link ReactParser#parameters}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLabel_Expression(ReactParser.Label_ExpressionContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code label_NullLiteral}
-	 * labeled alternative in {@link ReactParser#parameters}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLabel_NullLiteral(ReactParser.Label_NullLiteralContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code label_BlockOfarguments}
-	 * labeled alternative in {@link ReactParser#parameters}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLabel_BlockOfarguments(ReactParser.Label_BlockOfargumentsContext ctx);
+	T visitParameters(ReactParser.ParametersContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ReactParser#callIdentifier}.
 	 * @param ctx the parse tree
@@ -497,26 +425,11 @@ public interface ReactParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitCallIdentifier(ReactParser.CallIdentifierContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code shortExpression}
-	 * labeled alternative in {@link ReactParser#expression}.
+	 * Visit a parse tree produced by {@link ReactParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitShortExpression(ReactParser.ShortExpressionContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code label_dataExpression}
-	 * labeled alternative in {@link ReactParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLabel_dataExpression(ReactParser.Label_dataExpressionContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code label_normalExpression}
-	 * labeled alternative in {@link ReactParser#expression}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLabel_normalExpression(ReactParser.Label_normalExpressionContext ctx);
+	T visitExpression(ReactParser.ExpressionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ReactParser#export}.
 	 * @param ctx the parse tree

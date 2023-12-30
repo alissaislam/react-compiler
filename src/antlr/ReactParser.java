@@ -3513,18 +3513,6 @@ public class ReactParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class JsxExpressionContext extends ParserRuleContext {
-		public JsxExpressionContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_jsxExpression; }
-	 
-		public JsxExpressionContext() { }
-		public void copyFrom(JsxExpressionContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class JsxNormalExpressionContext extends JsxExpressionContext {
 		public TerminalNode OpenParenIn() { return getToken(ReactParser.OpenParenIn, 0); }
 		public List<JsxExpressionContext> jsxExpression() {
 			return getRuleContexts(JsxExpressionContext.class);
@@ -3537,92 +3525,27 @@ public class ReactParser extends Parser {
 		public TerminalNode DivideIn() { return getToken(ReactParser.DivideIn, 0); }
 		public TerminalNode PlusIn() { return getToken(ReactParser.PlusIn, 0); }
 		public TerminalNode MinusIn() { return getToken(ReactParser.MinusIn, 0); }
-		public JsxNormalExpressionContext(JsxExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterJsxNormalExpression(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitJsxNormalExpression(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitJsxNormalExpression(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class JsxIdContext extends JsxExpressionContext {
+		public TerminalNode NUMBERIn() { return getToken(ReactParser.NUMBERIn, 0); }
+		public TerminalNode StringIn() { return getToken(ReactParser.StringIn, 0); }
+		public TerminalNode BooleanLiteralIn() { return getToken(ReactParser.BooleanLiteralIn, 0); }
 		public IdContext id() {
 			return getRuleContext(IdContext.class,0);
 		}
-		public JsxIdContext(JsxExpressionContext ctx) { copyFrom(ctx); }
+		public JsxExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_jsxExpression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterJsxId(this);
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterJsxExpression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitJsxId(this);
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitJsxExpression(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitJsxId(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class JsxStringContext extends JsxExpressionContext {
-		public TerminalNode StringIn() { return getToken(ReactParser.StringIn, 0); }
-		public JsxStringContext(JsxExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterJsxString(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitJsxString(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitJsxString(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class JsxBoolContext extends JsxExpressionContext {
-		public TerminalNode BooleanLiteralIn() { return getToken(ReactParser.BooleanLiteralIn, 0); }
-		public JsxBoolContext(JsxExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterJsxBool(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitJsxBool(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitJsxBool(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class JsxNumberContext extends JsxExpressionContext {
-		public TerminalNode NUMBERIn() { return getToken(ReactParser.NUMBERIn, 0); }
-		public JsxNumberContext(JsxExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterJsxNumber(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitJsxNumber(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitJsxNumber(this);
+			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitJsxExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -3648,10 +3571,6 @@ public class ReactParser extends Parser {
 			switch ( getInterpreter().adaptivePredict(_input,63,_ctx) ) {
 			case 1:
 				{
-				_localctx = new JsxNormalExpressionContext(_localctx);
-				_ctx = _localctx;
-				_prevctx = _localctx;
-
 				setState(515);
 				match(OpenParenIn);
 				setState(516);
@@ -3674,9 +3593,6 @@ public class ReactParser extends Parser {
 				break;
 			case 2:
 				{
-				_localctx = new JsxNormalExpressionContext(_localctx);
-				_ctx = _localctx;
-				_prevctx = _localctx;
 				setState(521);
 				match(OpenParenIn);
 				setState(522);
@@ -3699,36 +3615,24 @@ public class ReactParser extends Parser {
 				break;
 			case 3:
 				{
-				_localctx = new JsxNumberContext(_localctx);
-				_ctx = _localctx;
-				_prevctx = _localctx;
 				setState(527);
 				match(NUMBERIn);
 				}
 				break;
 			case 4:
 				{
-				_localctx = new JsxStringContext(_localctx);
-				_ctx = _localctx;
-				_prevctx = _localctx;
 				setState(528);
 				match(StringIn);
 				}
 				break;
 			case 5:
 				{
-				_localctx = new JsxBoolContext(_localctx);
-				_ctx = _localctx;
-				_prevctx = _localctx;
 				setState(529);
 				match(BooleanLiteralIn);
 				}
 				break;
 			case 6:
 				{
-				_localctx = new JsxIdContext(_localctx);
-				_ctx = _localctx;
-				_prevctx = _localctx;
 				setState(530);
 				id();
 				}
@@ -3748,7 +3652,7 @@ public class ReactParser extends Parser {
 					switch ( getInterpreter().adaptivePredict(_input,64,_ctx) ) {
 					case 1:
 						{
-						_localctx = new JsxNormalExpressionContext(new JsxExpressionContext(_parentctx, _parentState));
+						_localctx = new JsxExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_jsxExpression);
 						setState(533);
 						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
@@ -3768,7 +3672,7 @@ public class ReactParser extends Parser {
 						break;
 					case 2:
 						{
-						_localctx = new JsxNormalExpressionContext(new JsxExpressionContext(_parentctx, _parentState));
+						_localctx = new JsxExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_jsxExpression);
 						setState(536);
 						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
@@ -5180,152 +5084,41 @@ public class ReactParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ParametersContext extends ParserRuleContext {
+		public ArrowFunctionContext arrowFunction() {
+			return getRuleContext(ArrowFunctionContext.class,0);
+		}
+		public CallIdentifierContext callIdentifier() {
+			return getRuleContext(CallIdentifierContext.class,0);
+		}
+		public ArgumentContext argument() {
+			return getRuleContext(ArgumentContext.class,0);
+		}
+		public CallfunctionContext callfunction() {
+			return getRuleContext(CallfunctionContext.class,0);
+		}
+		public ExpressionContext expression() {
+			return getRuleContext(ExpressionContext.class,0);
+		}
+		public TerminalNode NullLiteral() { return getToken(ReactParser.NullLiteral, 0); }
+		public TerminalNode NullLiteralModeCall() { return getToken(ReactParser.NullLiteralModeCall, 0); }
+		public BlockOfargumentsContext blockOfarguments() {
+			return getRuleContext(BlockOfargumentsContext.class,0);
+		}
 		public ParametersContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_parameters; }
-	 
-		public ParametersContext() { }
-		public void copyFrom(ParametersContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class Label_ExpressionContext extends ParametersContext {
-		public ExpressionContext expression() {
-			return getRuleContext(ExpressionContext.class,0);
-		}
-		public Label_ExpressionContext(ParametersContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabel_Expression(this);
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterParameters(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabel_Expression(this);
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitParameters(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabel_Expression(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class Label_CallfunctionContext extends ParametersContext {
-		public CallfunctionContext callfunction() {
-			return getRuleContext(CallfunctionContext.class,0);
-		}
-		public Label_CallfunctionContext(ParametersContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabel_Callfunction(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabel_Callfunction(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabel_Callfunction(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class Label_CallIdentifierContext extends ParametersContext {
-		public CallIdentifierContext callIdentifier() {
-			return getRuleContext(CallIdentifierContext.class,0);
-		}
-		public Label_CallIdentifierContext(ParametersContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabel_CallIdentifier(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabel_CallIdentifier(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabel_CallIdentifier(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class Label_ArrowFunctionContext extends ParametersContext {
-		public ArrowFunctionContext arrowFunction() {
-			return getRuleContext(ArrowFunctionContext.class,0);
-		}
-		public Label_ArrowFunctionContext(ParametersContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabel_ArrowFunction(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabel_ArrowFunction(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabel_ArrowFunction(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class Label_BlockOfargumentsContext extends ParametersContext {
-		public BlockOfargumentsContext blockOfarguments() {
-			return getRuleContext(BlockOfargumentsContext.class,0);
-		}
-		public Label_BlockOfargumentsContext(ParametersContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabel_BlockOfarguments(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabel_BlockOfarguments(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabel_BlockOfarguments(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class Label_NullLiteralContext extends ParametersContext {
-		public TerminalNode NullLiteral() { return getToken(ReactParser.NullLiteral, 0); }
-		public TerminalNode NullLiteralModeCall() { return getToken(ReactParser.NullLiteralModeCall, 0); }
-		public Label_NullLiteralContext(ParametersContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabel_NullLiteral(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabel_NullLiteral(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabel_NullLiteral(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class Lable_ArgumentContext extends ParametersContext {
-		public ArgumentContext argument() {
-			return getRuleContext(ArgumentContext.class,0);
-		}
-		public Lable_ArgumentContext(ParametersContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLable_Argument(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLable_Argument(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLable_Argument(this);
+			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitParameters(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -5338,7 +5131,6 @@ public class ReactParser extends Parser {
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,94,_ctx) ) {
 			case 1:
-				_localctx = new Label_ArrowFunctionContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(712);
@@ -5346,7 +5138,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 2:
-				_localctx = new Label_CallIdentifierContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(713);
@@ -5354,7 +5145,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 3:
-				_localctx = new Lable_ArgumentContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(714);
@@ -5362,7 +5152,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 4:
-				_localctx = new Label_CallfunctionContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(715);
@@ -5370,7 +5159,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 5:
-				_localctx = new Label_ExpressionContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(716);
@@ -5378,7 +5166,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 6:
-				_localctx = new Label_NullLiteralContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
 				setState(717);
@@ -5386,7 +5173,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 7:
-				_localctx = new Label_NullLiteralContext(_localctx);
 				enterOuterAlt(_localctx, 7);
 				{
 				setState(718);
@@ -5394,7 +5180,6 @@ public class ReactParser extends Parser {
 				}
 				break;
 			case 8:
-				_localctx = new Label_BlockOfargumentsContext(_localctx);
 				enterOuterAlt(_localctx, 8);
 				{
 				setState(719);
@@ -5500,60 +5285,6 @@ public class ReactParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class ExpressionContext extends ParserRuleContext {
-		public ExpressionContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_expression; }
-	 
-		public ExpressionContext() { }
-		public void copyFrom(ExpressionContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class ShortExpressionContext extends ExpressionContext {
-		public CallIdentifierContext callIdentifier() {
-			return getRuleContext(CallIdentifierContext.class,0);
-		}
-		public TerminalNode PlusPlus() { return getToken(ReactParser.PlusPlus, 0); }
-		public TerminalNode MinusMinus() { return getToken(ReactParser.MinusMinus, 0); }
-		public ShortExpressionContext(ExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterShortExpression(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitShortExpression(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitShortExpression(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class Label_dataExpressionContext extends ExpressionContext {
-		public DataContext data() {
-			return getRuleContext(DataContext.class,0);
-		}
-		public Label_dataExpressionContext(ExpressionContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabel_dataExpression(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabel_dataExpression(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabel_dataExpression(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class Label_normalExpressionContext extends ExpressionContext {
 		public OpenParenContext openParen() {
 			return getRuleContext(OpenParenContext.class,0);
 		}
@@ -5574,18 +5305,29 @@ public class ReactParser extends Parser {
 		public TerminalNode PlusModeCall() { return getToken(ReactParser.PlusModeCall, 0); }
 		public TerminalNode Minus() { return getToken(ReactParser.Minus, 0); }
 		public TerminalNode MinusModeCall() { return getToken(ReactParser.MinusModeCall, 0); }
-		public Label_normalExpressionContext(ExpressionContext ctx) { copyFrom(ctx); }
+		public CallIdentifierContext callIdentifier() {
+			return getRuleContext(CallIdentifierContext.class,0);
+		}
+		public TerminalNode PlusPlus() { return getToken(ReactParser.PlusPlus, 0); }
+		public TerminalNode MinusMinus() { return getToken(ReactParser.MinusMinus, 0); }
+		public DataContext data() {
+			return getRuleContext(DataContext.class,0);
+		}
+		public ExpressionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_expression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterLabel_normalExpression(this);
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).enterExpression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitLabel_normalExpression(this);
+			if ( listener instanceof ReactParserListener ) ((ReactParserListener)listener).exitExpression(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitLabel_normalExpression(this);
+			if ( visitor instanceof ReactParserVisitor ) return ((ReactParserVisitor<? extends T>)visitor).visitExpression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -5611,10 +5353,6 @@ public class ReactParser extends Parser {
 			switch ( getInterpreter().adaptivePredict(_input,98,_ctx) ) {
 			case 1:
 				{
-				_localctx = new Label_normalExpressionContext(_localctx);
-				_ctx = _localctx;
-				_prevctx = _localctx;
-
 				setState(731);
 				openParen();
 				setState(732);
@@ -5663,9 +5401,6 @@ public class ReactParser extends Parser {
 				break;
 			case 2:
 				{
-				_localctx = new Label_normalExpressionContext(_localctx);
-				_ctx = _localctx;
-				_prevctx = _localctx;
 				setState(740);
 				openParen();
 				setState(741);
@@ -5714,9 +5449,6 @@ public class ReactParser extends Parser {
 				break;
 			case 3:
 				{
-				_localctx = new ShortExpressionContext(_localctx);
-				_ctx = _localctx;
-				_prevctx = _localctx;
 				setState(749);
 				callIdentifier();
 				setState(750);
@@ -5733,9 +5465,6 @@ public class ReactParser extends Parser {
 				break;
 			case 4:
 				{
-				_localctx = new Label_dataExpressionContext(_localctx);
-				_ctx = _localctx;
-				_prevctx = _localctx;
 				setState(752);
 				data();
 				}
@@ -5755,7 +5484,7 @@ public class ReactParser extends Parser {
 					switch ( getInterpreter().adaptivePredict(_input,101,_ctx) ) {
 					case 1:
 						{
-						_localctx = new Label_normalExpressionContext(new ExpressionContext(_parentctx, _parentState));
+						_localctx = new ExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(755);
 						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
@@ -5801,7 +5530,7 @@ public class ReactParser extends Parser {
 						break;
 					case 2:
 						{
-						_localctx = new Label_normalExpressionContext(new ExpressionContext(_parentctx, _parentState));
+						_localctx = new ExpressionContext(_parentctx, _parentState);
 						pushNewRecursionContext(_localctx, _startState, RULE_expression);
 						setState(761);
 						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");

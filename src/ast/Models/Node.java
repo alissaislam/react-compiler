@@ -1,12 +1,24 @@
 package ast.Models;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Node {
     String node_name;
     String line_num;
     String node_type;
     int count_child;
+    List<Node> child =new ArrayList<> ();
 
+
+    public List<Node> getChild() {
+        return child;
+    }
+
+    public void setChild(List<Node> child) {
+        this.child = child;
+    }
 
     public String getNode_name() {
         return node_name;
@@ -43,13 +55,17 @@ public abstract class Node {
 
     @Override
     public String toString() {
-        return "\n Node { \n" +
+        String str =  "\n Node { \n" +
                 ", node_name= " + node_name + "\n" +
                 ", line_num= " + line_num + "\n" +
                 ", node_type= " + node_type + "\n" +
                 ", count_child= " + count_child + "\n" +
-                '}' +
 
                 "\n";
+//        for (int i = 0 ;i<child.size();i++){
+//            str+=  ", count_child= " + child.get(i) + "\n" ;
+//        }
+//        str+='}' ;
+        return str;
     }
 }
