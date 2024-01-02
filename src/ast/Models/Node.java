@@ -62,10 +62,6 @@ public abstract class Node {
                 ", count_child= " + count_child + "\n" +
 
                 "\n";
-//        for (int i = 0 ;i<child.size();i++){
-//            str+=  ", count_child= " + child.get(i) + "\n" ;
-//        }
-//        str+='}' ;
         return str;
     }
 }

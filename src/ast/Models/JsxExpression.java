@@ -10,8 +10,8 @@ public class JsxExpression extends Data {
     String operation;
     Number number;
     Stringg stringg;
-    Bool bool;
-    Id id;
+    Bool booll;
+    Id idd;
 
     public List<JsxExpression> getJsxExpressionList() {
         return jsxExpressionList;
@@ -45,19 +45,19 @@ public class JsxExpression extends Data {
         this.stringg = string;
     }
 
-    public Bool getBool() {
-        return bool;
+    public Bool getBooll() {
+        return booll;
     }
 
-    public void setBool(Bool bool) {
-        this.bool = bool;
+    public void setBooll(Bool bool) {
+        this.booll = bool;
     }
 
-    public Id getId() {
-        return id;
+    public Id getIdd() {
+        return idd;
     }
 
-    public void setId(Id id) {
-        this.id = id;
+    public void setIdd(Id id) {
+        this.id = idd;
     }
 }

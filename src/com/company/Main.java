@@ -2,6 +2,7 @@ package com.company;
 
 import antlr.ReactLexer;
 import antlr.ReactParser;
+import ast.Models.Id;
 import ast.Models.Node;
 import ast.Models.Start;
 import org.antlr.v4.runtime.CharStream;
@@ -12,40 +13,50 @@ import visitors.BaseVisitor;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 import static org.antlr.v4.runtime.CharStreams.fromFileName;
 
 public class Main {
 
     public static void main(String[] args) {
-        try {
+
+        CharStream cs=null;
             String source  = "src/test/test.txt";
-            CharStream cs = fromFileName(source);
+        try{
+            cs = fromFileName (source);
+        }catch (Exception e){
+            System.out.println (e);
+        }
             ReactLexer lexer = new ReactLexer(cs);
             CommonTokenStream token =  new CommonTokenStream((TokenSource) lexer);
             ReactParser parser = new ReactParser(token);
             ParseTree tree = parser.start();
             Start  doc = (Start) new BaseVisitor().visit(tree);
-            print (doc);
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+       print (doc);
+       BaseVisitor.getSymbolTable ().print ();
+//            Id id =new Id ();
+//            id.setId ("x");
+//            id.setNode_name (id.getId ());
+//            id.setNode_type ("Id");
+//            System.out.println (id.toString ());
+
+
 
     }
     public static void print(Node root) {
         if (root == null) return;
 
-        Queue<Node> queue = new LinkedList<> ();
-        queue.add(root);
+        Stack<Node> stack = new Stack<> ();
+        stack.add(root);
 
-        while (!queue.isEmpty()) {
-            Node tempNode = queue.poll();
+        while (!stack.isEmpty()) {
+            Node tempNode = stack.pop();
 
             System.out.println(tempNode);
 
             for (Node child : tempNode.getChild()) {
-                queue.add(child);
+                stack.add(child);
             }
         }
     }

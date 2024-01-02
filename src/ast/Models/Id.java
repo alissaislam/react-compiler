@@ -10,4 +10,12 @@ public class Id extends  JsxExpression {
     public void setId(String id) {
         this.id = id;
     }
+
+//    @Override
+//    public String toString() {
+//        return "Id{" +
+//                "node_name='" + node_name + '\'' +
+//                ", node_type='" + node_type + '\'' +
+//                '}';
+//    }
 }

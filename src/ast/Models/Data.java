@@ -32,7 +32,7 @@ public  class Data extends Node {
         this.stringg = stringg;
     }
 
-    public Id getId() {
+    public Id getIdd() {
         return id;
     }
 
@@ -48,7 +48,7 @@ public  class Data extends Node {
         this.map = map;
     }
 
-    public Bool getBool() {
+    public Bool getBoolll() {
         return bool;
     }
 

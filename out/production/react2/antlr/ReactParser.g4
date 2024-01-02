@@ -5,25 +5,25 @@ options{tokenVocab=ReactLexer;}
     start: statment*  EOF;
     statment :      statmentElement SemiColon* IgSemiColon *;
     statmentElement:
-                    variableDeclarationList                         #labelvarDecList
-                    | if                                            #labelif
-                    | forElement                                    #labelforElement
-                    | function                                      #labelFunction
-                    | comments                                      #labelComments
-                    | while                                          #labelWhile
-                    | do_while                                      #labelDoWhile
-                    | callfunction                                  #labelCallFunction
-                    | switch                                        #labelSwitch
-                    | block                                         #labelBlock
-                    | break                                         #labelBreak
-                    | tryCatch                                      #labelTryCatch
-                    | importt                                       #labelImport
-                    | ifShort                                       #labelIfShort
-                    | suquence                                      #labelSequence
-                    | export                                        #labelExport
-                    | jsxElement                                    #labelJsxElement
-                    | expression                                    #labelExpression
-                    | arrowFunction                                 #labelArrowFunction
+                      variableDeclarationList
+                    | if
+                    | forElement
+                    | function
+                    | comments
+                    | while
+                    | do_while
+                    | callfunction
+                    | switch
+                    | block
+                    | break
+                    | tryCatch
+                    | importt
+                    | ifShort
+                    | suquence
+                    | export
+                    | jsxElement
+                    | expression
+                    | arrowFunction
                     ;
     if : If OpenParen  conditions CloseParen  ( block | statment ) else_if* else? ;
     forElement :  For OpenParen forLoopParts CloseParen ( block | statment );
@@ -58,11 +58,11 @@ options{tokenVocab=ReactLexer;}
     blockIn:OpenBraceIn (jsxArguments )* CloseBraceIn;
     jsxArguments:jsxParameters(CommaIn jsxParameters)*;
     jsxParameters:
-      jsxArrowFunction  #jsxArrFunction
-    | jsxCallfunction   #labelJsxCallFunction
-    | jsxArgument       #jsxArg
-    | jsxCallIdentifier #jsxCallId
-    | jsxExpression    #jsxExp
+      jsxArrowFunction
+    | jsxCallfunction
+    | jsxArgument
+    | jsxCallIdentifier
+    | jsxExpression
     ;
     ////// islam part
     jsxArrowFunction:(OpenParenIn jsxArguments? CloseParenIn | jsxArgument ) ARROWIn (jsxExpression? | OpenBraceIn jsxExpression* CloseBraceIn );
@@ -70,14 +70,14 @@ options{tokenVocab=ReactLexer;}
     jsxSimpleCallfunction : id OpenParenIn jsxArguments? CloseParenIn ;
     jsxArgument : (id (AssignIn (jsxExpression|jsxArrowFunction))?);
     jsxExpression:
-                     OpenParenIn jsxExpression (MultiplyIn | DivideIn) jsxExpression CloseParenIn #jsxNormalExpression
-                   | OpenParenIn jsxExpression( PlusIn | MinusIn) jsxExpression CloseParenIn #jsxNormalExpression
-                   | jsxExpression (MultiplyIn | DivideIn) jsxExpression #jsxNormalExpression
-                   | jsxExpression( PlusIn | MinusIn) jsxExpression #jsxNormalExpression
-                   | NUMBERIn #jsxNumber
-                   | StringIn #jsxString
-                   | BooleanLiteralIn #jsxBool
-                   | id #jsxId
+                     OpenParenIn jsxExpression (MultiplyIn | DivideIn) jsxExpression CloseParenIn
+                   | OpenParenIn jsxExpression( PlusIn | MinusIn) jsxExpression CloseParenIn
+                   | jsxExpression (MultiplyIn | DivideIn) jsxExpression
+                   | jsxExpression( PlusIn | MinusIn) jsxExpression
+                   | NUMBERIn
+                   | StringIn
+                   | BooleanLiteralIn
+                   | id
                    ;
     jsxCallIdentifier: id (DotIn id)*;
     jsxBlock:
@@ -120,34 +120,34 @@ options{tokenVocab=ReactLexer;}
     argument : (callIdentifier (assign (expression|arrowFunction))?);
     ////////////////rana part
     parameters :
-                 arrowFunction  #label_ArrowFunction
-               | callIdentifier  #label_CallIdentifier
-               | argument #lable_Argument
-               | callfunction #label_Callfunction
-               | expression #label_Expression
-               | NullLiteral #label_NullLiteral
-               | NullLiteralModeCall #label_NullLiteral
-               | blockOfarguments  #label_BlockOfarguments
+                 arrowFunction
+               | callIdentifier
+               | argument
+               | callfunction
+               | expression
+               | NullLiteral
+               | NullLiteralModeCall
+               | blockOfarguments
                ;
 
 
     callIdentifier: id ((Dot|DotModeCall) id  )*;
-    expression:  openParen expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression closeParen #label_normalExpression
-               | openParen expression( (Plus|PlusModeCall) | (Minus|MinusModeCall)) expression closeParen #label_normalExpression
-               | expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression #label_normalExpression
-               | expression( (Plus|PlusModeCall) | (Minus|MinusModeCall)) expression #label_normalExpression
-               | callIdentifier (PlusPlus|MinusMinus) #shortExpression
-               | data #label_dataExpression
+    expression:  openParen expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression closeParen
+               | openParen expression( (Plus|PlusModeCall) | (Minus|MinusModeCall)) expression closeParen
+               | expression ((Multiply|MultiplyModeCall) | (Divide|DivideModeCall)) expression
+               | expression( (Plus|PlusModeCall) | (Minus|MinusModeCall)) expression
+               | callIdentifier (PlusPlus|MinusMinus)
+               | data
                ;
     export:Export Default callIdentifier SemiColon* IgSemiColon *;
 
     data :
-          array #label_Array
-        | (NUMBER|NUMBERModeCall) #label_Number
-        | (String|StringModeCall) #label_String
-        | id # label_Id
-        | map #label_Map
-        |(BooleanLiteral|BooleanLiteralModeCall) #label_Bool
+          array
+        | (NUMBER|NUMBERModeCall)
+        | (String|StringModeCall)
+        | id
+        | map
+        |(BooleanLiteral|BooleanLiteralModeCall)
         ;
 
          array : OpenBracket suquence? CloseBracket  ;

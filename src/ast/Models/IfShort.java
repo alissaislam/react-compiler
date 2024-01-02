@@ -1,13 +1,14 @@
 package ast.Models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class IfShort extends Node{
     CallIdentifier callIdentifier;
     Operation operation;
     Expression expression;
-    List<Statement> statements;
-    List<JsxElement> jsxElements;
+    List<Statement> statements=new ArrayList<> ();
+    List<JsxElement> jsxElements=new ArrayList<> ();
 
     public CallIdentifier getCallIdentifier() {
         return callIdentifier;
